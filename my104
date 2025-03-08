@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac - UIUX設計師 | 104會員中心重設計</title>
+    <meta name="description" content="UIUX設計師Isaac的作品集：104會員中心重設計案例，展示如何通過用戶旅程規劃與模組化設計改善職涯服務體驗">
+    <!-- 可以在GitHub Pages使用的CSS框架 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 自定義樣式 */
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1D4ED8;
+            --secondary: #3B82F6;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --bg-light: #F3F4F6;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .highlight-card {
+            border-left: 4px solid var(--primary);
+            background-color: #EFF6FF;
+        }
+        
+        .process-step {
+            position: relative;
+            padding-left: 36px;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+        }
+        
+        .process-step::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 28px;
+            width: 2px;
+            height: calc(100% - 20px);
+            background-color: #E5E7EB;
+        }
+        
+        .process-step:last-child::after {
+            display: none;
+        }
+        
+        .image-container img {
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.02);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+        
+        .quote {
+            border-left: 4px solid var(--primary);
+            padding-left: 1rem;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 導航欄 -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">首頁</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">關於我</a>
+                <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">作品集</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">聯絡我</a>
+            </nav>
+            <button class="md:hidden text-gray-600 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 專案標題區 -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl">
+                <p class="text-blue-200 mb-2">UIUX設計案例</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">104會員中心重設計</h1>
+                <p class="text-xl md:text-2xl mb-8">重新定義求職旅程，打造個人化的職涯發展平台</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專案概述 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold mb-6 section-title">專案概述</h2>
+                    <p class="text-gray-700 mb-6">
+                        104子產品眾多，劃分對應到的用戶也不盡相同。此外，求職是個旅程，而不是短暫、片刻就可以完成的任務。公司的服務也從職缺供需轉換成協助用戶職涯發展。因此，需要重新設計去滿足不同用戶對應不同階段的求職旅程的需求，打造更好的使用者體驗，幫助用戶探索自己，找到更適合的工作。
+                    </p>
+                </div>
+                <div class="md:w-1/3 bg-gray-50 p-6 rounded-lg">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">我的角色</h3>
+                        <p class="text-gray-600">UIUX設計師</p>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">時間</h3>
+                        <p class="text-gray-600">2021</p>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">工具</h3>
+                        <p class="text-gray-600">Sketch, PowerPoint</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 問題定義 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">為什麼要重新設計？</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">公司策略</h3>
+                    <p class="text-gray-700 mb-6">
+                        提升公司多元產品使用率，從找工作轉換成職涯服務。過往的數據追蹤顯示在會員中心的公司多元產品功能區塊點擊率偏低，例如：職涯探索類型、履歷輔導類型等產品。有可能跟用戶的當前任務不符合，也可能是資訊內容呈現和用戶無關。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">使用者痛點</h3>
+                    <p class="text-gray-700 mb-6">
+                        會員中心沒有手機版的頁面，無法因應目前手機使用率佔大宗的現況。現存手機可以瀏覽的資訊、服務破碎，沒有整合起來滿足用戶的需求。
+                    </p>
+                    
+                    <div class="quote italic text-gray-700 mb-4">
+                        「求職者無法從後台頁面上了解自己的履歷內容是否寫得合適，也無法得知自己投遞的職缺是否適合自身狀況。」
+                    </div>
+                    
+                    <div class="quote italic text-gray-700 mb-4">
+                        「多元產品的資訊顯示跟求職者關聯度低，無法產生連結感。」
+                    </div>
+                    
+                    <div class="quote italic text-gray-700 mb-4">
+                        「手機瀏覽體驗不佳，資訊破碎。」
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 設計流程 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">設計流程</h2>
+            
+            <div class="flex flex-wrap mb-12">
+                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
+                    <div class="process-step pl-8 pb-12">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">01. 選擇用戶</h3>
+                        <p class="text-gray-600">定義我們的目標用戶群體，包括上班族和學生不同階段的求職需求</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
+                    <div class="process-step pl-8 pb-12">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">02. 拆解用戶旅程地圖</h3>
+                        <p class="text-gray-600">詳細分析用戶在求職過程中的完整旅程和各階段的需求</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
+                    <div class="process-step pl-8 pb-12">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">03. 選擇關鍵時刻</h3>
+                        <p class="text-gray-600">確定用戶旅程中的重要節點，以針對性地提供服務</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
+                    <div class="process-step pl-8 pb-12">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">04. 對應公司產品服務</h3>
+                        <p class="text-gray-600">將104平台的多元產品與用戶在各階段的需求相對應</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
+                    <div class="process-step pl-8 pb-12">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">05. 線框稿</h3>
+                        <p class="text-gray-600">建立具體功能模組的線框稿，進行快速迭代和溝通</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
+                    <div class="process-step pl-8 pb-12">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">06. 高保真圖</h3>
+                        <p class="text-gray-600">完成各類用戶場景的高保真設計，準備開發和實施</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-gray-700 mb-10">
+                公司的產品設計並沒有固定的框架，這次決定從定義目標用戶開始。先進行二手資料研究 UX 團隊過往的用戶旅程地圖，盤點公司的多元服務可以如何滿足求職旅程中每個階段的任務，解決用戶當下的核心問題，以及可以如何運用用戶提供的資料和他們在平台上的操作行為去提供他們相關的個人化訊息。和產品經理確認我們的產品成功指標，整合不同關係人對於多元產品的看法和期待，了解現有的數據資料。我們希望可以從用戶角度出發，重新打造適合的會員中心。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="image-container overflow-hidden rounded-lg shadow-md">
+                    <img src="/api/placeholder/600/400" alt="Design Flow" class="w-full h-auto">
+                    <p class="text-sm text-gray-500 mt-2 text-center">Design Flow：設計流程圖</p>
+                </div>
+                <div class="image-container overflow-hidden rounded-lg shadow-md">
+                    <img src="/api/placeholder/600/400" alt="用戶旅程地圖 1" class="w-full h-auto">
+                    <p class="text-sm text-gray-500 mt-2 text-center">Map 1：用戶旅程地圖之一</p>
+                </div>
+                <div class="image-container overflow-hidden rounded-lg shadow-md">
+                    <img src="/api/placeholder/600/400" alt="用戶旅程地圖 2" class="w-full h-auto">
+                    <p class="text-sm text-gray-500 mt-2 text-center">Map 2：用戶旅程地圖之二</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 設計原則 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">設計原則</h2>
+            
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">功能模組化，提升資訊連結性</h3>
+            
+            <div class="grid md:grid-cols-2 gap-10 mb-10">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="text-xl font-medium mb-4 text-gray-800">設計可擴充性</h4>
+                    <p class="text-gray-700">將多元產品功能模組化，以利在不同用戶和不同使用情境下提供適合的功能滿足用戶的需求。這樣的設計方式讓介面能夠靈活適應不同用戶類型的需求，同時也便於後續擴充新功能。</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h4 class="text-xl font-medium mb-4 text-gray-800">個人化資訊</h4>
+                    <p class="text-gray-700">透過用戶的履歷欄位填寫，將數據轉化成貼近用戶的資訊附加在多元產品上，增加連結性。當用戶提供更多個人資訊，系統能更準確地推薦相關服務和內容，創造更有意義的互動體驗。</p>
+                </div>
+            </div>
+            
+            <div class="highlight-card p-6 rounded-lg mb-10">
+                <p class="text-lg italic text-gray-800">「將多元產品功能設計成樂高模組化，隨著求職者的資料完成度，將其排列組合推薦給求職者適合的內容，提升連結感。」</p>
+            </div>
+            
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">策略</h3>
+            
+            <p class="text-gray-700 mb-6">
+                運用線框稿快速地和關係人討論依據技術可行性將多元產品功能模組化，透過 Sketch 快速地設計線框稿，我將線框稿整理成簡報和團隊一起和老闆和重要關係人報告，以了解他們對於這次改版的期待和想法。這是整個環節中最困難的一部分，也是我第一次面對公司老闆和重要關係人溝通協調。同時，我也必須思考若是開發資源不足情況下，專案可以先以最大宗的 TA 的功能模組去開發，進行階段性的頁面迭代。
+            </p>
+        </div>
+    </section>
+
+    <!-- 設計成果 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">主要功能架構</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="image-container">
+                        <img src="/api/placeholder/600/400" alt="上班族_單純看看" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_單純看看</h3>
+                        <p class="text-gray-600">為瀏覽階段的上班族用戶設計的輕量化介面，著重於職缺發現和基本資訊</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="image-container">
+                        <img src="/api/placeholder/600/400" alt="上班族_待業中積極找工作" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_待業中積極找工作</h3>
+                        <p class="text-gray-600">為積極求職的上班族提供全面的找工具和進度追蹤功能</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="image-container">
+                        <img src="/api/placeholder/600/400" alt="上班族_有工作,想找其他工作機會" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_有工作,想找其他工作機會</h3>
+                        <p class="text-gray-600">針對在職尋求更好機會的用戶，提供職涯發展和機會比較功能</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="image-container">
+                        <img src="/api/placeholder/600/400" alt="學生_找實習打工" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">學生_找實習打工</h3>
+                        <p class="text-gray-600">為學生族群設計的實習和打工專區，簡化應徵流程</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="image-container">
+                        <img src="/api/placeholder/600/400" alt="學生_培養求職力" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">學生_培養求職力</h3>
+                        <p class="text-gray-600">針對尚未有充分工作經驗的學生，提供職涯輔導和技能發展資源</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <div class="image-container">
+                        <img src="/api/placeholder/600/400" alt="My104 2.0 PPT" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-800">My104 2.0 PPT</h3>
+                        <p class="text-gray-600">整合所有設計模組和使用者流程的最終提案簡報</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成果與學習 -->
+    <section class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">成果與學習</h2>
+            
+            <p class="text-gray-700 mb-10 text-lg">
+                在成功提案後，卻因為開發團隊資源的緊湊，會員中心網頁在提案期間，也進行版頭小幅度的改版，所以就把這個專案開發順序延後。這讓我意識到開發資源的不可或缺，以及將功能迭代進行切分、階段性開發的重要性。同時，專案的出發點也必須順著公司的大方向進行，才可以增加提前落地的機率。
+            </p>
+            
+            <div class="bg-white p-8 rounded-xl shadow-sm">
+                <h3 class="text-xl font-semibold mb-6 text-gray-800">關鍵學習與心得</h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
+                            <span class="text-blue-500 mr-2"><i class="fas fa-lightbulb"></i></span>
+                            資源管理與階段性開發
+                        </h4>
+                        <p class="text-gray-600 mb-4">
+                            了解到在企業環境中，設計必須與開發資源協調，將功能進行優先級排序，分階段實施是提高專案落地機率的關鍵。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
+                            <span class="text-blue-500 mr-2"><i class="fas fa-comments"></i></span>
+                            溝通與利害關係人管理
+                        </h4>
+                        <p class="text-gray-600 mb-4">
+                            面對公司高層和關係人溝通是一個挑戰，但也是提升自己專業能力的機會，學會了如何準備資料和清晰表達設計理念。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
+                            <span class="text-blue-500 mr-2"><i class="fas fa-puzzle-piece"></i></span>
+                            模組化設計的價值
+                        </h4>
+                        <p class="text-gray-600 mb-4">
+                            將功能模組化不僅有助於應對不同用戶需求，也大大提高了後續設計的靈活性和可擴充性，為產品長期發展打下基礎。
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
+                            <span class="text-blue-500 mr-2"><i class="fas fa-sync-alt"></i></span>
+                            適應企業策略變化
+                        </h4>
+                        <p class="text-gray-600 mb-4">
+                            設計必須與公司大方向保持一致，理解和適應策略變化是確保設計工作有價值的重要環節。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA區塊 -->
+    <section class="py-12 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-6">對我的作品感興趣嗎？</h2>
+            <p class="mb-8 max-w-2xl mx-auto">我樂於分享更多關於我的設計思維和其他案例。如果您有任何問題或合作機會，請隨時與我聯繫。</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#contact" class="px-6 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors">聯絡我</a>
+                <a href="#projects" class="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">查看更多作品</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁腳 -->
+    <footer class="bg-gray-900 text-gray-400 py-10">
+        <div class="container mx-auto
