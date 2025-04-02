@@ -5,131 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isaac - UIUX設計師 | 104會員中心重新設計</title>
     <meta name="description" content="UIUX設計師Isaac的作品集：104會員中心重新設計案例，展示如何通過用戶旅程規劃與模組化設計改善職涯服務體驗">
-    <!-- 可以在GitHub Pages使用的CSS框架 -->
+    <!-- 外部CSS框架 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* 自定義樣式 */
-        :root {
-            --primary: #2563EB;
-            --primary-dark: #1D4ED8;
-            --secondary: #3B82F6;
-            --text: #1F2937;
-            --text-light: #6B7280;
-            --bg-light: #F3F4F6;
-            --white: #FFFFFF;
-        }
-        
-        body {
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .highlight-card {
-            border-left: 4px solid var(--primary);
-            background-color: #EFF6FF;
-        }
-        
-        .process-step {
-            position: relative;
-            padding-left: 36px;
-        }
-        
-        .process-step::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: var(--primary);
-        }
-        
-        .process-step::after {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 28px;
-            width: 2px;
-            height: calc(100% - 20px);
-            background-color: #E5E7EB;
-        }
-        
-        .process-step:last-child::after {
-            display: none;
-        }
-        
-        .image-container img {
-            transition: transform 0.3s ease;
-        }
-        
-        .image-container:hover img {
-            transform: scale(1.02);
-        }
-        
-        .section-title {
-            position: relative;
-            padding-bottom: 1rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 4px;
-            background-color: var(--primary);
-        }
-        
-        .quote {
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .scroll-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 100;
-        }
-        
-        .scroll-top.visible {
-            opacity: 1;
-        }
-    </style>
+    <!-- 自訂CSS -->
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="bg-gray-50">
     <!-- 導航欄 -->
@@ -270,15 +150,15 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="image-container overflow-hidden rounded-lg shadow-md">
-                    <img src="/api/placeholder/600/400" alt="Design Flow" class="w-full h-auto">
+                    <img src="images/my104/design-flow.jpg" alt="Design Flow" class="w-full h-auto">
                     <p class="text-sm text-gray-500 mt-2 text-center">Design Flow：設計流程圖</p>
                 </div>
                 <div class="image-container overflow-hidden rounded-lg shadow-md">
-                    <img src="/api/placeholder/600/400" alt="用戶旅程地圖 1" class="w-full h-auto">
+                    <img src="images/my104/user-journey-1.jpg" alt="用戶旅程地圖 1" class="w-full h-auto">
                     <p class="text-sm text-gray-500 mt-2 text-center">Map 1：用戶旅程地圖之一</p>
                 </div>
                 <div class="image-container overflow-hidden rounded-lg shadow-md">
-                    <img src="/api/placeholder/600/400" alt="用戶旅程地圖 2" class="w-full h-auto">
+                    <img src="images/my104/user-journey-2.jpg" alt="用戶旅程地圖 2" class="w-full h-auto">
                     <p class="text-sm text-gray-500 mt-2 text-center">Map 2：用戶旅程地圖之二</p>
                 </div>
             </div>
@@ -323,7 +203,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="image-container">
-                        <img src="/api/placeholder/600/400" alt="上班族_單純看看" class="w-full h-56 object-cover">
+                        <img src="images/my104/worker-browsing.jpg" alt="上班族_單純看看" class="w-full h-56 object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_單純看看</h3>
@@ -333,7 +213,7 @@
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="image-container">
-                        <img src="/api/placeholder/600/400" alt="上班族_待業中積極找工作" class="w-full h-56 object-cover">
+                        <img src="images/my104/worker-active.jpg" alt="上班族_待業中積極找工作" class="w-full h-56 object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_待業中積極找工作</h3>
@@ -343,7 +223,7 @@
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="image-container">
-                        <img src="/api/placeholder/600/400" alt="上班族_有工作,想找其他工作機會" class="w-full h-56 object-cover">
+                        <img src="images/my104/worker-employed.jpg" alt="上班族_有工作,想找其他工作機會" class="w-full h-56 object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_有工作,想找其他工作機會</h3>
@@ -353,7 +233,7 @@
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="image-container">
-                        <img src="/api/placeholder/600/400" alt="學生_找實習打工" class="w-full h-56 object-cover">
+                        <img src="images/my104/student-intern.jpg" alt="學生_找實習打工" class="w-full h-56 object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">學生_找實習打工</h3>
@@ -363,7 +243,7 @@
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="image-container">
-                        <img src="/api/placeholder/600/400" alt="學生_培養求職力" class="w-full h-56 object-cover">
+                        <img src="images/my104/student-skills.jpg" alt="學生_培養求職力" class="w-full h-56 object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">學生_培養求職力</h3>
@@ -373,7 +253,7 @@
                 
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="image-container">
-                        <img src="/api/placeholder/600/400" alt="My104 2.0 PPT" class="w-full h-56 object-cover">
+                        <img src="images/my104/presentation.jpg" alt="My104 2.0 PPT" class="w-full h-56 object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-semibold mb-2 text-gray-800">My104 2.0 PPT</h3>
@@ -472,35 +352,6 @@
     </button>
 
     <!-- JavaScript -->
-    <script>
-        // 滾動到頂部按鈕功能
-        const scrollToTopBtn = document.getElementById('scrollToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
-        
-        scrollToTopBtn.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 手機版選單功能
-        const menuToggle = document.querySelector('.md\\:hidden');
-        const mobileNav = document.querySelector('nav');
-        
-        if (menuToggle && mobileNav) {
-            menuToggle.addEventListener('click', function() {
-                mobileNav.classList.toggle('hidden');
-                mobileNav.classList.toggle('flex');
-            });
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
