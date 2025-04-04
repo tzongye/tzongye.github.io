@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isaac - UIUX設計師 | 作品集</title>
-    <meta name="description" content="UIUX設計師Isaac的個人作品集網站，展示UI/UX設計作品、專案案例和設計理念">
+    <title>Isaac - UIUX 設計師 | 作品集</title>
+    <meta name="description" content="UIUX 設計師 Isaac 的個人作品集網站，展示 UI/UX 設計作品、專案案例和設計理念">
     <!-- 外部CSS框架 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- 自訂CSS -->
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        .placeholder-image {
+            background-color: #f3f4f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .placeholder-image i {
+            color: #d1d5db;
+            font-size: 2rem;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- 導航欄 -->
@@ -20,7 +32,6 @@
                 <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">首頁</a>
                 <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">關於我</a>
                 <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">作品集</a>
-                <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">聯絡我</a>
             </nav>
             <button class="md:hidden text-gray-600 focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
@@ -32,8 +43,8 @@
     <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24 md:py-32">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">嗨！我是 Isaac</h1>
-                <p class="text-xl md:text-2xl mb-8">UIUX設計師，專注於打造以使用者為中心的直覺化數位體驗</p>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">👋🏻 我是 Isaac</h1>
+                <p class="text-xl md:text-2xl mb-8">UIUX 設計師，專注於打造以使用者為中心的直覺化數位體驗</p>
                 <a href="#projects" class="px-8 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors inline-block">查看我的作品</a>
             </div>
         </div>
@@ -45,11 +56,13 @@
             <h2 class="text-3xl font-bold mb-12 section-title">關於我</h2>
             <div class="flex flex-col md:flex-row gap-12 items-center">
                 <div class="md:w-1/3">
-                    <img src="images/profile.jpg" alt="Isaac 個人照片" class="rounded-xl shadow-lg w-full h-auto">
+                    <div class="placeholder-image rounded-xl shadow-lg w-full h-64 md:h-auto">
+                        <i class="fas fa-user"></i>
+                    </div>
                 </div>
                 <div class="md:w-2/3">
                     <p class="text-gray-700 mb-6 text-lg">
-                        我是一名熱衷於解決問題和創造優質使用者體驗的UIUX設計師。擁有3年以上的設計經驗，專注於打造能夠滿足用戶需求並達成業務目標的產品界面。
+                        我是一名熱衷於解決問題和創造優質使用者體驗的 UIUX 設計師。擁有 3 年以上的設計經驗，專注於打造能夠滿足用戶需求並達成業務目標的產品界面。
                     </p>
                     <p class="text-gray-700 mb-6 text-lg">
                         我相信好的設計源於對用戶的深入理解，因此在每個項目中都會投入大量時間於研究和分析，確保最終設計能夠真正解決用戶的痛點。
@@ -61,7 +74,7 @@
                                 <li>使用者研究與分析</li>
                                 <li>用戶旅程規劃</li>
                                 <li>線框圖與原型設計</li>
-                                <li>UI系統設計</li>
+                                <li>UI 系統設計</li>
                                 <li>可用性測試</li>
                             </ul>
                         </div>
@@ -90,29 +103,27 @@
                 <!-- 專案1 -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <a href="my104.html" class="block">
-                        <div class="image-container">
-                            <img src="images/my104/cover.jpg" alt="104會員中心重新設計" class="w-full h-56 object-cover">
+                        <div class="image-container placeholder-image h-56">
+                            <i class="fas fa-image"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-3">UIUX設計</span>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">104會員中心重新設計</h3>
+                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-3">UIUX 設計</span>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">104 會員中心重新設計</h3>
                             <p class="text-gray-600">重新定義求職旅程，打造個人化的職涯發展平台</p>
                         </div>
                     </a>
                 </div>
                 
-                <!-- 這裡可以根據需要添加更多專案卡片 -->
-                
                 <!-- 專案2（佔位） -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <a href="#" class="block">
-                        <div class="image-container">
-                            <img src="images/placeholder-project.jpg" alt="專案2" class="w-full h-56 object-cover">
+                        <div class="image-container placeholder-image h-56">
+                            <i class="fas fa-image"></i>
                         </div>
                         <div class="p-6">
                             <span class="inline-block px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium mb-3">行動應用設計</span>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">專案2名稱</h3>
-                            <p class="text-gray-600">專案2簡短描述</p>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">專案 2 名稱</h3>
+                            <p class="text-gray-600">專案 2 簡短描述</p>
                         </div>
                     </a>
                 </div>
@@ -120,75 +131,15 @@
                 <!-- 專案3（佔位） -->
                 <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
                     <a href="#" class="block">
-                        <div class="image-container">
-                            <img src="images/placeholder-project.jpg" alt="專案3" class="w-full h-56 object-cover">
+                        <div class="image-container placeholder-image h-56">
+                            <i class="fas fa-image"></i>
                         </div>
                         <div class="p-6">
                             <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium mb-3">使用者研究</span>
-                            <h3 class="text-xl font-semibold mb-2 text-gray-800">專案3名稱</h3>
-                            <p class="text-gray-600">專案3簡短描述</p>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">專案 3 名稱</h3>
+                            <p class="text-gray-600">專案 3 簡短描述</p>
                         </div>
                     </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 聯絡我 -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 section-title">聯絡我</h2>
-            
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/2">
-                    <p class="text-gray-700 mb-6 text-lg">
-                        如果您有任何合作機會、專案提案或想進一步了解我的作品，歡迎通過以下方式與我聯繫。我期待能與您交流！
-                    </p>
-                    
-                    <div class="space-y-4 mt-8">
-                        <div class="flex items-center text-gray-600">
-                            <i class="fas fa-envelope-open-text text-blue-500 mr-3 text-xl"></i>
-                            <span>example@email.com</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <i class="fas fa-phone-alt text-blue-500 mr-3 text-xl"></i>
-                            <span>+886 912 345 678</span>
-                        </div>
-                        <div class="flex items-center text-gray-600">
-                            <i class="fas fa-map-marker-alt text-blue-500 mr-3 text-xl"></i>
-                            <span>台北市，台灣</span>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-4 mt-8">
-                        <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl">
-                            <i class="fab fa-behance"></i>
-                        </a>
-                        <a href="#" class="text-gray-600 hover:text-blue-500 text-2xl">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2">
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-gray-700 font-medium mb-2">姓名</label>
-                            <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-gray-700 font-medium mb-2">電子郵件</label>
-                            <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-gray-700 font-medium mb-2">訊息</label>
-                            <textarea id="message" name="message" rows="5" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                        </div>
-                        <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors">發送訊息</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -197,11 +148,10 @@
     <!-- 頁腳 -->
     <footer class="bg-gray-900 text-gray-400 py-10">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2023 Isaac. All rights reserved.</p>
-            <div class="flex justify-center mt-4 space-x-4">
-                <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-white"><i class="fab fa-behance"></i></a>
-                <a href="#" class="hover:text-white"><i class="fab fa-github"></i></a>
+            <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
+            <div class="flex justify-center mt-4 space-x-6">
+                <a href="https://www.linkedin.com/in/isaactsai/" class="hover:text-white" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="mailto:tzong.ye@gmail.com" class="hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
             </div>
         </div>
     </footer>
