@@ -11,28 +11,98 @@
     <!-- 自訂CSS -->
     <link rel="stylesheet" href="css/main.css">
     <style>
+        /* Web3 現代風格樣式 */
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4F46E5;
+            --accent: #10B981;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --bg-dark: #111827;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text);
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 2px;
+        }
+        
         .placeholder-image {
-            background-color: #f3f4f5;
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            border-radius: 12px;
         }
+        
         .placeholder-image i {
-            color: #d1d5db;
-            font-size: 2rem;
+            color: #9ca3af;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- 導航欄 -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <!-- 導航欄 - 已移除導航按鈕 -->
+    <header class="sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="nav-link text-gray-600 hover:text-blue-600">首頁</a>
-                <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">關於我</a>
-                <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">作品集</a>
-            </nav>
             <button class="md:hidden text-gray-600 focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
@@ -40,56 +110,28 @@
     </header>
 
     <!-- 首頁橫幅 -->
-    <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-24 md:py-32">
-        <div class="container mx-auto px-4">
+    <section class="hero-section text-white py-24 md:py-32">
+        <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-3xl">
                 <h1 class="text-4xl md:text-6xl font-bold mb-6">👋🏻 我是 Isaac</h1>
                 <p class="text-xl md:text-2xl mb-8">UIUX 設計師，專注於打造以使用者為中心的直覺化數位體驗</p>
-                <a href="#projects" class="px-8 py-3 bg-white text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors inline-block">查看我的作品</a>
+                <a href="#projects" class="px-8 py-3 bg-white text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors inline-block shadow-lg">查看我的作品</a>
             </div>
         </div>
     </section>
 
-    <!-- 關於我 -->
+    <!-- 關於我 - 移除照片 -->
     <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 section-title">關於我</h2>
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="md:w-1/3">
-                    <div class="placeholder-image rounded-xl shadow-lg w-full h-64 md:h-auto">
-                        <i class="fas fa-user"></i>
-                    </div>
-                </div>
-                <div class="md:w-2/3">
-                    <p class="text-gray-700 mb-6 text-lg">
-                        我是一名熱衷於解決問題和創造優質使用者體驗的 UIUX 設計師。擁有 3 年以上的設計經驗，專注於打造能夠滿足用戶需求並達成業務目標的產品界面。
-                    </p>
-                    <p class="text-gray-700 mb-6 text-lg">
-                        我相信好的設計源於對用戶的深入理解，因此在每個項目中都會投入大量時間於研究和分析，確保最終設計能夠真正解決用戶的痛點。
-                    </p>
-                    <div class="grid grid-cols-2 gap-4 mt-8">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-3 text-gray-800">技能</h3>
-                            <ul class="text-gray-600 space-y-2">
-                                <li>使用者研究與分析</li>
-                                <li>用戶旅程規劃</li>
-                                <li>線框圖與原型設計</li>
-                                <li>UI 系統設計</li>
-                                <li>可用性測試</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-3 text-gray-800">工具</h3>
-                            <ul class="text-gray-600 space-y-2">
-                                <li>Sketch</li>
-                                <li>Figma</li>
-                                <li>Adobe XD</li>
-                                <li>Illustrator</li>
-                                <li>InVision</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="max-w-3xl">
+                <p class="text-gray-700 mb-6 text-lg">
+                    我是一名熱衷於解決問題和創造優質使用者體驗的 UIUX 設計師。擁有 8 年以上的設計經驗，專注於打造能夠滿足用戶需求並達成業務目標的產品界面。
+                </p>
+                <p class="text-gray-700 mb-6 text-lg">
+                    我相信好的設計源於對用戶的深入理解，確保最終設計能夠真正解決用戶的痛點。
+                </p>
+                <!-- 移除技能和工具部分 -->
             </div>
         </div>
     </section>
@@ -100,42 +142,39 @@
             <h2 class="text-3xl font-bold mb-12 section-title">作品集</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 專案1 -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                <!-- 專案1 - 移除badge -->
+                <div class="glass-card rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg">
                     <a href="my104.html" class="block">
                         <div class="image-container placeholder-image h-56">
                             <i class="fas fa-image"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-3">UIUX 設計</span>
                             <h3 class="text-xl font-semibold mb-2 text-gray-800">104 會員中心重新設計</h3>
                             <p class="text-gray-600">重新定義求職旅程，打造個人化的職涯發展平台</p>
                         </div>
                     </a>
                 </div>
                 
-                <!-- 專案2（佔位） -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                <!-- 專案2（佔位） - 移除badge -->
+                <div class="glass-card rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg">
                     <a href="#" class="block">
                         <div class="image-container placeholder-image h-56">
                             <i class="fas fa-image"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm font-medium mb-3">行動應用設計</span>
                             <h3 class="text-xl font-semibold mb-2 text-gray-800">專案 2 名稱</h3>
                             <p class="text-gray-600">專案 2 簡短描述</p>
                         </div>
                     </a>
                 </div>
                 
-                <!-- 專案3（佔位） -->
-                <div class="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                <!-- 專案3（佔位） - 移除badge -->
+                <div class="glass-card rounded-xl overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg">
                     <a href="#" class="block">
                         <div class="image-container placeholder-image h-56">
                             <i class="fas fa-image"></i>
                         </div>
                         <div class="p-6">
-                            <span class="inline-block px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-sm font-medium mb-3">使用者研究</span>
                             <h3 class="text-xl font-semibold mb-2 text-gray-800">專案 3 名稱</h3>
                             <p class="text-gray-600">專案 3 簡短描述</p>
                         </div>
