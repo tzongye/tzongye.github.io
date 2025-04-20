@@ -139,73 +139,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
     
-    // 初始調用添加燈箱功能
-    addLightboxToImages();
-    
     // 獲取燈箱元素
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
     
-    // 打開燈箱
-    function openLightbox(src, alt) {
-        lightboxImg.src = src;
-        lightboxImg.alt = alt || '圖片預覽';
-        lightbox.classList.add('fade-in');
-        document.body.classList.add('no-scroll');
+    // 只有在燈箱元素存在時才啟用燈箱功能
+    if (lightbox && lightboxImg) {
+        // 初始調用添加燈箱功能
+        addLightboxToImages();
         
-        // 綁定ESC鍵關閉
-        document.addEventListener('keydown', handleEscKey);
-    }
-    
-    // 關閉燈箱
-    function closeLightbox() {
-        lightbox.classList.remove('fade-in');
-        lightbox.classList.add('fade-out');
-        
-        setTimeout(() => {
-            lightbox.classList.remove('fade-out');
-            lightbox.style.display = 'none';
-            document.body.classList.remove('no-scroll');
-        }, 300);
-        
-        // 解除ESC鍵綁定
-        document.removeEventListener('keydown', handleEscKey);
-    }
-    
-    // ESC鍵處理器
-    function handleEscKey(e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
+        // 打開燈箱
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || '圖片預覽';
+            lightbox.style.display = 'flex';
+            lightbox.classList.add('fade-in');
+            document.body.classList.add('no-scroll');
+            
+            // 綁定ESC鍵關閉
+            document.addEventListener('keydown', handleEscKey);
         }
-    }
-    
-    // 點擊關閉按鈕
-    if (lightboxClose) {
-        lightboxClose.addEventListener('click', closeLightbox);
-    }
-    
-    // 點擊背景也可關閉
-    if (lightbox) {
+        
+        // 關閉燈箱
+        function closeLightbox() {
+            lightbox.classList.remove('fade-in');
+            lightbox.classList.add('fade-out');
+            
+            setTimeout(() => {
+                lightbox.classList.remove('fade-out');
+                lightbox.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 300);
+            
+            // 解除ESC鍵綁定
+            document.removeEventListener('keydown', handleEscKey);
+        }
+        
+        // ESC鍵處理器
+        function handleEscKey(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        }
+        
+        // 點擊關閉按鈕
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', closeLightbox);
+        }
+        
+        // 點擊背景也可關閉
         lightbox.addEventListener('click', function(e) {
             if (e.target === lightbox) {
                 closeLightbox();
             }
         });
-    }
-    
-    // 如果頁面有動態加載的內容，可以考慮使用 MutationObserver
-    const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                addLightboxToImages();
-            }
+        
+        // 如果頁面有動態加載的內容，可以考慮使用 MutationObserver
+        const observer = new MutationObserver(mutations => {
+            mutations.forEach(mutation => {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    addLightboxToImages();
+                }
+            });
         });
-    });
-    
-    // 監聽頁面中可能會動態加載內容的容器
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
+        
+        // 監聽頁面中可能會動態加載內容的容器
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
 });
