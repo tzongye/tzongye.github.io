@@ -112,4 +112,100 @@ document.addEventListener('DOMContentLoaded', function() {
         // 初始化
         updateActiveTocLink();
     }
+
+    // 燈箱功能實現
+    // 獲取所有使用這些 class 的圖片容器，包括已有的和未來可能加入的
+    const addLightboxToImages = () => {
+        // 對設計流程部分的圖片添加燈箱效果
+        document.querySelectorAll('.image-container:not(.lightbox-enabled)').forEach(container => {
+            const img = container.querySelector('img');
+            if (img) {
+                container.classList.add('lightbox-trigger', 'lightbox-enabled');
+                container.addEventListener('click', function() {
+                    openLightbox(img.src, img.alt);
+                });
+            }
+        });
+        
+        // 對主要功能架構部分的卡片圖片添加燈箱效果
+        document.querySelectorAll('.glass-card .h-56:not(.lightbox-enabled)').forEach(container => {
+            const img = container.querySelector('img');
+            if (img) {
+                container.classList.add('lightbox-trigger', 'lightbox-enabled');
+                container.addEventListener('click', function() {
+                    openLightbox(img.src, img.alt);
+                });
+            }
+        });
+    };
+    
+    // 初始調用添加燈箱功能
+    addLightboxToImages();
+    
+    // 獲取燈箱元素
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    
+    // 打開燈箱
+    function openLightbox(src, alt) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '圖片預覽';
+        lightbox.classList.add('fade-in');
+        document.body.classList.add('no-scroll');
+        
+        // 綁定ESC鍵關閉
+        document.addEventListener('keydown', handleEscKey);
+    }
+    
+    // 關閉燈箱
+    function closeLightbox() {
+        lightbox.classList.remove('fade-in');
+        lightbox.classList.add('fade-out');
+        
+        setTimeout(() => {
+            lightbox.classList.remove('fade-out');
+            lightbox.style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }, 300);
+        
+        // 解除ESC鍵綁定
+        document.removeEventListener('keydown', handleEscKey);
+    }
+    
+    // ESC鍵處理器
+    function handleEscKey(e) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    }
+    
+    // 點擊關閉按鈕
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+    
+    // 點擊背景也可關閉
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    }
+    
+    // 如果頁面有動態加載的內容，可以考慮使用 MutationObserver
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                addLightboxToImages();
+            }
+        });
+    });
+    
+    // 監聽頁面中可能會動態加載內容的容器
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
 });
