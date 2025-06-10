@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isaac - UIUX 設計師 | 富蘭克林母子基金數位化平台設計</title>
+    <meta name="description" content="UIUX 設計師 Isaac 的作品集：富蘭克林母子基金數位化平台設計，將複雜的母子基金交易流程轉化為直觀的線上體驗">
+    <!-- 外部CSS框架 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 自訂CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4F46E5;
+            --accent: #10B981;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --bg-dark: #111827;
+            --bg-light: #F9FAFB;
+            --white: #FFFFFF;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
+            <button class="md:hidden text-gray-600 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">富蘭克林母子基金數位化平台設計</h1>
+                <p class="text-xl md:text-2xl mb-8">在博暉的第一個獨立專案：將複雜的母子基金交易流程轉化為直觀的線上體驗</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專案概述與核心價值 -->
+    <section id="overview" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold mb-6 section-title">專案概述</h2>
+                    <p class="text-gray-700 mb-6 font-bold">將複雜的母子基金管理從臨櫃作業轉為線上自助服務，提升投資人操作效率</p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>將完整的契約生命週期數位化</li>
+                        <li>提供直觀的資產管理介面</li>
+                        <li>建立透明的交易追蹤機制</li>
+                        <li>符合金融法規的安全性要求</li>
+                    </ul>
+                    <p class="text-gray-700 mb-6">母子基金是一種投資工具，讓投資人以母基金作為資金池，定期轉入子基金進行投資。原本所有操作都需臨櫃辦理，缺乏數位化管理工具。</p>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">我的角色</h3>
+                        <p class="text-gray-600">負責整體 UI/UX 設計，包含資訊架構、介面設計和交互流程規劃</p>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">專案成果</h3>
+                        <p class="text-gray-600">完成富蘭克林首個完整母子基金數位平台，實現 100% 線上化作業</p>
+                    </div>
+                </div>
+                <div class="md:w-1/3 glass-card p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">核心價值</h3>
+                    <ul class="list-disc pl-6 text-gray-700">
+                        <li>三步驟線上申購流程，支援新申購和既有庫存轉入</li>
+                        <li>統一契約總覽介面，整合資產分布和績效分析</li>
+                        <li>線上契約變更功能，支援即時調整和終止操作</li>
+                        <li>完整交易追蹤機制，包含在途交易和歷史紀錄</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 問題與解決方案表格 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">原有問題與設計解決方案</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white rounded-lg shadow-md">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">原有問題</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">設計解決方案</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-6 py-4 border-b border-gray-200">契約申購需臨櫃辦理，流程冗長</td>
+                            <td class="px-6 py-4 border-b border-gray-200">設計三步驟線上申購流程，支援新申購和既有庫存轉入</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 border-b border-gray-200">多筆契約資訊分散，難以掌握總體投資狀況</td>
+                            <td class="px-6 py-4 border-b border-gray-200">建立統一的契約總覽介面，整合資產分布和績效分析</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 border-b border-gray-200">契約變更需要紙本作業，無法即時調整投資策略</td>
+                            <td class="px-6 py-4 border-b border-gray-200">提供線上契約變更功能，支援即時調整和終止操作</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 border-b border-gray-200">交易狀態不透明，投資人缺乏掌控感</td>
+                            <td class="px-6 py-4 border-b border-gray-200">建立完整的交易追蹤機制，包含在途交易和歷史紀錄</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關鍵設計挑戰 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">關鍵設計挑戰</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">挑戰 1：複雜金融邏輯的簡化呈現</h3>
+                    <p class="text-gray-700 mb-4">母子基金涉及多層次資料結構：母基金、多檔子基金、不同幣別、在途交易等，如何讓一般投資人輕鬆理解？</p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>採用卡片式模組化設計，將相關資訊分組</li>
+                        <li>提供「含在途/不含在途」切換，讓用戶選擇適合的檢視方式</li>
+                        <li>用視覺標籤快速識別契約狀態（正常/處理中/終止）</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">挑戰 2：多步驟申購流程的引導設計</h3>
+                    <p class="text-gray-700 mb-4">契約申購涉及母基金選擇、最多 3 檔子基金設定、智能加碼配置等複雜設定。</p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>設計三步驟引導流程，每步專注單一任務</li>
+                        <li>提供即時驗證和錯誤提示</li>
+                        <li>確認頁面完整展示所有設定，變更項目紅色標示</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能設計 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">核心功能設計</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">母子契約總覽</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>投資總市值、資產分布派圖、幣別明細</li>
+                        <li>支援列表/卡片兩種檢視，快速掌握契約狀態</li>
+                    </ul>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">契約申購流程</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>三步驟引導，化繁為簡</li>
+                        <li>母基金約定、子基金設定、確認送出</li>
+                        <li>智能基金篩選、即時金額驗證、累加級距檢核</li>
+                        <li>智能加碼功能（標準型/加強型/積極型）</li>
+                        <li>完整資訊確認，變更項目視覺標示</li>
+                        <li>整合法規同意事項，密碼驗證確保安全</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">契約查詢與變更</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>多維度篩選排序，支援關鍵字搜尋</li>
+                        <li>一般變更 vs 終止契約兩種模式</li>
+                        <li>變更欄位紅色標示，提供變更前後對比</li>
+                    </ul>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">交易管理系統</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>委託查詢、在途交易、歷史紀錄完整串接</li>
+                        <li>即時顯示進行中交易，提供預估金額</li>
+                        <li>完整交易歷史，多維度查詢</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 易用性測試與設計優化 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">易用性測試與設計優化</h2>
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">測試設計與執行</h3>
+                <ul class="list-disc pl-6 text-gray-700 mb-6">
+                    <li>5 位用戶，涵蓋 7 個核心任務場景</li>
+                    <li>任務導向測試，記錄完成時間、滿意度評分和行為觀察</li>
+                    <li>前測 1 場 + 正式測試 2 場（2022/09/28-29）</li>
+                </ul>
+            </div>
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">關鍵發現與改進</h3>
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white rounded-lg shadow-md">
+                        <thead>
+                            <tr>
+                                <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">問題</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">影響次數</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">實際影響</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">解決方案</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-6 py-4 border-b border-gray-200">卡片資訊混亂，分不清母基金/子基金</td>
+                                <td class="px-6 py-4 border-b border-gray-200">4次</td>
+                                <td class="px-6 py-4 border-b border-gray-200">用戶誤解契約結構</td>
+                                <td class="px-6 py-4 border-b border-gray-200">改為預設列表顯示，桌機版移除卡片模式</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 border-b border-gray-200">停利方式描述不清楚</td>
+                                <td class="px-6 py-4 border-b border-gray-200">3次</td>
+                                <td class="px-6 py-4 border-b border-gray-200">申購流程中止</td>
+                                <td class="px-6 py-4 border-b border-gray-200">重新撰寫文案，使用更直白的表達方式</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 border-b border-gray-200">「異動」按鈕位置不符預期</td>
+                                <td class="px-6 py-4 border-b border-gray-200">2次</td>
+                                <td class="px-6 py-4 border-b border-gray-200">用戶在導航列反覆尋找</td>
+                                <td class="px-6 py-4 border-b border-gray-200">強化按鈕視覺、新增導航入口</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 border-b border-gray-200">找不到「尚未停利明細」入口</td>
+                                <td class="px-6 py-4 border-b border-gray-200">2次</td>
+                                <td class="px-6 py-4 border-b border-gray-200">查詢任務失敗</td>
+                                <td class="px-6 py-4 border-b border-gray-200">按鈕加上「明細」文字，提升高度至 32px</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mb-6">
+                    <p class="text-gray-700 mb-2">以「契約申購」任務為例：</p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-2">
+                        <li>平均完成時間：3 分 55 秒</li>
+                        <li>成功率：80%（4/5 位用戶順利完成）</li>
+                        <li>滿意度評分：5.4/10（任務難度）→ 改進後預期提升至 7+</li>
+                    </ul>
+                    <p class="text-gray-700 mb-2">典型用戶行為洞察：</p>
+                    <ul class="list-disc pl-6 text-gray-700 mb-2">
+                        <li>用戶會直覺地在導航列尋找「交易相關」功能</li>
+                        <li>金融術語需要更淺顯易懂的表達方式</li>
+                        <li>重要操作按鈕需要足夠的視覺權重（32px 高度為最適尺寸）</li>
+                    </ul>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">設計決策的數據支撐</h3>
+                    <ol class="list-decimal pl-6 text-gray-700 mb-2">
+                        <li>介面佈局優化：桌機版改為列表預設，提升資訊識別效率</li>
+                        <li>導航架構調整：將「契約變更」獨立為導航項目，符合用戶心智模型</li>
+                        <li>微交互改進：hover 狀態增加「查看投資報告」提示，引導用戶探索</li>
+                    </ol>
+                    <p class="text-gray-700 mb-2">這次測試驗證了原子組件架構的價值：當需要調整按鈕尺寸時，一次更新就能同步所有相關頁面，大幅提升了設計迭代效率。</p>
+                </div>
+                <div class="mb-6">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">功能完整性</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-2">
+                        <li>支援完整契約生命週期：申購 → 變更 → 終止</li>
+                        <li>複雜投資邏輯的介面簡化：母基金、子基金、智能加碼等多層次設定</li>
+                        <li>透明交易追蹤：在途交易、歷史紀錄、委託管理完整串接</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 專業反思 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-10 section-title">專業反思</h2>
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">核心學習</h3>
+                <p class="text-gray-700 mb-6">這是我加入博暉後第一個完全獨立負責的專案，從 0 到 1 建立整個產品的設計體系。母子基金是基金交易中最複雜的設定類型：一個契約涉及 1 個母基金 + 最多 3 個子基金，每個子基金都有獨立的轉申購設定、停利條件、智能加碼策略。相比一般單筆基金申購，需要處理的參數和邏輯複雜度呈指數級增長。如何將這種複雜性轉化為直觀的用戶介面，是這個專案最大的設計挑戰。</p>
+                <p class="text-gray-700 mb-6">專案週期長達三年多，涉及 50+ 個頁面和複雜的金融業務邏輯。面對每週的需求變更和客戶反饋，傳統的頁面式設計難以維護。採用 Atomic Design 重新規劃專案架構：將金融介面拆解為可復用的原子組件（按鈕、輸入框、狀態標籤），組合成業務元件（搜尋條件、交易卡片、資產總覽），最終組裝成頁面。當客戶要求調整所有表格的樣式時，只需要修改一個原子組件，所有相關頁面同步更新。這種架構讓我在三年的開發週期中，維持設計一致性並快速響應變更需求。</p>
+                <p class="text-gray-700 mb-6">透過這個專案深度理解了：金融產品的設計不只是介面美化，而是需要深度理解業務邏輯、用戶心理、風險控制的系統性設計工程。每一個看似簡單的按鈕背後，都可能涉及複雜的商業規則和法規要求。</p>
+                <p class="text-gray-700 mb-6">從這個專案開始，我具備了處理高複雜度 B2C 產品的設計能力。學會如何：將複雜的業務邏輯轉化為直觀的用戶操作流程，在有限的螢幕空間內有效組織大量資訊，透過分步驟引導和即時提示，讓不同投資經驗的用戶都能順利完成操作。這個專案不僅是介面設計，更是對金融服務數位化轉型的深度思考和實踐。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-10">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
+            <div class="flex justify-center mt-4 space-x-6">
+                <a href="https://www.linkedin.com/in/isaactsai/" class="hover:text-white" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
+                <a href="mailto:tzong.ye@gmail.com" class="hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
