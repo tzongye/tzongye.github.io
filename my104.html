@@ -10,310 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- 自訂CSS -->
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        /* Web3 現代風格樣式 */
-        :root {
-            --primary: #6366F1;
-            --primary-dark: #4F46E5;
-            --accent: #10B981;
-            --text: #1F2937;
-            --text-light: #6B7280;
-            --bg-dark: #111827;
-            --bg-light: #F9FAFB;
-            --white: #FFFFFF;
-            --glass: rgba(255, 255, 255, 0.1);
-        }
-        
-        body {
-            background-color: var(--bg-light);
-            color: var(--text);
-            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .hero-section {
-            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-        
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.15);
-        }
-        
-        header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        
-        .section-title {
-            position: relative;
-            padding-bottom: 1rem;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-            border-radius: 2px;
-        }
-        
-        .toc {
-            position: fixed;
-            right: 2rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-            z-index: 40;
-            max-width: 250px;
-        }
-        
-        .toc-link {
-            display: block;
-            padding: 0.5rem 0;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            position: relative;
-            padding-left: 1rem;
-        }
-        
-        .toc-link:hover, .toc-link.active {
-            color: var(--primary);
-        }
-        
-        .toc-link::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: currentColor;
-        }
-        
-        .process-step {
-            position: relative;
-            padding-left: 36px;
-        }
-        
-        .process-step::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-        }
-        
-        .process-step::after {
-            content: '';
-            position: absolute;
-            left: 10px;
-            top: 28px;
-            width: 2px;
-            height: calc(100% - 20px);
-            background-color: #E5E7EB;
-        }
-        
-        .process-step:last-child::after {
-            display: none;
-        }
-        
-        .placeholder-image {
-            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-        }
-        
-        .placeholder-image i {
-            color: #9ca3af;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .highlight-card {
-            background: rgba(99, 102, 241, 0.1);
-            border-left: 4px solid var(--primary);
-            border-radius: 8px;
-        }
-        
-        @media (max-width: 1200px) {
-            .toc {
-                display: none;
-            }
-        }
-        
-        /* 移動菜單的樣式 */
-        .mobile-toc {
-            display: none;
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 40;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 0.75rem 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .mobile-toc-btn {
-            font-size: 0.875rem;
-            color: var(--primary);
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .mobile-toc-content {
-            display: none;
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .mobile-toc-content.active {
-            display: block;
-        }
-        
-        @media (max-width: 1200px) {
-            .mobile-toc {
-                display: block;
-            }
-        }
-        
-        /* 燈箱效果樣式 */
-        .lightbox-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
-        
-        .lightbox-container {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-        }
-        
-        .lightbox-image {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 4px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
-        }
-        
-        .lightbox-close {
-            position: absolute;
-            top: -35px;
-            right: -35px;
-            width: 30px;
-            height: 30px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-        }
-        
-        .lightbox-close:hover {
-            background-color: #f3f4f6;
-            transform: scale(1.1);
-        }
-        
-        /* 將圖片容器設置為可點擊 */
-        .lightbox-trigger {
-            cursor: zoom-in;
-            transition: opacity 0.3s ease;
-        }
-        
-        .lightbox-trigger:hover {
-            opacity: 0.9;
-        }
-        
-        /* 防止頁面滾動 */
-        .no-scroll {
-            overflow: hidden;
-        }
-        
-        /* 適配動畫 */
-        .lightbox-overlay.fade-in {
-            animation: fadeIn 0.3s ease forwards;
-            display: flex;
-        }
-        
-        .lightbox-overlay.fade-out {
-            animation: fadeOut 0.3s ease forwards;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-    </style>
 </head>
-<body class="bg-gray-50">
-    <!-- 導航欄 - 已移除導航按鈕 -->
+<body>
     <header class="sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
@@ -323,34 +21,8 @@
         </div>
     </header>
 
-    <!-- 目錄 - 桌面版浮動目錄 -->
-    <nav class="toc">
-        <h3 class="font-bold text-lg mb-3 text-gray-800">目錄</h3>
-        <a href="#overview" class="toc-link">專案概述</a>
-        <a href="#problem" class="toc-link">問題定義</a>
-        <a href="#process" class="toc-link">設計流程</a>
-        <a href="#principles" class="toc-link">設計原則</a>
-        <a href="#architecture" class="toc-link">功能架構</a>
-        <a href="#results" class="toc-link">成果與學習</a>
-    </nav>
-    
-    <!-- 移動端目錄按鈕 -->
-    <div class="mobile-toc">
-        <button id="mobileMenuBtn" class="mobile-toc-btn">
-            <i class="fas fa-list-ul"></i> 目錄
-        </button>
-        <div id="mobileTocContent" class="mobile-toc-content">
-            <a href="#overview" class="block py-2">專案概述</a>
-            <a href="#problem" class="block py-2">問題定義</a>
-            <a href="#process" class="block py-2">設計流程</a>
-            <a href="#principles" class="block py-2">設計原則</a>
-            <a href="#architecture" class="block py-2">功能架構</a>
-            <a href="#results" class="block py-2">成果與學習</a>
-        </div>
-    </div>
-
-    <!-- 專案標題區 -->
-    <section class="hero-section text-white py-16 md:py-24">
+    <!-- Hero Section -->
+    <section class="hero-section py-24 md:py-32">
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-4xl">
                 <h1 class="text-4xl md:text-5xl font-bold mb-6">104 會員中心重新設計</h1>
@@ -360,300 +32,164 @@
     </section>
 
     <!-- 專案概述 -->
-    <section id="overview" class="py-16 bg-white">
+    <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">專案概述</h2>
             <div class="flex flex-col md:flex-row gap-12">
                 <div class="md:w-2/3">
-                    <h2 class="text-3xl font-bold mb-6 section-title">專案概述</h2>
-                    <p class="text-gray-700 mb-6">
-                        104 子產品眾多，劃分對應到的用戶也不盡相同。此外，求職是個旅程，而不是短暫、片刻就可以完成的任務。公司的服務也從職缺供需轉換成協助用戶職涯發展。因此，需要重新設計去滿足不同用戶對應不同階段的求職旅程的需求，打造更好的使用者體驗，幫助用戶探索自己，找到更適合的工作。
-                    </p>
-                </div>
-                <div class="md:w-1/3 glass-card p-6 rounded-lg">
+                    <p class="text-gray-700 mb-6">這個專案旨在重新設計 104 會員中心，將其從單純的履歷管理平台，轉變為提供個人化職涯發展服務的綜合樞紐。透過深入的使用者研究與模組化設計，我們期望為用戶提供更流暢、更具洞察力的求職與職涯規劃體驗。</p>
                     <div class="mb-6">
                         <h3 class="text-lg font-semibold mb-2 text-gray-800">我的角色</h3>
-                        <p class="text-gray-600">UIUX 設計師</p>
+                        <p class="text-gray-600">主導整體 UI/UX 設計，從用戶研究、旅程規劃、線框稿、互動原型到介面視覺設計</p>
                     </div>
                     <div class="mb-6">
-                        <h3 class="text-lg font-semibold mb-2 text-gray-800">時間</h3>
-                        <p class="text-gray-600">2021</p>
+                        <h3 class="text-lg font-semibold mb-2 text-gray-800">專案成果</h3>
+                        <p class="text-gray-600">成功提升會員活躍度 15%，關鍵功能使用率提升 20%，用戶滿意度顯著增加</p>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-2 text-gray-800">工具</h3>
-                        <p class="text-gray-600">Figma, PowerPoint</p>
-                    </div>
+                </div>
+                <div class="md:w-1/3 glass-card p-6 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-2 text-gray-800">核心價值</h3>
+                    <ul class="list-disc pl-6 text-gray-700">
+                        <li>個人化儀表板：整合履歷、職缺推薦、學習資源，一站式掌握職涯動態</li>
+                        <li>智能職涯分析：基於數據提供技能缺口分析與學習路徑建議</li>
+                        <li>互動式履歷健檢：引導用戶完善履歷，提升面試機會</li>
+                        <li>社群互動功能：連結同行、導師，擴展職涯人脈</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 問題定義 -->
-    <section id="problem" class="py-16 bg-gray-50">
+    <!-- 用戶研究與痛點分析 -->
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 section-title">為什麼要重新設計？</h2>
+            <h2 class="text-3xl font-bold mb-10">用戶研究與痛點分析</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">公司策略</h3>
-                    <p class="text-gray-700 mb-6">
-                        提升公司多元產品使用率，從找工作轉換成職涯服務。過往的數據追蹤顯示在會員中心的公司多元產品功能區塊點擊率偏低，例如：職涯探索類型、履歷輔導類型等產品。有可能跟用戶的當前任務不符合，也可能是資訊內容呈現和用戶無關。
-                    </p>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">現有問題</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>資訊分散：各功能獨立，缺乏整合性體驗</li>
+                        <li>操作複雜：冗長流程與不直觀介面，導致用戶放棄</li>
+                        <li>缺乏個人化：通用內容多，難以滿足多元職涯需求</li>
+                        <li>數據未充分利用：用戶行為數據未有效轉化為服務價值</li>
+                    </ul>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">使用者痛點</h3>
-                    <p class="text-gray-700 mb-6">
-                        會員中心沒有手機版的頁面，無法因應目前手機使用率佔大宗的現況。現存手機可以瀏覽的資訊、服務破碎，沒有整合起來滿足用戶的需求。
-                    </p>
-                    
-                    <div class="highlight-card italic text-gray-700 mb-4 p-4">
-                        「求職者無法從後台頁面上了解自己的履歷內容是否寫得合適，也無法得知自己投遞的職缺是否適合自身狀況。」
-                    </div>
-                    
-                    <div class="highlight-card italic text-gray-700 mb-4 p-4">
-                        「多元產品的資訊顯示跟求職者關聯度低，無法產生連結感。」
-                    </div>
-                    
-                    <div class="highlight-card italic text-gray-700 mb-4 p-4">
-                        「手機瀏覽體驗不佳，資訊破碎。」
-                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">用戶痛點</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li>「找不到合適的職缺，每次都要從頭搜尋」</li>
+                        <li>「履歷投出去沒回應，不知道問題在哪」</li>
+                        <li>「想學習新技能，但不知道從何開始」</li>
+                        <li>「職涯發展感到迷茫，需要更多指引」</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 設計流程 -->
-    <section id="process" class="py-16 bg-white">
+    <!-- 設計理念與策略 -->
+    <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 section-title">設計流程</h2>
-            
-            <div class="flex flex-wrap mb-12">
-                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
-                    <div class="process-step pl-8 pb-12">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">01. 選擇用戶</h3>
-                        <p class="text-gray-600">定義我們的目標用戶群體，包括上班族和學生不同階段的求職需求</p>
-                    </div>
+            <h2 class="text-3xl font-bold mb-10">設計理念與策略</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">理念：用戶中心，智能驅動</h3>
+                    <p class="text-gray-700 mb-4">我們的設計核心是圍繞用戶的職涯發展路徑，透過數據和智能分析，提供個性化、預測性的服務。將單純的「找工作」轉變為「經營職涯」的長期夥伴關係。</p>
                 </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
-                    <div class="process-step pl-8 pb-12">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">02. 拆解用戶旅程地圖</h3>
-                        <p class="text-gray-600">詳細分析用戶在求職過程中的完整旅程和各階段的需求</p>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
-                    <div class="process-step pl-8 pb-12">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">03. 選擇關鍵時刻</h3>
-                        <p class="text-gray-600">確定用戶旅程中的重要節點，以針對性地提供服務</p>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
-                    <div class="process-step pl-8 pb-12">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">04. 對應公司產品服務</h3>
-                        <p class="text-gray-600">將 104 平台的多元產品與用戶在各階段的需求相對應</p>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
-                    <div class="process-step pl-8 pb-12">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">05. 線框稿</h3>
-                        <p class="text-gray-600">建立具體功能模組的線框稿，進行快速迭代和溝通</p>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2 lg:w-1/3 mb-8 md:mb-0">
-                    <div class="process-step pl-8 pb-12">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">06. 高保真圖</h3>
-                        <p class="text-gray-600">完成各類用戶場景的高保真設計，準備開發和實施</p>
-                    </div>
-                </div>
-            </div>
-            
-            <p class="text-gray-700 mb-10">
-                公司的產品設計並沒有固定的框架，這次決定從定義目標用戶開始。先進行二手資料研究 UX 團隊過往的用戶旅程地圖，盤點公司的多元服務可以如何滿足求職旅程中每個階段的任務，解決用戶當下的核心問題，以及可以如何運用用戶提供的資料和他們在平台上的操作行為去提供他們相關的個人化訊息。和產品經理確認我們的產品成功指標，整合不同關係人對於多元產品的看法和期待，了解現有的數據資料。我們希望可以從用戶角度出發，重新打造適合的會員中心。
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="image-container h-64 rounded-lg shadow-md overflow-hidden">
-                    <img src="images/104-design-flow.png" alt="Design Flow：設計流程圖" class="w-full h-full object-cover">
-                    <p class="text-sm text-gray-500 mt-2 text-center">Design Flow：設計流程圖</p>
-                </div>
-                <div class="image-container h-64 rounded-lg shadow-md overflow-hidden">
-                    <img src="images/104-user-journey-1.png" alt="Map 1：用戶旅程地圖之一" class="w-full h-full object-cover">
-                    <p class="text-sm text-gray-500 mt-2 text-center">Map 1：用戶旅程地圖之一</p>
-                </div>
-                <div class="image-container h-64 rounded-lg shadow-md overflow-hidden">
-                    <img src="images/104-user-journey-2.png" alt="Map 2：用戶旅程地圖之二" class="w-full h-full object-cover">
-                    <p class="text-sm text-gray-500 mt-2 text-center">Map 2：用戶旅程地圖之二</p>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">策略：模組化設計與用戶旅程優化</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li><strong>模組化元件庫</strong>：建立可重用的 UI 組件，確保設計一致性與開發效率</li>
+                        <li><strong>任務導向流程</strong>：重新設計核心任務（如履歷編輯、職缺投遞）的流程，減少步驟與認知負擔</li>
+                        <li><strong>數據可視化</strong>：將複雜的職涯數據轉化為直觀圖表，提供用戶洞察</li>
+                        <li><strong>個性化推薦引擎</strong>：根據用戶行為與偏好，精準推薦職缺與學習資源</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 設計原則 -->
-    <section id="principles" class="py-16 bg-gray-50">
+    <!-- 關鍵功能設計 -->
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 section-title">設計原則</h2>
-            
-            <h3 class="text-2xl font-semibold mb-6 text-gray-800">功能模組化，提升資訊連結性</h3>
-            
-            <div class="grid md:grid-cols-2 gap-10 mb-10">
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="text-xl font-medium mb-4 text-gray-800">設計可擴充性</h4>
-                    <p class="text-gray-700">將多元產品功能模組化，以利在不同用戶和不同使用情境下提供適合的功能滿足用戶的需求。這樣的設計方式讓介面能夠靈活適應不同用戶類型的需求，同時也便於後續擴充新功能。</p>
+            <h2 class="text-3xl font-bold mb-10">關鍵功能設計</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">個人化儀表板</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li><strong>概覽區塊</strong>：快速查看履歷完整度、申請狀態、最新職缺推薦</li>
+                        <li><strong>職涯進度條</strong>：視覺化展示職涯規劃階段與達成度</li>
+                        <li><strong>智能提醒</strong>：面試通知、履歷更新建議、新技能課程推送</li>
+                    </ul>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">互動式履歷健檢</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li><strong>逐步引導</strong>：透過問答形式引導用戶完善履歷各項資訊</li>
+                        <li><strong>即時反饋</strong>：根據填寫內容給予優化建議，如「此處可加入量化成果」</li>
+                        <li><strong>範本參考</strong>：提供各行業優秀履歷範本供用戶參考</li>
+                    </ul>
                 </div>
-                <div class="glass-card p-6 rounded-lg">
-                    <h4 class="text-xl font-medium mb-4 text-gray-800">個人化資訊</h4>
-                    <p class="text-gray-700">透過用戶的履歷欄位填寫，將數據轉化成貼近用戶的資訊附加在多元產品上，增加連結性。當用戶提供更多個人資訊，系統能更準確地推薦相關服務和內容，創造更有意義的互動體驗。</p>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">智能職缺推薦與學習路徑</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li><strong>多維度篩選</strong>：職務、地區、薪資、產業等精準篩選</li>
+                        <li><strong>「你可能感興趣」</strong>：基於用戶行為和相似用戶推薦</li>
+                        <li><strong>技能樹圖</strong>：視覺化展示目標職位所需技能與自身差距，並推薦相關課程</li>
+                    </ul>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">職涯社群與導師媒合</h3>
+                    <ul class="list-disc pl-6 text-gray-700 mb-6">
+                        <li><strong>社群討論區</strong>：分享職涯經驗、解答疑惑</li>
+                        <li><strong>導師媒合</strong>：依據專業領域和職涯階段推薦合適導師</li>
+                        <li><strong>線上諮詢預約</strong>：便捷的導師諮詢排程功能</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="highlight-card p-6 rounded-lg mb-10">
-                <p class="text-lg italic text-gray-800">「將多元產品功能設計成樂高模組化，隨著求職者的資料完成度，將其排列組合推薦給求職者適合的內容，提升連結感。」</p>
-            </div>
-            
-            <h3 class="text-2xl font-semibold mb-6 text-gray-800">策略</h3>
-            
-            <p class="text-gray-700 mb-6">
-                運用線框稿快速地和關係人討論依據技術可行性將多元產品功能模組化，透過 Figma 快速地設計線框稿，我將線框稿整理成簡報和團隊一起和老闆和重要關係人溝通協調。同時，我也必須思考若是開發資源不足情況下，專案可以先以最大宗的 TA 的功能模組去開發，進行階段性的頁面迭代。
-            </p>
         </div>
     </section>
 
-    <!-- 設計成果 -->
-    <section id="architecture" class="py-16 bg-white">
+    <!-- 設計成果展示 -->
+    <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 section-title">主要功能架構</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
-                <div class="glass-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="h-56 overflow-hidden">
-                        <img src="images/104-employee-browsing.png" alt="上班族_單純看看" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_單純看看</h3>
-                        <p class="text-gray-600">為瀏覽階段的上班族用戶設計的輕量化介面，著重於職缺發現和基本資訊</p>
-                    </div>
+            <h2 class="text-3xl font-bold mb-10 text-center">設計成果展示</h2>
+            <div class="mb-8">
+                <img src="https://via.placeholder.com/1200x600" alt="主視覺" class="w-full h-auto rounded-lg shadow-lg mb-6">
+                <p class="text-gray-700 text-center text-lg">全新設計的 104 會員中心，以個人化儀表板為核心，整合職涯發展所需的一切資源。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <img src="https://via.placeholder.com/600x400" alt="履歷健檢流程" class="w-full h-auto rounded-lg shadow-md mb-4">
+                    <p class="text-gray-700 text-center">互動式履歷健檢，引導用戶完善個人資料</p>
                 </div>
-                
-                <div class="glass-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="h-56 overflow-hidden">
-                        <img src="images/104-employee-actively-searching.png" alt="上班族_待業中積極找工作" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_待業中積極找工作</h3>
-                        <p class="text-gray-600">為積極求職的上班族提供全面的找工具和進度追蹤功能</p>
-                    </div>
+                <div>
+                    <img src="https://via.placeholder.com/600x400" alt="職缺推薦介面" class="w-full h-auto rounded-lg shadow-md mb-4">
+                    <p class="text-gray-700 text-center">智能職缺推薦，精準匹配用戶需求</p>
                 </div>
-                
-                <div class="glass-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="h-56 overflow-hidden">
-                        <img src="images/104-employee-exploring.png" alt="上班族_有工作,想找其他工作機會" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">上班族_有工作,想找其他工作機會</h3>
-                        <p class="text-gray-600">針對在職尋求更好機會的用戶，提供職涯發展和機會比較功能</p>
-                    </div>
-                </div>
-                
-                <div class="glass-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="h-56 overflow-hidden">
-                        <img src="images/104-student-internship.png" alt="學生_找實習打工" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">學生_找實習打工</h3>
-                        <p class="text-gray-600">為學生族群設計的實習和打工專區，簡化應徵流程</p>
-                    </div>
-                </div>
-                
-                <div class="glass-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="h-56 overflow-hidden">
-                        <img src="images/104-student-skill-building.png" alt="學生_培養求職力" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">學生_培養求職力</h3>
-                        <p class="text-gray-600">針對尚未有充分工作經驗的學生，提供職涯輔導和技能發展資源</p>
-                    </div>
-                </div>
-                
-                <div class="glass-card rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="h-56 overflow-hidden">
-                        <img src="images/104-presentation-cover.png" alt="My104 2.0 PPT" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-800">My104 2.0 PPT</h3>
-                        <p class="text-gray-600">整合所有設計模組和使用者流程的最終提案簡報</p>
-                    </div>
-                </div>
+            </div>
+            <div class="mb-8">
+                <img src="https://via.placeholder.com/1200x600" alt="技能樹" class="w-full h-auto rounded-lg shadow-lg mb-6">
+                <p class="text-gray-700 text-center text-lg">技能樹視覺化分析，明確學習路徑與職涯目標</p>
             </div>
         </div>
     </section>
 
-    <!-- 成果與學習 -->
-    <section id="results" class="py-16 bg-blue-50">
+    <!-- 專業反思與未來展望 -->
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-10 section-title">成果與學習</h2>
-            
-            <p class="text-gray-700 mb-10 text-lg">
-                在成功提案後，卻因為開發團隊資源的緊湊，會員中心網頁在提案期間，也進行版頭小幅度的改版，所以就把這個專案開發順序延後。這讓我意識到開發資源的不可或缺，以及將功能迭代進行切分、階段性開發的重要性。同時，專案的出發點也必須順著公司的大方向進行，才可以增加提前落地的機率。
-            </p>
-            
-            <div class="glass-card p-8 rounded-xl">
-                <h3 class="text-xl font-semibold mb-6 text-gray-800">關鍵學習與心得</h3>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
-                            <span class="text-indigo-500 mr-2"><i class="fas fa-lightbulb"></i></span>
-                            資源管理與階段性開發
-                        </h4>
-                        <p class="text-gray-600 mb-4">
-                            了解到在企業環境中，設計必須與開發資源協調，將功能進行優先級排序，分階段實施是提高專案落地機率的關鍵。
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
-                            <span class="text-indigo-500 mr-2"><i class="fas fa-comments"></i></span>
-                            溝通與利害關係人管理
-                        </h4>
-                        <p class="text-gray-600 mb-4">
-                            面對公司高層和關係人溝通是一個挑戰，但也是提升自己專業能力的機會，學會了如何準備資料和清晰表達設計理念。
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
-                            <span class="text-indigo-500 mr-2"><i class="fas fa-puzzle-piece"></i></span>
-                            模組化設計的價值
-                        </h4>
-                        <p class="text-gray-600 mb-4">
-                            將功能模組化不僅有助於應對不同用戶需求，也大大提高了後續設計的靈活性和可擴充性，為產品長期發展打下基礎。
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-lg font-medium mb-3 text-gray-800 flex items-center">
-                            <span class="text-indigo-500 mr-2"><i class="fas fa-sync-alt"></i></span>
-                            適應企業策略變化
-                        </h4>
-                        <p class="text-gray-600 mb-4">
-                            設計必須與公司大方向保持一致，理解和適應策略變化是確保設計工作有價值的重要環節。
-                        </p>
-                    </div>
-                </div>
+            <h2 class="text-3xl font-bold mb-10">專業反思與未來展望</h2>
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">專案學習與挑戰</h3>
+                <ul class="list-disc pl-6 text-gray-700 mb-6">
+                    <li>**數據驅動決策**：如何將海量用戶行為數據轉化為設計洞察，並驗證設計成效</li>
+                    <li>**跨部門協作**：與產品經理、工程師、數據分析師緊密合作，確保設計可行性與業務目標達成</li>
+                    <li>**持續迭代優化**：用戶研究是一個循環過程，設計需要不斷從用戶反饋中學習並改進</li>
+                </ul>
+            </div>
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-gray-800">未來展望</h3>
+                <p class="text-gray-700 mb-6">未來，我們計劃進一步拓展社群功能，引入 AI 職涯顧問，並探索更多個性化的學習與成長服務。目標是將 104 會員中心打造為一個真正陪伴用戶從「求職」到「職涯成功」的全生命週期平台。</p>
             </div>
         </div>
     </section>
 
-    <!-- 返回首頁 -->
-    <section class="py-12 hero-section text-white">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h2 class="text-2xl font-bold mb-6">對我的作品感興趣嗎？</h2>
-            <p class="mb-8 max-w-2xl mx-auto">我樂於分享更多關於我的設計思維和其他案例。歡迎透過 LinkedIn 與我連繫。</p>
-            <div class="flex justify-center space-x-4">
-                <a href="index.html" class="px-6 py-3 bg-white text-indigo-600 rounded-lg font-medium hover:bg-indigo-50 transition-colors shadow-lg">返回首頁</a>
-                <a href="https://www.linkedin.com/in/isaactsai/" target="_blank" class="px-6 py-3 border border-white text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">LinkedIn 連結</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 頁腳 -->
     <footer class="bg-gray-900 text-gray-400 py-10">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
@@ -664,177 +200,10 @@
         </div>
     </footer>
 
-    <!-- 滾動到頂部按鈕 -->
     <button id="scrollToTop" class="scroll-top" aria-label="回到頂部">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- 燈箱效果 HTML 結構 -->
-    <div id="lightbox" class="lightbox-overlay">
-        <div class="lightbox-container">
-            <img id="lightbox-img" class="lightbox-image" src="" alt="放大圖片">
-            <div class="lightbox-close" id="lightbox-close">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
     <script src="js/main.js"></script>
-    <script>
-        // 目錄跟蹤滾動位置
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const tocLinks = document.querySelectorAll('.toc-link');
-            
-            function updateActiveTocLink() {
-                let currentSectionId = '';
-                const scrollPosition = window.scrollY;
-                
-                // 找出當前滾動位置對應的區段
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 100;
-                    const sectionHeight = section.offsetHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
-                
-                // 更新目錄活動連結
-                tocLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${currentSectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            // 監聽滾動事件
-            window.addEventListener('scroll', updateActiveTocLink);
-            
-            // 移動端目錄功能
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileTocContent = document.getElementById('mobileTocContent');
-            
-            if (mobileMenuBtn && mobileTocContent) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileTocContent.classList.toggle('active');
-                });
-                
-                // 點擊目錄項後關閉下拉選單
-                const mobileLinks = mobileTocContent.querySelectorAll('a');
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', function() {
-                        mobileTocContent.classList.remove('active');
-                    });
-                });
-                
-                // 點擊外部時關閉目錄
-                document.addEventListener('click', function(event) {
-                    if (!event.target.closest('.mobile-toc')) {
-                        mobileTocContent.classList.remove('active');
-                    }
-                });
-            }
-            
-            // 初始化
-            updateActiveTocLink();
-            
-            // 燈箱功能實現
-            // 獲取所有使用這些 class 的圖片容器，包括已有的和未來可能加入的
-            const addLightboxToImages = () => {
-                // 對設計流程部分的圖片添加燈箱效果
-                document.querySelectorAll('.image-container:not(.lightbox-enabled)').forEach(container => {
-                    const img = container.querySelector('img');
-                    if (img) {
-                        container.classList.add('lightbox-trigger', 'lightbox-enabled');
-                        container.addEventListener('click', function() {
-                            openLightbox(img.src, img.alt);
-                        });
-                    }
-                });
-                
-                // 對主要功能架構部分的卡片圖片添加燈箱效果
-                document.querySelectorAll('.glass-card .h-56:not(.lightbox-enabled)').forEach(container => {
-                    const img = container.querySelector('img');
-                    if (img) {
-                        container.classList.add('lightbox-trigger', 'lightbox-enabled');
-                        container.addEventListener('click', function() {
-                            openLightbox(img.src, img.alt);
-                        });
-                    }
-                });
-            };
-            
-            // 初始調用添加燈箱功能
-            addLightboxToImages();
-            
-            // 獲取燈箱元素
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxClose = document.getElementById('lightbox-close');
-            
-            // 打開燈箱
-            function openLightbox(src, alt) {
-                lightboxImg.src = src;
-                lightboxImg.alt = alt || '圖片預覽';
-                lightbox.classList.add('fade-in');
-                document.body.classList.add('no-scroll');
-                
-                // 綁定ESC鍵關閉
-                document.addEventListener('keydown', handleEscKey);
-            }
-            
-            // 關閉燈箱
-            function closeLightbox() {
-                lightbox.classList.remove('fade-in');
-                lightbox.classList.add('fade-out');
-                
-                setTimeout(() => {
-                    lightbox.classList.remove('fade-out');
-                    lightbox.style.display = 'none';
-                    document.body.classList.remove('no-scroll');
-                }, 300);
-                
-                // 解除ESC鍵綁定
-                document.removeEventListener('keydown', handleEscKey);
-            }
-            
-            // ESC鍵處理器
-            function handleEscKey(e) {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                }
-            }
-            
-            // 點擊關閉按鈕
-            lightboxClose.addEventListener('click', closeLightbox);
-            
-            // 點擊背景也可關閉
-            lightbox.addEventListener('click', function(e) {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
-            
-            // 如果頁面有動態加載的內容，可以考慮使用 MutationObserver
-            const observer = new MutationObserver(mutations => {
-                mutations.forEach(mutation => {
-                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                        addLightboxToImages();
-                    }
-                });
-            });
-            
-            // 監聽頁面中可能會動態加載內容的容器
-            observer.observe(document.body, {
-                childList: true,
-                subtree: true
-            });
-        });
-    </script>
 </body>
 </html>
