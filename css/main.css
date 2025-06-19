@@ -190,7 +190,8 @@ header {
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.9); /* More opaque white */
+    background: rgba(255, 255, 255, 0.7); /* 降低透明度 */
+    border: none; /* 移除邊框 */
     backdrop-filter: blur(8px); /* Less blur */
     border-radius: 12px;
     padding: 1.5rem;
@@ -239,7 +240,8 @@ header {
     left: 50%;
     transform: translateX(-50%);
     z-index: 40;
-    background: rgba(255, 255, 255, 0.9); /* More opaque white */
+    background: rgba(255, 255, 255, 0.7); /* 降低透明度 */
+    border: none; /* 移除邊框 */
     backdrop-filter: blur(8px); /* Less blur */
     border-radius: 30px;
     padding: 0.75rem 1.5rem;
@@ -276,7 +278,8 @@ header {
     min-width: 224px;
     max-width: 90vw;
     width: auto;
-    background: white;
+    background: rgba(255,255,255,0.7); /* 降低透明度 */
+    border: none; /* 移除邊框 */
     border-radius: 12px;
     padding: 1rem;
     margin-bottom: 0.5rem;
@@ -394,6 +397,6 @@ html:lang(zh-TW) {
         width: 100vw;
         height: 100vh;
         object-fit: contain;
-        touch-action: none;
+        /* touch-action: none; 移除，讓雙指縮放生效 */
     }
 }
