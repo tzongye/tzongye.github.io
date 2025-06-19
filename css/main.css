@@ -258,8 +258,11 @@ header {
     display: none;
     position: absolute;
     bottom: 100%;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 224px;
+    max-width: 90vw;
+    width: auto;
     background: white;
     border-radius: 12px;
     padding: 1rem;
