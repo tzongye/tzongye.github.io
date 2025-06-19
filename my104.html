@@ -21,6 +21,27 @@
         </div>
     </header>
 
+    <!-- 目錄快捷鍵（TOC） -->
+    <nav class="toc">
+      <a class="toc-link" href="#overview">專案概述</a>
+      <a class="toc-link" href="#user-research">用戶研究與痛點分析</a>
+      <a class="toc-link" href="#strategy">設計理念與策略</a>
+      <a class="toc-link" href="#features">關鍵功能設計</a>
+      <a class="toc-link" href="#results">設計成果展示</a>
+      <a class="toc-link" href="#reflection">專業反思與未來展望</a>
+    </nav>
+    <div class="mobile-toc">
+      <button id="mobileMenuBtn" class="mobile-toc-btn">目錄 <i class="fas fa-list"></i></button>
+      <div id="mobileTocContent" class="mobile-toc-content">
+        <a class="toc-link" href="#overview">專案概述</a>
+        <a class="toc-link" href="#user-research">用戶研究與痛點分析</a>
+        <a class="toc-link" href="#strategy">設計理念與策略</a>
+        <a class="toc-link" href="#features">關鍵功能設計</a>
+        <a class="toc-link" href="#results">設計成果展示</a>
+        <a class="toc-link" href="#reflection">專業反思與未來展望</a>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section py-24 md:py-32">
         <div class="container mx-auto px-4 relative z-10">
@@ -32,7 +53,7 @@
     </section>
 
     <!-- 專案概述 -->
-    <section class="py-16 bg-white">
+    <section id="overview" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-8">專案概述</h2>
             <div class="flex flex-col md:flex-row gap-12">
@@ -61,7 +82,7 @@
     </section>
 
     <!-- 用戶研究與痛點分析 -->
-    <section class="py-16 bg-gray-50">
+    <section id="user-research" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">用戶研究與痛點分析</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -88,7 +109,7 @@
     </section>
 
     <!-- 設計理念與策略 -->
-    <section class="py-16 bg-white">
+    <section id="strategy" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">設計理念與策略</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -110,7 +131,7 @@
     </section>
 
     <!-- 關鍵功能設計 -->
-    <section class="py-16 bg-gray-50">
+    <section id="features" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">關鍵功能設計</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -147,71 +168,93 @@
     </section>
 
     <!-- 設計成果展示 -->
-    <section class="py-16 bg-white">
+    <section id="results" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10 text-center">設計成果展示</h2>
             <div class="mb-8">
-                <img src="images/104-homepage-preview.jpg" alt="主視覺" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <div class="image-container">
+                  <img src="images/104-homepage-preview.jpg" alt="主視覺" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
+                </div>
                 <p class="text-gray-700 text-center text-lg">全新設計的 104 會員中心，以個人化儀表板為核心，整合職涯發展所需的一切資源。</p>
             </div>
 
             <!-- Combined User Journey Images -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <img src="images/104-user-journey-1.png" alt="履歷健檢流程" class="w-full h-auto rounded-lg shadow-md mb-4">
-                    <p class="text-gray-700 text-center">互動式履歷健檢，引導用戶完善個人資料</p>
+                  <div class="image-container">
+                    <img src="images/104-user-journey-1.png" alt="履歷健檢流程" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
+                  </div>
+                  <p class="text-gray-700 text-center">互動式履歷健檢，引導用戶完善個人資料</p>
                 </div>
                 <div>
-                    <img src="images/104-user-journey-2.png" alt="用戶旅程圖" class="w-full h-auto rounded-lg shadow-md mb-4">
-                    <p class="text-gray-700 text-center">用戶旅程圖與痛點分析</p>
+                  <div class="image-container">
+                    <img src="images/104-user-journey-2.png" alt="用戶旅程圖" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
+                  </div>
+                  <p class="text-gray-700 text-center">用戶旅程圖與痛點分析</p>
                 </div>
             </div>
 
             <div class="mb-8">
-                <img src="images/104-student-skill-building.png" alt="技能樹" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <div class="image-container">
+                  <img src="images/104-student-skill-building.png" alt="技能樹" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
+                </div>
                 <p class="text-gray-700 text-center text-lg">技能樹視覺化分析，明確學習路徑與職涯目標</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <img src="images/104-design-flow.png" alt="設計流程" class="w-full h-auto rounded-lg shadow-md mb-4">
-                    <p class="text-gray-700 text-center">產品設計流程與系統架構圖</p>
+                  <div class="image-container">
+                    <img src="images/104-design-flow.png" alt="設計流程" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
+                  </div>
+                  <p class="text-gray-700 text-center">產品設計流程與系統架構圖</p>
                 </div>
                 <div>
-                    <img src="images/104-ui-components.png" alt="UI元件庫" class="w-full h-auto rounded-lg shadow-md mb-4">
-                    <p class="text-gray-700 text-center">設計系統 UI 元件庫</p>
+                  <div class="image-container">
+                    <img src="images/104-ui-components.png" alt="UI元件庫" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
+                  </div>
+                  <p class="text-gray-700 text-center">設計系統 UI 元件庫</p>
                 </div>
             </div>
 
             <div class="mb-8">
-                <img src="images/104-mobile-responsive.png" alt="手機響應式介面" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <div class="image-container">
+                  <img src="images/104-mobile-responsive.png" alt="手機響應式介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
+                </div>
                 <p class="text-gray-700 text-center text-lg">行動版響應式介面設計</p>
             </div>
             
             <!-- Employee and Student Images Consolidated -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <img src="images/104-employee-actively-searching.png" alt="職缺推薦介面" class="w-full h-auto rounded-lg shadow-md mb-4">
-                    <p class="text-gray-700 text-center">智能職缺推薦，精準匹配用戶需求</p>
+                  <div class="image-container">
+                    <img src="images/104-employee-actively-searching.png" alt="職缺推薦介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
+                  </div>
+                  <p class="text-gray-700 text-center">智能職缺推薦，精準匹配用戶需求</p>
                 </div>
                 <div>
-                    <img src="images/104-employee-browsing.png" alt="員工瀏覽介面" class="w-full h-auto rounded-lg shadow-md mb-4">
-                    <p class="text-gray-700 text-center">員工瀏覽職缺介面</p>
+                  <div class="image-container">
+                    <img src="images/104-employee-browsing.png" alt="員工瀏覽介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
+                  </div>
+                  <p class="text-gray-700 text-center">員工瀏覽職缺介面</p>
                 </div>
             </div>
             <div class="mb-8">
-                <img src="images/104-employee-exploring.png" alt="員工探索介面" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <div class="image-container">
+                  <img src="images/104-employee-exploring.png" alt="員工探索介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
+                </div>
                 <p class="text-gray-700 text-center text-lg">員工探索職缺介面</p>
             </div>
             <div class="mb-8">
-                <img src="images/104-student-internship.png" alt="學生實習介面" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <div class="image-container">
+                  <img src="images/104-student-internship.png" alt="學生實習介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
+                </div>
                 <p class="text-gray-700 text-center text-lg">學生實習專區介面</p>
             </div>
         </div>
     </section>
 
     <!-- 專業反思與未來展望 -->
-    <section class="py-16 bg-gray-50">
+    <section id="reflection" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">專業反思與未來展望</h2>
             <div class="mb-8">

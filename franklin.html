@@ -21,6 +21,27 @@
         </div>
     </header>
 
+    <!-- 目錄快捷鍵（TOC） -->
+    <nav class="toc">
+      <a class="toc-link" href="#overview">專案概述</a>
+      <a class="toc-link" href="#problems">問題與解決方案</a>
+      <a class="toc-link" href="#challenges">關鍵設計挑戰</a>
+      <a class="toc-link" href="#features">核心功能設計</a>
+      <a class="toc-link" href="#usability">易用性測試與設計優化</a>
+      <a class="toc-link" href="#screenshots">專案截圖</a>
+    </nav>
+    <div class="mobile-toc">
+      <button id="mobileMenuBtn" class="mobile-toc-btn">目錄 <i class="fas fa-list"></i></button>
+      <div id="mobileTocContent" class="mobile-toc-content">
+        <a class="toc-link" href="#overview">專案概述</a>
+        <a class="toc-link" href="#problems">問題與解決方案</a>
+        <a class="toc-link" href="#challenges">關鍵設計挑戰</a>
+        <a class="toc-link" href="#features">核心功能設計</a>
+        <a class="toc-link" href="#usability">易用性測試與設計優化</a>
+        <a class="toc-link" href="#screenshots">專案截圖</a>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section py-24 md:py-32">
         <div class="container mx-auto px-4 relative z-10">
@@ -68,7 +89,7 @@
     </section>
 
     <!-- 問題與解決方案表格 -->
-    <section class="py-16 bg-gray-50">
+    <section id="problems" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">原有問題與設計解決方案</h2>
             <div class="overflow-x-auto">
@@ -103,7 +124,7 @@
     </section>
 
     <!-- 關鍵設計挑戰 -->
-    <section class="py-16 bg-white">
+    <section id="challenges" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">關鍵設計挑戰</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -130,7 +151,7 @@
     </section>
 
     <!-- 核心功能設計 -->
-    <section class="py-16 bg-gray-50">
+    <section id="features" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">核心功能設計</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -169,7 +190,7 @@
     </section>
 
     <!-- 易用性測試與設計優化 -->
-    <section class="py-16 bg-white">
+    <section id="usability" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">易用性測試與設計優化</h2>
             <div class="mb-8">
@@ -247,24 +268,30 @@
     </section>
 
     <!-- 專案截圖 -->
-    <section class="py-16 bg-gray-50">
+    <section id="screenshots" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10 text-center">專案截圖</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/600x400" alt="專案截圖 1" class="w-full h-auto">
+                    <div class="image-container">
+                      <img src="https://via.placeholder.com/600x400" alt="專案截圖 1" class="w-full h-auto">
+                    </div>
                     <div class="p-4">
                         <p class="text-gray-600 text-sm">截圖說明 1</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/600x400" alt="專案截圖 2" class="w-full h-auto">
+                    <div class="image-container">
+                      <img src="https://via.placeholder.com/600x400" alt="專案截圖 2" class="w-full h-auto">
+                    </div>
                     <div class="p-4">
                         <p class="text-gray-600 text-sm">截圖說明 2</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="https://via.placeholder.com/600x400" alt="專案截圖 3" class="w-full h-auto">
+                    <div class="image-container">
+                      <img src="https://via.placeholder.com/600x400" alt="專案截圖 3" class="w-full h-auto">
+                    </div>
                     <div class="p-4">
                         <p class="text-gray-600 text-sm">截圖說明 3</p>
                     </div>

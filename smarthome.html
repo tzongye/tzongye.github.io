@@ -19,6 +19,25 @@
         </div>
     </header>
 
+    <!-- 目錄快捷鍵（TOC） -->
+    <nav class="toc">
+      <a class="toc-link" href="#overview">專案概述</a>
+      <a class="toc-link" href="#problems">設計挑戰與解決方案</a>
+      <a class="toc-link" href="#core">核心設計決策</a>
+      <a class="toc-link" href="#wizard">Wizard of Oz 測試驗證</a>
+      <a class="toc-link" href="#results">成果與價值</a>
+    </nav>
+    <div class="mobile-toc">
+      <button id="mobileMenuBtn" class="mobile-toc-btn">目錄 <i class="fas fa-list"></i></button>
+      <div id="mobileTocContent" class="mobile-toc-content">
+        <a class="toc-link" href="#overview">專案概述</a>
+        <a class="toc-link" href="#problems">設計挑戰與解決方案</a>
+        <a class="toc-link" href="#core">核心設計決策</a>
+        <a class="toc-link" href="#wizard">Wizard of Oz 測試驗證</a>
+        <a class="toc-link" href="#results">成果與價值</a>
+      </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section py-24 md:py-32">
         <div class="container mx-auto px-4 relative z-10">
@@ -56,7 +75,7 @@
     </section>
 
     <!-- 設計挑戰：5 大問題 vs 解決方案 -->
-    <section class="py-16 bg-gray-50">
+    <section id="problems" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">設計挑戰：5 大問題 vs 解決方案</h2>
             <div class="overflow-x-auto">
@@ -95,7 +114,7 @@
     </section>
 
     <!-- 核心設計決策 -->
-    <section class="py-16 bg-white">
+    <section id="core" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">核心設計決策</h2>
             <div class="grid md:grid-cols-2 gap-10">
@@ -122,7 +141,7 @@
     </section>
 
     <!-- Wizard of Oz 測試驗證 -->
-    <section class="py-16 bg-gray-50">
+    <section id="wizard" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">Wizard of Oz 測試驗證</h2>
             <div class="mb-8">
@@ -153,7 +172,7 @@
     </section>
 
     <!-- 成果與價值 -->
-    <section class="py-16 bg-white">
+    <section id="results" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">成果與價值</h2>
             <div class="grid md:grid-cols-2 gap-10">
