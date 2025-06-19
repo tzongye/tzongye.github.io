@@ -196,9 +196,17 @@
     <header class="sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
+            <!-- 漢堡按鈕（手機顯示） -->
             <button class="md:hidden text-gray-600 focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
+            <!-- 主選單 -->
+            <nav class="hidden flex-col gap-4 absolute top-full left-0 w-full bg-white shadow-lg md:static md:flex md:flex-row md:gap-8 md:w-auto md:bg-transparent md:shadow-none">
+                <a href="index.html" class="block py-2 px-4 text-gray-700 hover:text-primary">首頁</a>
+                <a href="my104.html" class="block py-2 px-4 text-gray-700 hover:text-primary">104 會員中心</a>
+                <a href="franklin.html" class="block py-2 px-4 text-gray-700 hover:text-primary">富蘭克林母子基金</a>
+                <a href="smarthome.html" class="block py-2 px-4 text-gray-700 hover:text-primary">Smart Home App</a>
+            </nav>
         </div>
     </header>
 
