@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morningstar 金融客戶 UI/UX 重建專案</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+  <!-- 主選單 -->
+  <header>
+    <div class="container flex items-center justify-between py-3">
+      <a href="index.html" class="font-bold text-lg nav-link">Isaac Tsai</a>
+      <button class="md:hidden mobile-menu-toggle" aria-label="開啟主選單">
+        <span class="icon-menu"></span>
+      </button>
+      <nav class="hidden md:flex space-x-6">
+        <a href="index.html" class="nav-link">首頁</a>
+        <a href="my104.html" class="nav-link">104 專案</a>
+        <a href="franklin.html" class="nav-link">富蘭克林專案</a>
+        <a href="smarthome.html" class="nav-link">智慧家庭專案</a>
+        <a href="morningstar.html" class="nav-link active">Morningstar 專案</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 目錄 TOC -->
+  <aside class="toc">
+    <div class="toc-title">目錄</div>
+    <nav>
+      <a class="toc-link" href="#highlight">3 秒亮點</a>
+      <a class="toc-link" href="#result">專案成果對比</a>
+      <a class="toc-link" href="#background">專案背景</a>
+      <a class="toc-link" href="#challenge">設計挑戰與解決策略</a>
+      <a class="toc-link" href="#system">設計系統與解決方案</a>
+      <a class="toc-link" href="#process">設計過程</a>
+      <a class="toc-link" href="#value">專案價值與成果</a>
+      <a class="toc-link" href="#reflection">反思與學習</a>
+    </nav>
+  </aside>
+  <!-- Mobile TOC -->
+  <div class="mobile-toc">
+    <button id="mobileMenuBtn" class="mobile-toc-btn">目錄</button>
+    <div id="mobileTocContent" class="mobile-toc-content">
+      <a class="toc-link" href="#highlight">3 秒亮點</a>
+      <a class="toc-link" href="#result">專案成果對比</a>
+      <a class="toc-link" href="#background">專案背景</a>
+      <a class="toc-link" href="#challenge">設計挑戰與解決策略</a>
+      <a class="toc-link" href="#system">設計系統與解決方案</a>
+      <a class="toc-link" href="#process">設計過程</a>
+      <a class="toc-link" href="#value">專案價值與成果</a>
+      <a class="toc-link" href="#reflection">反思與學習</a>
+    </div>
+  </div>
+
+  <main class="project-main container">
+    <section id="highlight">
+      <h1 class="section-title">Morningstar 金融客戶 UI/UX 重建專案</h1>
+      <p class="project-highlight">🎯 <b>3 秒亮點</b><br>在限定時間內完成多套金融服務界面重建，服務多家香港金融機構。</p>
+    </section>
+
+    <section id="result">
+      <h2 class="section-title">專案成果對比</h2>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr><th>項目</th><th>挑戰</th><th>解決方案</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>交付規模</b></td><td>13 套系統（9 前台 + 4 後台）</td><td>建立模組化設計系統，提升效率</td></tr>
+            <tr><td><b>時間壓力</b></td><td>6 個月緊迫期限</td><td>優先級管理 + 2 套系統轉交策略</td></tr>
+            <tr><td><b>技術複雜度</b></td><td>4 種不同界面系統需重建</td><td>統一設計語言 + 組件化設計方案</td></tr>
+            <tr><td><b>客戶影響</b></td><td>19 個金融機構零中斷遷移</td><td>段階式重建 + 測試流程</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="background">
+      <h2 class="section-title">專案背景</h2>
+      <ul>
+        <li><b>我的角色</b>：Product Designer，負責整體界面設計與團隊協作</li>
+        <li><b>專案時間</b>：2024年5月開始</li>
+        <li><b>核心客戶</b>：香港主要上市銀行、指標保險集團、國際金融機構</li>
+        <li><b>設計挑戰</b>：將四種不同的金融服務界面，統一重建為現代化的網頁應用程式</li>
+      </ul>
+    </section>
+
+    <section id="challenge">
+      <h2 class="section-title">設計挑戰與解決策略</h2>
+      <h3>核心挑戰 1：多樣化的界面需求</h3>
+      <p><b>問題：</b>多個客戶使用 4 種完全不同的界面系統，每種都有獨特的設計語言和用戶流程</p>
+      <p><b>解決方案：</b>建立統一的設計系統</p>
+      <ul>
+        <li>設計可重用的金融 UI 組件庫</li>
+        <li>建立一致的互動模式和視覺語言</li>
+        <li>確保多語言界面（英文、繁中、簡中）的一致性</li>
+      </ul>
+      <h3>核心挑戰 2：金融級功能模組設計</h3>
+      <p>需要重建的核心功能包括：</p>
+      <ul>
+        <li><b>Screener</b>：基金篩選工具界面</li>
+        <li><b>Compare</b>：產品比較功能</li>
+        <li><b>Report</b>：報告生成界面</li>
+        <li><b>X-Ray</b>：投資組合分析工具</li>
+        <li><b>Portfolio Comparison</b>：投資組合比較</li>
+        <li><b>Custom Admin Tool</b>：客製化管理後台</li>
+      </ul>
+      <p><b>設計策略：</b></p>
+      <ul>
+        <li>分析現有系統的用戶流程和互動模式</li>
+        <li>重新設計符合現代 UX 標準的界面</li>
+        <li>優化複雜金融數據的視覺呈現</li>
+        <li>簡化管理後台的操作流程</li>
+      </ul>
+      <h3>核心挑戰 3：資源配置與工作分配</h3>
+      <p><b>挑戰：</b>在有限時間內完成大量界面重建工作</p>
+      <ul>
+        <li>需要設計多套不同的金融服務界面</li>
+        <li>平衡設計品質與交付效率</li>
+      </ul>
+      <p><b>策略：</b></p>
+      <ul>
+        <li>建立標準化的設計流程和組件庫</li>
+        <li>專注於核心系統的設計優化</li>
+      </ul>
+    </section>
+
+    <section id="system">
+      <h2 class="section-title">設計系統與解決方案</h2>
+      <h3>統一設計語言建立</h3>
+      <ul>
+        <li><b>視覺系統</b>：建立以數據為中心的設計語言，統一色彩系統，支援多品牌客製化</li>
+        <li><b>互動模式</b>：標準化表格排序和篩選模式、統一彈窗和提示系統、一致的導航和麵包屑設計、響應式設計適配不同螢幕尺寸</li>
+      </ul>
+      <h3>核心組件設計</h3>
+      <ul>
+        <li><b>Screener 基金篩選器</b>：重新設計多維度篩選界面，優化篩選條件的視覺層級</li>
+        <li><b>Compare 產品比較</b>：設計直觀的並排比較界面</li>
+        <li><b>Portfolio Comparison 投資組合比較</b>：重新設計資產配置視覺化，優化投資組合分析的數據呈現，簡化組合調整的互動流程</li>
+      </ul>
+    </section>
+
+    <section id="process">
+      <h2 class="section-title">設計過程</h2>
+      <ul>
+        <li>分析現有的多個客戶界面系統和需求</li>
+        <li>建立統一的設計規範和可重用組件</li>
+        <li>進行前台和後台系統的界面重建</li>
+      </ul>
+      <p><b>工作重點：</b></p>
+      <ul>
+        <li>確保每個客戶的品牌識別在新界面中得到保留</li>
+        <li>統一但可客製化的設計語言建立</li>
+        <li>核心功能模組的用戶體驗優化</li>
+      </ul>
+    </section>
+
+    <section id="value">
+      <h2 class="section-title">專案價值與成果</h2>
+      <ul>
+        <li>統一的金融界面視覺語言</li>
+        <li>可重用的 UI 組件庫</li>
+        <li>支援多品牌客製化的設計框架</li>
+        <li>標準化的設計交付文檔</li>
+      </ul>
+    </section>
+
+    <section id="reflection">
+      <h2 class="section-title">反思與學習</h2>
+      <h3>專案經驗與學習</h3>
+      <ul>
+        <li>大規模界面重建經驗：負責多套金融服務界面的設計工作，學習如何在大型專案中建立一致性</li>
+      </ul>
+      <h3>專業成長</h3>
+      <ul>
+        <li>金融界面設計專業：深入了解金融產品的界面需求和用戶使用情境</li>
+        <li>設計系統建立：學會建立可擴展的設計規範和組件庫</li>
+        <li>專案管理能力：在時間壓力下合理分配設計資源和工作優先級</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox-overlay">
+    <div class="lightbox-container">
+      <img id="lightbox-img" class="lightbox-image" src="" alt="圖片預覽">
+      <span id="lightbox-close" class="lightbox-close">&times;</span>
+    </div>
+  </div>
+
+  <!-- 返回頂部按鈕 -->
+  <button id="scrollToTop" class="scroll-top" aria-label="返回頂部">&#8679;</button>
+
+  <script src="js/main.js"></script>
+  <script src="js/project.js"></script>
+</body>
+</html> 
