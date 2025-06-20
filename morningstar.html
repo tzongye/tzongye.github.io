@@ -9,39 +9,35 @@
 </head>
 <body>
   <!-- 主選單 -->
-  <header>
-    <div class="container flex items-center justify-between py-3">
-      <a href="index.html" class="font-bold text-lg nav-link">Isaac Tsai</a>
-      <button class="md:hidden mobile-menu-toggle" aria-label="開啟主選單">
-        <span class="icon-menu"></span>
+  <header class="sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
+      <button class="md:hidden text-gray-600 focus:outline-none">
+        <i class="fas fa-bars text-xl"></i>
       </button>
-      <nav class="hidden md:flex space-x-6">
-        <a href="index.html" class="nav-link">首頁</a>
-        <a href="my104.html" class="nav-link">104 專案</a>
-        <a href="franklin.html" class="nav-link">富蘭克林專案</a>
-        <a href="smarthome.html" class="nav-link">智慧家庭專案</a>
-        <a href="morningstar.html" class="nav-link active">Morningstar 專案</a>
+      <nav class="hidden flex-col gap-4 absolute top-full left-0 w-full bg-white shadow-lg md:static md:flex md:flex-row md:gap-8 md:w-auto md:bg-transparent md:shadow-none">
+        <a href="index.html" class="block py-2 px-4 text-gray-700 hover:text-primary">首頁</a>
+        <a href="my104.html" class="block py-2 px-4 text-gray-700 hover:text-primary">104 會員中心</a>
+        <a href="franklin.html" class="block py-2 px-4 text-gray-700 hover:text-primary">富蘭克林母子基金</a>
+        <a href="smarthome.html" class="block py-2 px-4 text-gray-700 hover:text-primary">Smart Home App</a>
+        <a href="morningstar.html" class="block py-2 px-4 text-gray-700 hover:text-primary active">Morningstar 專案</a>
       </nav>
     </div>
   </header>
 
   <!-- 目錄 TOC -->
-  <aside class="toc">
-    <div class="toc-title">目錄</div>
-    <nav>
-      <a class="toc-link" href="#highlight">3 秒亮點</a>
-      <a class="toc-link" href="#result">專案成果對比</a>
-      <a class="toc-link" href="#background">專案背景</a>
-      <a class="toc-link" href="#challenge">設計挑戰與解決策略</a>
-      <a class="toc-link" href="#system">設計系統與解決方案</a>
-      <a class="toc-link" href="#process">設計過程</a>
-      <a class="toc-link" href="#value">專案價值與成果</a>
-      <a class="toc-link" href="#reflection">反思與學習</a>
-    </nav>
-  </aside>
-  <!-- Mobile TOC -->
+  <nav class="toc">
+    <a class="toc-link" href="#highlight">3 秒亮點</a>
+    <a class="toc-link" href="#result">專案成果對比</a>
+    <a class="toc-link" href="#background">專案背景</a>
+    <a class="toc-link" href="#challenge">設計挑戰與解決策略</a>
+    <a class="toc-link" href="#system">設計系統與解決方案</a>
+    <a class="toc-link" href="#process">設計過程</a>
+    <a class="toc-link" href="#value">專案價值與成果</a>
+    <a class="toc-link" href="#reflection">反思與學習</a>
+  </nav>
   <div class="mobile-toc">
-    <button id="mobileMenuBtn" class="mobile-toc-btn">目錄</button>
+    <button id="mobileMenuBtn" class="mobile-toc-btn">目錄 <i class="fas fa-list"></i></button>
     <div id="mobileTocContent" class="mobile-toc-content">
       <a class="toc-link" href="#highlight">3 秒亮點</a>
       <a class="toc-link" href="#result">專案成果對比</a>
@@ -191,7 +187,20 @@
   </div>
 
   <!-- 返回頂部按鈕 -->
-  <button id="scrollToTop" class="scroll-top" aria-label="返回頂部">&#8679;</button>
+  <button id="scrollToTop" class="scroll-top" aria-label="返回頂部">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
+      <div class="flex justify-center mt-4 space-x-6">
+        <a href="https://www.linkedin.com/in/isaactsai/" class="hover:text-white" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
+        <a href="mailto:tzong.ye@gmail.com" class="hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
+      </div>
+    </div>
+  </footer>
 
   <script src="js/main.js"></script>
   <script src="js/project.js"></script>

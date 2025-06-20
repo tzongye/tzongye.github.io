@@ -151,8 +151,8 @@ header {
     justify-content: center;
     font-size: 1.2rem;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 24px;
+    right: 24px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
     z-index: 100;
@@ -236,11 +236,11 @@ header {
 .mobile-toc {
     display: none;
     position: fixed;
-    bottom: 2rem;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 40;
-    background: transparent; /* 透明，避免白圈 */
+    background: transparent;
     border: none;
     box-shadow: none;
     backdrop-filter: none;
@@ -263,6 +263,11 @@ header {
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
     transition: background 0.2s;
     backdrop-filter: blur(4px);
+    gap: 8px;
+}
+
+.mobile-toc-btn i {
+    margin-left: 8px;
 }
 
 .mobile-toc-btn:hover {
@@ -399,4 +404,11 @@ html:lang(zh-TW) {
         object-fit: contain;
         /* touch-action: none; 移除，讓雙指縮放生效 */
     }
+}
+
+.toc-link.active {
+    color: #fff !important;
+    background: #111;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
