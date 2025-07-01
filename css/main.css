@@ -5,6 +5,7 @@ body {
     line-height: 1.8; /* Increased line-height for readability, Japanese aesthetic often has good leading */
     background-color: var(--color-background-light);
     scroll-behavior: smooth;
+    font-size: 18px;
 }
 
 /* Color Variables - Japanese High-Quality Style */
@@ -198,7 +199,7 @@ header {
     border: none; /* 移除邊框 */
     backdrop-filter: blur(8px); /* Less blur */
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 0.75rem 0.5rem;
     box-shadow: 0 8px 32px var(--color-shadow-light); /* Softer shadow */
     z-index: 40;
     max-width: 250px;
@@ -211,23 +212,19 @@ header {
     text-decoration: none;
     transition: all 0.2s ease;
     position: relative;
-    padding-left: 1rem;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .toc-link:hover, .toc-link.active {
-    color: var(--color-primary); /* Use primary for hover/active text */
+    color: #fff !important;
+    background: #111;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .toc-link::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: currentColor; /* Matches text color */
+    content: none !important;
 }
 
 .toc-link.active::before {
@@ -419,4 +416,13 @@ html:lang(zh-TW) {
 
 .nowrap {
     white-space: nowrap;
+}
+
+/* 一般段落、卡片、次要說明最小字級 18px */
+p, .glass-card p, .text-gray-700, .text-gray-600, .text-gray-500 {
+    font-size: 18px !important;
+}
+
+.section-title, h2, h3 {
+    text-align: left !important;
 }
