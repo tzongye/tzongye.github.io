@@ -10,21 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header class="sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
-            <button class="md:hidden text-gray-600 focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-            <nav class="hidden flex-col gap-4 absolute top-full left-0 w-full bg-white shadow-lg md:static md:flex md:flex-row md:gap-8 md:w-auto md:bg-transparent md:shadow-none">
-                <a href="index.html" class="block py-2 px-4 text-gray-700 hover:text-primary">首頁</a>
-                <a href="my104.html" class="block py-2 px-4 text-gray-700 hover:text-primary">104 會員中心</a>
-                <a href="franklin.html" class="block py-2 px-4 text-gray-700 hover:text-primary">富蘭克林母子基金</a>
-                <a href="smarthome.html" class="block py-2 px-4 text-gray-700 hover:text-primary">Smart Home App</a>
-            </nav>
-        </div>
-    </header>
-
+    <div id="navbar"></div>
     <!-- 目錄快捷鍵（TOC） -->
     <nav class="toc">
       <a class="toc-link" href="#overview">專案概述</a>
@@ -210,21 +196,13 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-10">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
-            <div class="flex justify-center mt-4 space-x-6">
-                <a href="https://www.linkedin.com/in/isaactsai/" class="hover:text-white" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
-                <a href="mailto:tzong.ye@gmail.com" class="hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
 
     <button id="scrollToTop" class="scroll-top" aria-label="回到頂部">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="js/main.js"></script>
+    <script src="js/include.js"></script>
 
     <!-- Lightbox Overlay for image preview -->
     <div id="lightbox" class="lightbox-overlay">

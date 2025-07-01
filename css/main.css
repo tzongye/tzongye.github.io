@@ -38,6 +38,11 @@ header {
     content: none; /* Remove the pattern */
 }
 
+.hero-section p {
+    color: var(--color-text-light); /* Ensure hero paragraph is medium grey */
+    line-height: 1.6;
+}
+
 /* Glass Card Style (Adjusted for Japanese aesthetic) */
 .glass-card {
     background: rgba(255, 255, 255, 0.8); /* Slightly more opaque white */
@@ -103,8 +108,7 @@ header {
 .section-title {
     position: relative;
     padding-bottom: 0.5rem; /* Reduce padding as bar is removed */
-    display: inline-block;
-    text-align: left; /* Explicitly ensure left alignment */
+    text-align: inherit;
 }
 
 .section-title::after {
@@ -411,4 +415,8 @@ html:lang(zh-TW) {
     background: #111;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.nowrap {
+    white-space: nowrap;
 }
