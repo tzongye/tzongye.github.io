@@ -4,27 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Morningstar 金融客戶 UI/UX 重建專案</title>
+  <meta name="description" content="UIUX 設計師 Isaac 的作品集：Morningstar 金融客戶 UI/UX 重建專案，多家金融機構界面重建，建立模組化設計系統">
+  <!-- 外部CSS框架 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 自訂CSS -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/project.css">
 </head>
 <body>
-  <!-- 主選單 -->
-  <header class="sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
-      <button class="md:hidden text-gray-600 focus:outline-none">
-        <i class="fas fa-bars text-xl"></i>
-      </button>
-      <nav class="hidden flex-col gap-4 absolute top-full left-0 w-full bg-white shadow-lg md:static md:flex md:flex-row md:gap-8 md:w-auto md:bg-transparent md:shadow-none">
-        <a href="index.html" class="block py-2 px-4 text-gray-700 hover:text-primary">首頁</a>
-        <a href="my104.html" class="block py-2 px-4 text-gray-700 hover:text-primary">104 會員中心</a>
-        <a href="franklin.html" class="block py-2 px-4 text-gray-700 hover:text-primary">富蘭克林母子基金</a>
-        <a href="smarthome.html" class="block py-2 px-4 text-gray-700 hover:text-primary">Smart Home App</a>
-        <a href="morningstar.html" class="block py-2 px-4 text-gray-700 hover:text-primary active">Morningstar 專案</a>
-      </nav>
-    </div>
-  </header>
-
+  <div id="navbar"></div>
   <!-- 目錄 TOC -->
   <nav class="toc">
     <a class="toc-link" href="#highlight">3 秒亮點</a>
@@ -52,12 +40,12 @@
 
   <main class="project-main container">
     <section id="highlight">
-      <h1 class="section-title">Morningstar 金融客戶 UI/UX 重建專案</h1>
+      <h1 class="section-title text-center">Morningstar 金融客戶 UI/UX 重建專案</h1>
       <p class="project-highlight">🎯 <b>3 秒亮點</b><br>在限定時間內完成多套金融服務界面重建，服務多家香港金融機構。</p>
     </section>
 
     <section id="result">
-      <h2 class="section-title">專案成果對比</h2>
+      <h2 class="section-title text-center">專案成果對比</h2>
       <div class="table-responsive">
         <table>
           <thead>
@@ -74,7 +62,7 @@
     </section>
 
     <section id="background">
-      <h2 class="section-title">專案背景</h2>
+      <h2 class="section-title text-center">專案背景</h2>
       <ul>
         <li><b>我的角色</b>：Product Designer，負責整體界面設計與團隊協作</li>
         <li><b>專案時間</b>：2024年5月開始</li>
@@ -84,7 +72,7 @@
     </section>
 
     <section id="challenge">
-      <h2 class="section-title">設計挑戰與解決策略</h2>
+      <h2 class="section-title text-center">設計挑戰與解決策略</h2>
       <h3>核心挑戰 1：多樣化的界面需求</h3>
       <p><b>問題：</b>多個客戶使用 4 種完全不同的界面系統，每種都有獨特的設計語言和用戶流程</p>
       <p><b>解決方案：</b>建立統一的設計系統</p>
@@ -124,7 +112,7 @@
     </section>
 
     <section id="system">
-      <h2 class="section-title">設計系統與解決方案</h2>
+      <h2 class="section-title text-center">設計系統與解決方案</h2>
       <h3>統一設計語言建立</h3>
       <ul>
         <li><b>視覺系統</b>：建立以數據為中心的設計語言，統一色彩系統，支援多品牌客製化</li>
@@ -139,7 +127,7 @@
     </section>
 
     <section id="process">
-      <h2 class="section-title">設計過程</h2>
+      <h2 class="section-title text-center">設計過程</h2>
       <ul>
         <li>分析現有的多個客戶界面系統和需求</li>
         <li>建立統一的設計規範和可重用組件</li>
@@ -154,7 +142,7 @@
     </section>
 
     <section id="value">
-      <h2 class="section-title">專案價值與成果</h2>
+      <h2 class="section-title text-center">專案價值與成果</h2>
       <ul>
         <li>統一的金融界面視覺語言</li>
         <li>可重用的 UI 組件庫</li>
@@ -164,7 +152,7 @@
     </section>
 
     <section id="reflection">
-      <h2 class="section-title">反思與學習</h2>
+      <h2 class="section-title text-center">反思與學習</h2>
       <h3>專案經驗與學習</h3>
       <ul>
         <li>大規模界面重建經驗：負責多套金融服務界面的設計工作，學習如何在大型專案中建立一致性</li>
@@ -191,17 +179,8 @@
     <i class="fas fa-arrow-up"></i>
   </button>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-10">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
-      <div class="flex justify-center mt-4 space-x-6">
-        <a href="https://www.linkedin.com/in/isaactsai/" class="hover:text-white" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
-        <a href="mailto:tzong.ye@gmail.com" class="hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
-      </div>
-    </div>
-  </footer>
-
+  <div id="footer"></div>
+  <script src="js/include.js"></script>
   <script src="js/main.js"></script>
   <script src="js/project.js"></script>
 </body>

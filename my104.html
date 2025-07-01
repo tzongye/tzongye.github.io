@@ -12,21 +12,7 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-    <header class="sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-gray-800">Isaac</a>
-            <button class="md:hidden text-gray-600 focus:outline-none">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-            <nav class="hidden flex-col gap-4 absolute top-full left-0 w-full bg-white shadow-lg md:static md:flex md:flex-row md:gap-8 md:w-auto md:bg-transparent md:shadow-none">
-                <a href="index.html" class="block py-2 px-4 text-gray-700 hover:text-primary">首頁</a>
-                <a href="my104.html" class="block py-2 px-4 text-gray-700 hover:text-primary">104 會員中心</a>
-                <a href="franklin.html" class="block py-2 px-4 text-gray-700 hover:text-primary">富蘭克林母子基金</a>
-                <a href="smarthome.html" class="block py-2 px-4 text-gray-700 hover:text-primary">Smart Home App</a>
-            </nav>
-        </div>
-    </header>
-
+    <div id="navbar"></div>
     <!-- 目錄快捷鍵（TOC） -->
     <nav class="toc">
       <a class="toc-link" href="#overview">專案概述</a>
@@ -177,6 +163,14 @@
     <section id="results" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10 text-center">設計成果展示</h2>
+            
+            <!-- 設計流程圖 -->
+            <div class="mb-8">
+                <img src="images/104-design-flow.png" alt="設計流程" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <p class="text-gray-700 text-center text-lg">產品設計流程與系統架構圖</p>
+            </div>
+
+            <!-- 主視覺 -->
             <div class="mb-8">
                 <div class="image-container">
                   <img src="images/104-homepage-preview.jpg" alt="主視覺" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
@@ -184,7 +178,7 @@
                 <p class="text-gray-700 text-center text-lg">全新設計的 104 會員中心，以個人化儀表板為核心，整合職涯發展所需的一切資源。</p>
             </div>
 
-            <!-- Combined User Journey Images -->
+            <!-- 用戶旅程圖 -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                   <div class="image-container">
@@ -200,28 +194,13 @@
                 </div>
             </div>
 
+            <!-- UI元件庫 -->
             <div class="mb-8">
-                <div class="image-container">
-                  <img src="images/104-student-skill-building.png" alt="技能樹" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
-                </div>
-                <p class="text-gray-700 text-center text-lg">技能樹視覺化分析，明確學習路徑與職涯目標</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div>
-                  <div class="image-container">
-                    <img src="images/104-design-flow.png" alt="設計流程" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
-                  </div>
-                  <p class="text-gray-700 text-center">產品設計流程與系統架構圖</p>
-                </div>
-                <div>
-                  <div class="image-container">
-                    <img src="images/104-ui-components.png" alt="UI元件庫" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
-                  </div>
-                  <p class="text-gray-700 text-center">設計系統 UI 元件庫</p>
-                </div>
+                <img src="images/104-ui-components.png" alt="UI元件庫" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <p class="text-gray-700 text-center text-lg">設計系統 UI 元件庫</p>
             </div>
 
+            <!-- 響應式設計 -->
             <div class="mb-8">
                 <div class="image-container">
                   <img src="images/104-mobile-responsive.png" alt="手機響應式介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
@@ -229,32 +208,22 @@
                 <p class="text-gray-700 text-center text-lg">行動版響應式介面設計</p>
             </div>
             
-            <!-- Employee and Student Images Consolidated -->
+            <!-- 上班族使用場景 -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                  <div class="image-container">
-                    <img src="images/104-employee-actively-searching.png" alt="職缺推薦介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
-                  </div>
-                  <p class="text-gray-700 text-center">智能職缺推薦，精準匹配用戶需求</p>
+                    <img src="images/104-employee-actively-searching.png" alt="積極求職介面" class="w-full h-auto rounded-lg shadow-md mb-4">
+                    <p class="text-gray-700 text-center">上班族：積極求職 - 智能職缺推薦，精準匹配用戶需求</p>
                 </div>
                 <div>
-                  <div class="image-container">
-                    <img src="images/104-employee-browsing.png" alt="員工瀏覽介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-md mb-4">
-                  </div>
-                  <p class="text-gray-700 text-center">員工瀏覽職缺介面</p>
+                    <img src="images/104-employee-browsing.png" alt="探索職涯介面" class="w-full h-auto rounded-lg shadow-md mb-4">
+                    <p class="text-gray-700 text-center">上班族：探索 - 職涯發展與技能提升</p>
                 </div>
             </div>
+
+            <!-- 學生實習專區 -->
             <div class="mb-8">
-                <div class="image-container">
-                  <img src="images/104-employee-exploring.png" alt="員工探索介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
-                </div>
-                <p class="text-gray-700 text-center text-lg">員工探索職缺介面</p>
-            </div>
-            <div class="mb-8">
-                <div class="image-container">
-                  <img src="images/104-student-internship.png" alt="學生實習介面" class="max-w-full h-auto block mx-auto rounded-lg shadow-lg mb-6">
-                </div>
-                <p class="text-gray-700 text-center text-lg">學生實習專區介面</p>
+                <img src="images/104-student-internship.png" alt="學生實習介面" class="max-w-4xl mx-auto h-auto rounded-lg shadow-lg mb-6">
+                <p class="text-gray-700 text-center text-lg">學生實習專區 - 協助學生找到理想的實習機會</p>
             </div>
         </div>
     </section>
@@ -278,15 +247,8 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-10">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2025 Isaac. 本站使用 Claude + Git 開發 ✨</p>
-            <div class="flex justify-center mt-4 space-x-6">
-                <a href="https://www.linkedin.com/in/isaactsai/" class="hover:text-white" target="_blank"><i class="fab fa-linkedin text-xl"></i></a>
-                <a href="mailto:tzong.ye@gmail.com" class="hover:text-white"><i class="fas fa-envelope text-xl"></i></a>
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
+    <script src="js/include.js"></script>
 
     <button id="scrollToTop" class="scroll-top" aria-label="回到頂部">
         <i class="fas fa-arrow-up"></i>
@@ -303,3 +265,4 @@
     </div>
 </body>
 </html>
+
