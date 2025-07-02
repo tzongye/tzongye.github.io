@@ -457,12 +457,12 @@ html:lang(zh-TW) {
 }
 
 /* 一般段落、卡片、次要說明最小字級 18px */
-p, .glass-card p, .text-gray-700, .text-gray-600, .text-gray-500 {
-    font-size: 18px !important;
+body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text-gray-500 {
+    font-size: 18px;
 }
 
 .section-title, h2, h3 {
-    text-align: left !important;
+    text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -470,7 +470,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: 0.005em;
-    color: var(--color-text-dark) !important;
+    color: var(--color-text-dark);
 }
 h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.01em; }
 h2 { font-size: 2rem; font-weight: 700; }
@@ -559,44 +559,39 @@ th {
     font-weight: 500;
 }
 
-/* 基礎文字顏色 */
-body {
+/* 標題顏色 */
+h1, h2, h3, h4, h5, h6, .section-title {
     color: var(--color-text-dark);
 }
 
-/* 標題顏色 */
-h1, h2, h3, h4, h5, h6, .section-title {
-    color: var(--color-text-dark) !important;
-}
-
 /* 段落和一般文字 */
-p, .text-gray-700 {
-    color: var(--color-text-medium) !important;
+body p, body .text-gray-700 {
+    color: var(--color-text-medium);
 }
-.text-gray-600 {
-    color: var(--color-text-light) !important;
+body .text-gray-600 {
+    color: var(--color-text-light);
 }
-.text-gray-500 {
-    color: var(--color-text-light) !important;
+body .text-gray-500 {
+    color: var(--color-text-light);
 }
-.text-gray-800 {
-    color: var(--color-text-dark) !important;
+body .text-gray-800 {
+    color: var(--color-text-dark);
 }
 
 /* 背景色更新 */
 .bg-gray-50 {
-    background-color: var(--color-bg-gray-50) !important;
+    background-color: var(--color-bg-gray-50);
 }
 .bg-gray-100 {
-    background-color: var(--color-bg-gray-100) !important;
+    background-color: var(--color-bg-gray-100);
 }
 .bg-gray-900 {
-    background-color: var(--color-bg-gray-900) !important;
+    background-color: var(--color-bg-gray-900);
 }
 
 /* 邊框顏色 */
 .border-gray-200 {
-    border-color: var(--color-border) !important;
+    border-color: var(--color-border);
 }
 
 /* Hero section 背景 */
@@ -606,25 +601,20 @@ p, .text-gray-700 {
 }
 
 /* 卡片顏色 */
-.glass-card {
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid var(--color-border);
-    box-shadow: 0 4px 15px var(--color-shadow-light);
+.glass-card h3, section .glass-card h3 {
+    color: var(--color-text-dark);
 }
-.glass-card h3 {
-    color: var(--color-text-dark) !important;
-}
-.glass-card p {
-    color: var(--color-text-medium) !important;
+.glass-card p, section .glass-card p {
+    color: var(--color-text-medium);
 }
 
 /* 表格顏色 */
 thead th {
-    background-color: var(--color-bg-gray-50) !important;
-    color: var(--color-text-medium) !important;
+    background-color: var(--color-bg-gray-50);
+    color: var(--color-text-medium);
 }
 tbody td {
-    color: var(--color-text-medium) !important;
+    color: var(--color-text-medium);
 }
 
 /* 目錄 TOC 顏色 */
@@ -632,12 +622,8 @@ tbody td {
     background: rgba(255, 255, 255, 0.7);
     box-shadow: 0 8px 32px var(--color-shadow-light);
 }
-.toc-link {
-    color: var(--color-text-medium);
-}
 .toc-link:hover, .toc-link.active {
-    color: #fff !important;
-    background: var(--color-text-dark);
+    color: #fff;
 }
 
 /* Hero section 按鈕 */
@@ -656,10 +642,10 @@ header {
     border-bottom: 1px solid var(--color-border);
 }
 .text-gray-800 {
-    color: var(--color-text-dark) !important;
+    color: var(--color-text-dark);
 }
 .text-gray-600 {
-    color: var(--color-text-light) !important;
+    color: var(--color-text-light);
 }
 
 /* 引用框 */
@@ -686,3 +672,19 @@ header {
 .nav-link::after {
     background-color: var(--color-primary);
 }
+
+/* 合併重複的顏色設定 */
+.glass-card h3, .section-title, h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-dark);
+}
+.glass-card p, .text-gray-700, tbody td {
+    color: var(--color-text-medium);
+}
+
+/* 統一語意顏色 class */
+.text-primary { color: var(--color-text-dark); }
+.text-secondary { color: var(--color-text-medium); }
+.text-tertiary { color: var(--color-text-light); }
+.bg-primary { background-color: var(--color-bg-gray-50); }
+.bg-secondary { background-color: var(--color-bg-gray-100); }
+.bg-dark { background-color: var(--color-bg-gray-900); }
