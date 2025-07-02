@@ -252,7 +252,7 @@ header {
     box-shadow: none;
     backdrop-filter: none;
     border-radius: 30px;
-    padding: 0.75rem 1.5rem;
+    padding: 0;
 }
 
 .mobile-toc-btn {
