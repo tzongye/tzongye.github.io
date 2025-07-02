@@ -9,16 +9,30 @@ body {
     font-weight: 400;
 }
 
-/* Color Variables - Japanese High-Quality Style */
+/* =================================
+   藍灰色調色彩系統與全站色彩統一
+   ================================= */
 :root {
-    --color-primary: #8D6E63; /* A warm, earthy brown/reddish tone for subtle accents, inspired by wood/craft */
-    --color-secondary: #C0C0C0; /* A soft, neutral gray for borders/dividers */
-    --color-background-light: #FDFDFD; /* Almost pure white for main backgrounds */
-    --color-text-dark: #333333; /* Dark gray for primary text */
-    --color-text-medium: #666666; /* Medium gray for secondary text */
-    --color-text-light: #A0A0A0; /* Light gray for subtle hints */
+    /* 藍色調色彩系統 - 從淺到深 */
+    --color-primary: #8D6E63; /* 保持原有的暖色調作為強調色 */
+    --color-secondary: #B8C5D1; /* 原本的灰色改為藍灰色 */
+    --color-background-light: #FDFDFD; /* 背景保持純白 */
+    /* 文字顏色 - 全部改為藍色調 */
+    --color-text-dark: #2D3748;    /* 原本 #333333 → 深藍灰色 */
+    --color-text-medium: #4A5568;  /* 原本 #666666 → 中藍灰色 */
+    --color-text-light: #718096;   /* 原本 #A0A0A0 → 淺藍灰色 */
     --color-white: #FFFFFF;
-    --color-shadow-light: rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+    --color-shadow-light: rgba(45, 55, 72, 0.05); /* 陰影也改為藍色調 */
+    /* 按鈕統一色彩 */
+    --button-bg-transparent: rgba(45, 55, 72, 0.85);
+    --button-bg-hover: rgba(45, 55, 72, 0.95);
+    /* 邊框和分隔線 */
+    --color-border: #CBD5E0; /* 藍灰色邊框 */
+    /* 背景色變化 */
+    --color-bg-gray-50: #F7FAFC;   /* 非常淺的藍灰色背景 */
+    --color-bg-gray-100: #EDF2F7;  /* 淺藍灰色背景 */
+    --color-bg-gray-900: #1A202C;  /* 深藍灰色背景（footer 用） */
+    /* 字體保持不變 */
     --font-primary: 'Noto Sans TC', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     --font-heading: 'Inter', 'Noto Sans TC', 'SF Pro Display', 'Segoe UI Variable', 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     --font-body: 'Noto Sans TC', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
@@ -31,11 +45,12 @@ header {
     background: rgba(255, 255, 255, 0.9); /* More opaque white */
     backdrop-filter: blur(8px); /* Less blur */
     box-shadow: 0 2px 10px var(--color-shadow-light); /* Subtle shadow for depth */
+    border-bottom: 1px solid var(--color-border);
 }
 
 /* Hero Section Styles */
 .hero-section {
-    background-color: #F8F8F8; /* A very light, almost white background */
+    background-color: var(--color-bg-gray-100);
     position: relative;
     overflow: hidden;
     color: var(--color-text-dark); /* Ensure text is readable on light background */
@@ -54,7 +69,7 @@ header {
 .glass-card {
     background: rgba(255, 255, 255, 0.8); /* Slightly more opaque white */
     backdrop-filter: blur(8px); /* Slightly less blur */
-    border: 1px solid var(--color-secondary); /* Softer border color */
+    border: 1px solid var(--color-border);
     box-shadow: 0 4px 15px var(--color-shadow-light); /* Softer shadow */
     transition: all 0.3s ease;
 }
@@ -64,9 +79,17 @@ header {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Slightly more prominent on hover */
 }
 
+.glass-card h3 {
+    color: var(--color-text-dark) !important;
+}
+
+.glass-card p {
+    color: var(--color-text-medium) !important;
+}
+
 /* Highlight Card (Adjusted for Japanese aesthetic) */
 .highlight-card {
-    background: rgba(240, 240, 240, 0.5); /* Very light gray tint */
+    background: var(--color-bg-gray-50);
     border-left: 4px solid var(--color-primary); /* Use new primary for accent */
     border-radius: 8px;
 }
@@ -95,7 +118,7 @@ header {
     top: 28px;
     width: 2px;
     height: calc(100% - 20px);
-    background-color: var(--color-secondary); /* Softer gray for line */
+    background-color: var(--color-border); /* Softer gray for line */
 }
 
 .process-step:last-child::after {
@@ -116,6 +139,7 @@ header {
     position: relative;
     padding-bottom: 0.5rem; /* Reduce padding as bar is removed */
     text-align: inherit;
+    color: var(--color-text-dark) !important;
 }
 
 .section-title::after {
@@ -126,7 +150,7 @@ header {
 .quote {
     border-left: 4px solid var(--color-primary); /* Use new primary for border */
     padding-left: 1rem;
-    background-color: rgba(240, 240, 240, 0.3); /* Very light gray tint */
+    background-color: var(--color-bg-gray-50);
     border-radius: 0 8px 8px 0;
 }
 
@@ -152,7 +176,8 @@ header {
 
 /* Scroll To Top Button (Adjusted for Japanese aesthetic) */
 .scroll-top {
-    background-color: #333333;
+    background-color: var(--button-bg-transparent);
+    backdrop-filter: blur(4px);
     color: #fff;
     border-radius: 50%;
     width: 48px;
@@ -176,7 +201,7 @@ header {
 }
 
 .scroll-top:hover {
-    background-color: #666;
+    background-color: var(--button-bg-hover);
 }
 
 /* Placeholder Image (unchanged, already neutral) */
@@ -224,7 +249,7 @@ header {
 
 .toc-link:hover, .toc-link.active {
     color: #fff !important;
-    background: #111;
+    background: var(--color-text-dark);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -256,7 +281,8 @@ header {
 }
 
 .mobile-toc-btn {
-    background: rgba(51,51,51,0.85);
+    background: var(--button-bg-transparent);
+    backdrop-filter: blur(4px);
     color: #fff;
     border-radius: 24px;
     min-width: 48px;
@@ -267,10 +293,10 @@ header {
     justify-content: center;
     font-size: 1.2rem;
     border: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    transition: background 0.2s;
-    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
     gap: 8px;
+    margin: 0;
 }
 
 .mobile-toc-btn i {
@@ -278,7 +304,7 @@ header {
 }
 
 .mobile-toc-btn:hover {
-    background: #666;
+    background: var(--button-bg-hover);
 }
 
 .mobile-toc-content {
@@ -415,7 +441,7 @@ html:lang(zh-TW) {
 
 .toc-link.active {
     color: #fff !important;
-    background: #111;
+    background: var(--color-text-dark);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
@@ -438,6 +464,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.3;
     letter-spacing: 0.005em;
+    color: var(--color-text-dark) !important;
 }
 h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.01em; }
 h2 { font-size: 2rem; font-weight: 700; }
@@ -461,6 +488,8 @@ h1 .number, h2 .number, h3 .number, h4 .number, h5 .number, h6 .number {
 th {
     font-family: var(--font-heading);
     font-weight: 600;
+    background-color: var(--color-bg-gray-50) !important;
+    color: var(--color-text-medium) !important;
 }
 
 /* 表格數字 */
@@ -522,4 +551,144 @@ th {
     font-family: var(--font-body);
     font-size: 0.9rem;
     font-weight: 500;
+}
+
+/* 基礎文字顏色 */
+body {
+    color: var(--color-text-dark);
+}
+
+/* 標題顏色 */
+h1, h2, h3, h4, h5, h6, .section-title {
+    color: var(--color-text-dark) !important;
+}
+
+/* 段落和一般文字 */
+p, .text-gray-700 {
+    color: var(--color-text-medium) !important;
+}
+.text-gray-600 {
+    color: var(--color-text-light) !important;
+}
+.text-gray-500 {
+    color: var(--color-text-light) !important;
+}
+.text-gray-800 {
+    color: var(--color-text-dark) !important;
+}
+
+/* 背景色更新 */
+.bg-gray-50 {
+    background-color: var(--color-bg-gray-50) !important;
+}
+.bg-gray-100 {
+    background-color: var(--color-bg-gray-100) !important;
+}
+.bg-gray-900 {
+    background-color: var(--color-bg-gray-900) !important;
+}
+
+/* 邊框顏色 */
+.border-gray-200 {
+    border-color: var(--color-border) !important;
+}
+
+/* Hero section 背景 */
+.hero-section {
+    background-color: var(--color-bg-gray-100);
+    color: var(--color-text-dark);
+}
+
+/* 卡片顏色 */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 15px var(--color-shadow-light);
+}
+.glass-card h3 {
+    color: var(--color-text-dark) !important;
+}
+.glass-card p {
+    color: var(--color-text-medium) !important;
+}
+
+/* 表格顏色 */
+thead th {
+    background-color: var(--color-bg-gray-50) !important;
+    color: var(--color-text-medium) !important;
+}
+tbody td {
+    color: var(--color-text-medium) !important;
+}
+
+/* 目錄 TOC 顏色 */
+.toc {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px var(--color-shadow-light);
+}
+.toc-link {
+    color: var(--color-text-medium);
+}
+.toc-link:hover, .toc-link.active {
+    color: #fff !important;
+    background: var(--color-text-dark);
+}
+
+/* Footer 更新 */
+footer {
+    background-color: var(--color-bg-gray-900) !important;
+    color: var(--color-text-light) !important;
+}
+footer a {
+    color: var(--color-text-light) !important;
+}
+footer a:hover {
+    color: var(--color-white) !important;
+}
+
+/* Hero section 按鈕 */
+.hero-section a {
+    background-color: var(--color-text-dark);
+    border-color: var(--color-text-dark);
+}
+.hero-section a:hover {
+    background-color: var(--color-text-medium);
+    border-color: var(--color-text-medium);
+}
+
+/* 導航欄 */
+header {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid var(--color-border);
+}
+.text-gray-800 {
+    color: var(--color-text-dark) !important;
+}
+.text-gray-600 {
+    color: var(--color-text-light) !important;
+}
+
+/* 引用框 */
+.quote {
+    border-left: 4px solid var(--color-primary);
+    background-color: var(--color-bg-gray-50);
+}
+
+/* 流程步驟 */
+.process-step::before {
+    background-color: var(--color-primary);
+}
+.process-step::after {
+    background-color: var(--color-border);
+}
+
+/* 高亮卡片 */
+.highlight-card {
+    background: var(--color-bg-gray-50);
+    border-left: 4px solid var(--color-primary);
+}
+
+/* 導航連結下劃線 */
+.nav-link::after {
+    background-color: var(--color-primary);
 }
