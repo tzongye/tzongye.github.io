@@ -640,18 +640,6 @@ tbody td {
     background: var(--color-text-dark);
 }
 
-/* Footer 更新 */
-footer {
-    background-color: var(--color-bg-gray-900) !important;
-    color: var(--color-text-light) !important;
-}
-footer a {
-    color: var(--color-text-light) !important;
-}
-footer a:hover {
-    color: var(--color-white) !important;
-}
-
 /* Hero section 按鈕 */
 .hero-section a {
     background-color: var(--color-text-dark);
