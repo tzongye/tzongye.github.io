@@ -1,11 +1,12 @@
 /* Reset & Base Styles (unchanged from previous) */
 body {
-    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-primary);
     color: var(--color-text-dark);
     line-height: 1.8; /* Increased line-height for readability, Japanese aesthetic often has good leading */
     background-color: var(--color-background-light);
     scroll-behavior: smooth;
     font-size: 18px;
+    font-weight: 400;
 }
 
 /* Color Variables - Japanese High-Quality Style */
@@ -18,6 +19,7 @@ body {
     --color-text-light: #A0A0A0; /* Light gray for subtle hints */
     --color-white: #FFFFFF;
     --color-shadow-light: rgba(0, 0, 0, 0.05); /* Very subtle shadow */
+    --font-primary: 'Noto Sans TC', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
 }
 
 /* Header Styles */
