@@ -1,5 +1,114 @@
 // 主要JavaScript功能
 document.addEventListener('DOMContentLoaded', function() {
+    // === Umami 進階事件追蹤 ===
+    const projectPages = {
+        'index.html': 'homepage',
+        'franklin.html': 'franklin',
+        'morningstar.html': 'morningstar',
+        'my104.html': 'my104',
+        'smarthome.html': 'smarthome'
+    };
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentProject = projectPages[currentPage];
+
+    // 頁面瀏覽追蹤
+    if (window.umami && currentProject) {
+        window.umami.track('page-view', {
+            project: currentProject,
+            page: currentPage
+        });
+    }
+
+    // 專案卡片點擊追蹤（首頁）
+    if (currentProject === 'homepage') {
+        const projectCards = document.querySelectorAll('a[href$=".html"]');
+        projectCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                const projectName = href.replace('.html', '');
+                if (window.umami) {
+                    window.umami.track('project-click', {
+                        project: projectName,
+                        from: 'homepage'
+                    });
+                }
+            });
+        });
+    }
+
+    // 目錄(TOC)點擊追蹤
+    const tocLinksUmami = document.querySelectorAll('.toc-link');
+    tocLinksUmami.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const section = this.getAttribute('href').replace('#', '');
+            if (window.umami) {
+                window.umami.track('toc-navigation', {
+                    project: currentProject,
+                    section: section
+                });
+            }
+        });
+    });
+
+    // 燈箱圖片點擊追蹤
+    if (typeof addLightboxToImages === 'function') {
+        const originalOpenLightbox = window.openLightbox;
+        window.openLightbox = function(src, alt) {
+            if (window.umami) {
+                window.umami.track('image-view', {
+                    project: currentProject,
+                    image: alt || 'unnamed-image'
+                });
+            }
+            if (originalOpenLightbox) {
+                originalOpenLightbox(src, alt);
+            }
+        };
+    }
+
+    // 外部連結點擊追蹤
+    const externalLinks = document.querySelectorAll('a[href^="http"], a[href^="mailto:"]');
+    externalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            let linkType = 'external';
+            if (href.includes('linkedin.com')) linkType = 'linkedin';
+            else if (href.startsWith('mailto:')) linkType = 'email';
+            if (window.umami) {
+                window.umami.track('external-link', {
+                    project: currentProject,
+                    type: linkType,
+                    url: href
+                });
+            }
+        });
+    });
+
+    // 滾動深度追蹤
+    let maxScrollDepth = 0;
+    const trackScrollDepth = () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+        if (scrollPercent > maxScrollDepth) {
+            if (scrollPercent >= 25 && maxScrollDepth < 25) {
+                window.umami?.track('scroll-depth', { project: currentProject, depth: '25%' });
+            } else if (scrollPercent >= 50 && maxScrollDepth < 50) {
+                window.umami?.track('scroll-depth', { project: currentProject, depth: '50%' });
+            } else if (scrollPercent >= 75 && maxScrollDepth < 75) {
+                window.umami?.track('scroll-depth', { project: currentProject, depth: '75%' });
+            } else if (scrollPercent >= 90 && maxScrollDepth < 90) {
+                window.umami?.track('scroll-depth', { project: currentProject, depth: '90%' });
+            }
+            maxScrollDepth = scrollPercent;
+        }
+    };
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(trackScrollDepth, 100);
+    });
+
     // 滾動到頂部按鈕功能
     const scrollToTopBtn = document.getElementById('scrollToTop');
     
