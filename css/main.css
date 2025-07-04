@@ -490,12 +490,10 @@ h1 .number, h2 .number, h3 .number, h4 .number, h5 .number, h6 .number {
     font-variant-numeric: proportional-nums;
 }
 
-/* 表格標題 */
-th {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    background-color: var(--color-bg-gray-50) !important;
-    color: var(--color-text-medium) !important;
+/* 表格標題顏色（移除 !important，提升選擇器權重） */
+table th, thead th {
+    background-color: var(--color-bg-gray-50);
+    color: var(--color-text-medium);
 }
 
 /* 表格數字 */
@@ -564,18 +562,9 @@ h1, h2, h3, h4, h5, h6, .section-title {
     color: var(--color-text-dark);
 }
 
-/* 段落和一般文字 */
-body p, body .text-gray-700 {
+/* 合併段落顏色設定，移除重複 */
+body p, .glass-card p, .text-gray-700, tbody td {
     color: var(--color-text-medium);
-}
-body .text-gray-600 {
-    color: var(--color-text-light);
-}
-body .text-gray-500 {
-    color: var(--color-text-light);
-}
-body .text-gray-800 {
-    color: var(--color-text-dark);
 }
 
 /* 背景色更新 */
@@ -673,7 +662,7 @@ header {
     background-color: var(--color-primary);
 }
 
-/* 合併重複的顏色設定 */
+/* 合併 .glass-card h3 定義，保留一次即可 */
 .glass-card h3, .section-title, h1, h2, h3, h4, h5, h6 {
     color: var(--color-text-dark);
 }
