@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollToTopBtn = document.getElementById('scrollToTop');
     
     if (scrollToTopBtn) {
+        console.log('Debug: Scroll to top button found');
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 scrollToTopBtn.classList.add('visible');
@@ -122,11 +123,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         scrollToTopBtn.addEventListener('click', function() {
+            console.log('Debug: Scroll to top button clicked');
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
+    } else {
+        console.log('Debug: Scroll to top button not found');
     }
     
     // 手機版選單功能
@@ -172,43 +176,62 @@ document.addEventListener('DOMContentLoaded', function() {
         // 監聽滾動事件
         window.addEventListener('scroll', updateActiveTocLink);
         
-        // 移動端目錄功能
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileTocContent = document.getElementById('mobileTocContent');
-        
-        console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
-        console.log('Debug: mobileTocContent found:', !!mobileTocContent);
-        
-        if (mobileMenuBtn && mobileTocContent) {
-            console.log('Debug: Adding event listener to mobile menu button');
+        // 移動端目錄功能 - 重寫為更穩定的版本
+        function initializeMobileTOC() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileTocContent = document.getElementById('mobileTocContent');
+            
+            console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
+            console.log('Debug: mobileTocContent found:', !!mobileTocContent);
+            
+            if (!mobileMenuBtn || !mobileTocContent) {
+                console.log('Debug: Mobile TOC elements not found');
+                return;
+            }
+            
+            console.log('Debug: Initializing mobile TOC');
+            
+            // 主要點擊事件
             mobileMenuBtn.addEventListener('click', function(e) {
-                e.preventDefault(); // 防止默認行為
-                e.stopPropagation(); // 防止事件冒泡
-                console.log('手機版目錄按鈕被點擊'); // 調試用
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('手機版目錄按鈕被點擊');
                 
-                const wasActive = mobileTocContent.classList.contains('active');
-                mobileTocContent.classList.toggle('active');
                 const isActive = mobileTocContent.classList.contains('active');
                 
-                console.log('Debug: TOC state changed from', wasActive, 'to', isActive);
+                if (isActive) {
+                    mobileTocContent.classList.remove('active');
+                    console.log('關閉手機版目錄');
+                } else {
+                    mobileTocContent.classList.add('active');
+                    console.log('開啟手機版目錄');
+                }
             });
+            
             // 點擊目錄項後關閉下拉選單
             const mobileLinks = mobileTocContent.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     mobileTocContent.classList.remove('active');
+                    console.log('點擊目錄連結，關閉手機版目錄');
                 });
             });
             
             // 點擊外部時關閉目錄
             document.addEventListener('click', function(event) {
                 if (!event.target.closest('.mobile-toc')) {
-                    mobileTocContent.classList.remove('active');
+                    if (mobileTocContent.classList.contains('active')) {
+                        mobileTocContent.classList.remove('active');
+                        console.log('點擊外部，關閉手機版目錄');
+                    }
                 }
             });
-        } else {
-            console.log('Debug: Mobile TOC elements not found');
+            
+            console.log('Debug: Mobile TOC initialized successfully');
         }
+        
+        // 初始化手機版目錄
+        initializeMobileTOC();
         
         // 為目錄連結添加平滑滾動效果
         tocLinks.forEach(link => {
