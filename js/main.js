@@ -230,6 +230,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 滾動淡入動畫
         function initScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            // 如果是手機版或不支援Intersection Observer，直接顯示所有元素
+            if (window.innerWidth <= 768 || !window.IntersectionObserver) {
+                fadeElements.forEach(el => {
+                    el.classList.add('visible');
+                });
+                return;
+            }
+            
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -245,13 +255,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }, observerOptions);
             
             // 觀察所有需要淡入動畫的元素
-            document.querySelectorAll('.fade-in').forEach(el => {
-                observer.observe(el);
+            fadeElements.forEach(el => {
+                // 如果元素已經在視窗內，立即顯示
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    el.classList.add('visible');
+                } else {
+                    observer.observe(el);
+                }
             });
         }
         
         // 初始化滾動動畫
         initScrollAnimations();
+        
+        // 回退機制：如果3秒後還有隱藏的元素，強制顯示
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 3000);
     
     // 如果頁面有目錄，則啟用目錄相關功能
     if (tocLinks.length > 0) {

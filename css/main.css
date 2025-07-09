@@ -530,6 +530,14 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
     transform: translateY(0);
 }
 
+/* 手機版回退方案 - 如果JavaScript未執行，確保內容可見 */
+@media (max-width: 768px) {
+    .fade-in {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* 延遲動畫 */
 .fade-in.delay-1 { transition-delay: 0.1s; }
 .fade-in.delay-2 { transition-delay: 0.2s; }
