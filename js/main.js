@@ -171,13 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 如果頁面有目錄，則啟用目錄相關功能
-    if (tocLinks.length > 0) {
-        // 監聽滾動事件
-        window.addEventListener('scroll', updateActiveTocLink);
-        
-        // 移動端目錄功能 - 重寫為更穩定的版本
-        function initializeMobileTOC() {
+    // 移動端目錄功能 - 重寫為更穩定的版本（獨立於tocLinks）
+    function initializeMobileTOC() {
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
             const mobileTocContent = document.getElementById('mobileTocContent');
             
@@ -230,8 +225,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Debug: Mobile TOC initialized successfully');
         }
         
-        // 初始化手機版目錄
+        // 初始化手機版目錄（所有頁面都執行）
         initializeMobileTOC();
+    
+    // 如果頁面有目錄，則啟用目錄相關功能
+    if (tocLinks.length > 0) {
+        // 監聽滾動事件
+        window.addEventListener('scroll', updateActiveTocLink);
         
         // 為目錄連結添加平滑滾動效果
         tocLinks.forEach(link => {
