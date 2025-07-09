@@ -176,12 +176,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileTocContent = document.getElementById('mobileTocContent');
         
+        console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
+        console.log('Debug: mobileTocContent found:', !!mobileTocContent);
+        
         if (mobileMenuBtn && mobileTocContent) {
+            console.log('Debug: Adding event listener to mobile menu button');
             mobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault(); // 防止默認行為
                 e.stopPropagation(); // 防止事件冒泡
+                console.log('手機版目錄按鈕被點擊'); // 調試用
+                
+                const wasActive = mobileTocContent.classList.contains('active');
                 mobileTocContent.classList.toggle('active');
+                const isActive = mobileTocContent.classList.contains('active');
+                
+                console.log('Debug: TOC state changed from', wasActive, 'to', isActive);
             });
-            
             // 點擊目錄項後關閉下拉選單
             const mobileLinks = mobileTocContent.querySelectorAll('a');
             mobileLinks.forEach(link => {
@@ -196,6 +206,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     mobileTocContent.classList.remove('active');
                 }
             });
+        } else {
+            console.log('Debug: Mobile TOC elements not found');
         }
         
         // 為目錄連結添加平滑滾動效果
