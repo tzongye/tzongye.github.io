@@ -228,53 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 初始化手機版目錄（所有頁面都執行）
         initializeMobileTOC();
         
-        // 滾動淡入動畫
-        function initScrollAnimations() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            // 如果是手機版或不支援Intersection Observer，直接顯示所有元素
-            if (window.innerWidth <= 768 || !window.IntersectionObserver) {
-                fadeElements.forEach(el => {
-                    el.classList.add('visible');
-                });
-                return;
-            }
-            
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // 觀察所有需要淡入動畫的元素
-            fadeElements.forEach(el => {
-                // 如果元素已經在視窗內，立即顯示
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    el.classList.add('visible');
-                } else {
-                    observer.observe(el);
-                }
-            });
-        }
-        
-        // 初始化滾動動畫
-        initScrollAnimations();
-        
-        // 回退機制：如果3秒後還有隱藏的元素，強制顯示
-        setTimeout(() => {
-            document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
-                el.classList.add('visible');
-            });
-        }, 3000);
+        // 滾動淡入動畫 - 移除複雜的動畫邏輯
+        // 暫時移除所有動畫功能，確保內容正常顯示
     
     // 如果頁面有目錄，則啟用目錄相關功能
     if (tocLinks.length > 0) {
