@@ -227,6 +227,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 初始化手機版目錄（所有頁面都執行）
         initializeMobileTOC();
+        
+        // 滾動淡入動畫
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // 觀察所有需要淡入動畫的元素
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // 初始化滾動動畫
+        initScrollAnimations();
     
     // 如果頁面有目錄，則啟用目錄相關功能
     if (tocLinks.length > 0) {
