@@ -97,7 +97,8 @@
     <section id="problems" class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-10">原有問題與設計解決方案</h2>
-            <div class="overflow-x-auto">
+            <!-- 桌機版表格 -->
+            <div class="hidden md:block overflow-x-auto">
                 <table class="min-w-full bg-white rounded-lg shadow-md">
                     <thead>
                         <tr>
@@ -124,6 +125,53 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            
+            <!-- 手機版卡片 -->
+            <div class="md:hidden space-y-4">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">原有問題</h4>
+                        <p class="text-gray-800">契約申購需臨櫃辦理，流程冗長</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">設計解決方案</h4>
+                        <p class="text-gray-800">設計三步驟線上申購流程，支援新申購和既有庫存轉入</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">原有問題</h4>
+                        <p class="text-gray-800">多筆契約資訊分散，難以掌握總體投資狀況</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">設計解決方案</h4>
+                        <p class="text-gray-800">建立統一的契約總覽介面，整合資產分布和績效分析</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">原有問題</h4>
+                        <p class="text-gray-800">契約變更需要紙本作業，無法即時調整投資策略</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">設計解決方案</h4>
+                        <p class="text-gray-800">提供線上契約變更功能，支援即時調整和終止操作</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">原有問題</h4>
+                        <p class="text-gray-800">交易狀態不透明，投資人缺乏掌控感</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">設計解決方案</h4>
+                        <p class="text-gray-800">建立完整的交易追蹤機制，包含在途交易和歷史紀錄</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -210,7 +258,8 @@
             </div>
             <div class="mb-8">
                 <h3 class="text-2xl font-semibold mb-4 text-gray-800">關鍵發現與改進</h3>
-                <div class="overflow-x-auto mb-6">
+                <!-- 桌機版表格 -->
+                <div class="hidden md:block overflow-x-auto mb-6">
                     <table class="min-w-full bg-white rounded-lg shadow-md">
                         <thead>
                             <tr>
@@ -247,6 +296,93 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+                
+                <!-- 手機版卡片 -->
+                <div class="md:hidden space-y-4 mb-6">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="mb-3">
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">問題</h4>
+                            <p class="text-gray-800">卡片資訊混亂，分不清母基金/子基金</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">影響次數</h4>
+                                <p class="text-gray-800">4次</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">實際影響</h4>
+                                <p class="text-gray-800">用戶誤解契約結構</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">解決方案</h4>
+                            <p class="text-gray-800">改為預設列表顯示，桌機版移除卡片模式</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="mb-3">
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">問題</h4>
+                            <p class="text-gray-800">停利方式描述不清楚</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">影響次數</h4>
+                                <p class="text-gray-800">3次</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">實際影響</h4>
+                                <p class="text-gray-800">申購流程中止</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">解決方案</h4>
+                            <p class="text-gray-800">重新撰寫文案，使用更直白的表達方式</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="mb-3">
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">問題</h4>
+                            <p class="text-gray-800">「異動」按鈕位置不符預期</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">影響次數</h4>
+                                <p class="text-gray-800">2次</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">實際影響</h4>
+                                <p class="text-gray-800">用戶在導航列反覆尋找</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">解決方案</h4>
+                            <p class="text-gray-800">強化按鈕視覺、新增導航入口</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="mb-3">
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">問題</h4>
+                            <p class="text-gray-800">找不到「尚未停利明細」入口</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-3">
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">影響次數</h4>
+                                <p class="text-gray-800">2次</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-1">實際影響</h4>
+                                <p class="text-gray-800">查詢任務失敗</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-2">解決方案</h4>
+                            <p class="text-gray-800">按鈕加上「明細」文字，提升高度至 32px</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-6">
                     <p class="text-gray-700 mb-2">以「契約申購」任務為例：</p>
