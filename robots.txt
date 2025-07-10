@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tzongye.github.io/sitemap.xml
+
+# Allow search engines to index the portfolio
+Allow: /index.html
+Allow: /franklin.html
+Allow: /morningstar.html
+Allow: /my104.html
+Allow: /smarthome.html
+Allow: /css/
+Allow: /images/
+
+# Disallow unnecessary files
+Disallow: /js/
+Disallow: *.py
+Disallow: *.sh
+Disallow: /DEVELOPMENT.md
+Disallow: /README.md
