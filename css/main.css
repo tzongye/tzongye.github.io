@@ -497,10 +497,11 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
 /* 專案卡片懸停效果增強 */
 .project-card {
     transform: translateY(0);
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    will-change: transform;
 }
 
 .project-card:hover {
@@ -560,25 +561,13 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
     left: 100%;
 }
 
-/* 文字懸停效果 */
+/* 文字懸停效果 - 移除下劃線 */
 .text-hover {
-    position: relative;
     transition: color 0.3s ease;
 }
 
-.text-hover::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: width 0.3s ease;
-}
-
-.text-hover:hover::after {
-    width: 100%;
+.text-hover:hover {
+    color: var(--color-primary);
 }
 
 .section-title, h2, h3 {
