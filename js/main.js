@@ -50,21 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 燈箱圖片點擊追蹤
-    if (typeof addLightboxToImages === 'function') {
-        const originalOpenLightbox = window.openLightbox;
-        window.openLightbox = function(src, alt) {
-            if (window.umami) {
-                window.umami.track('image-view', {
-                    project: currentProject,
-                    image: alt || 'unnamed-image'
-                });
-            }
-            if (originalOpenLightbox) {
-                originalOpenLightbox(src, alt);
-            }
-        };
-    }
+    // 燈箱圖片點擊追蹤 - 移動到燈箱功能實現後面
 
     // 外部連結點擊追蹤
     const externalLinks = document.querySelectorAll('a[href^="http"], a[href^="mailto:"]');
@@ -109,29 +95,42 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollTimeout = setTimeout(trackScrollDepth, 100);
     });
 
-    // 滾動到頂部按鈕功能
-    const scrollToTopBtn = document.getElementById('scrollToTop');
-    
-    if (scrollToTopBtn) {
-        console.log('Debug: Scroll to top button found');
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
+    // 滾動到頂部按鈕功能 - 簡化版本
+    setTimeout(function() {
+        const scrollToTopBtn = document.getElementById('scrollToTop');
         
-        scrollToTopBtn.addEventListener('click', function() {
-            console.log('Debug: Scroll to top button clicked');
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (scrollToTopBtn) {
+            console.log('Debug: Scroll to top button found');
+            
+            // 滾動顯示/隱藏邏輯
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
             });
-        });
-    } else {
-        console.log('Debug: Scroll to top button not found');
-    }
+            
+            // 點擊事件 - 用 onclick 確保工作
+            scrollToTopBtn.onclick = function() {
+                console.log('Debug: Scroll to top button clicked - onclick');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                return false;
+            };
+            
+            // 也加上 addEventListener 作為備用
+            scrollToTopBtn.addEventListener('click', function() {
+                console.log('Debug: Scroll to top button clicked - addEventListener');
+            });
+            
+            console.log('Debug: Scroll to top button initialized');
+        } else {
+            console.log('Debug: Scroll to top button not found');
+        }
+    }, 100);
     
     // 手機版選單功能
     const menuToggle = document.querySelector('.md\\:hidden');
@@ -171,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 移動端目錄功能 - 簡化版本
-    function initializeMobileTOC() {
+    // 移動端目錄功能 - 直接綁定版本
+    setTimeout(function() {
         console.log('Debug: Starting mobile TOC initialization');
         
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -181,54 +180,50 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
         console.log('Debug: mobileTocContent found:', !!mobileTocContent);
         
-        if (!mobileMenuBtn || !mobileTocContent) {
-            console.log('Debug: Mobile TOC elements not found');
-            return;
-        }
-        
-        console.log('Debug: Initializing mobile TOC');
-        
-        // 主要點擊事件
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('手機版目錄按鈕被點擊');
+        if (mobileMenuBtn && mobileTocContent) {
+            console.log('Debug: Binding mobile TOC events');
             
-            const isActive = mobileTocContent.classList.contains('active');
+            // 移除可能存在的舊事件
+            mobileMenuBtn.onclick = null;
             
-            if (isActive) {
-                mobileTocContent.classList.remove('active');
-                console.log('關閉手機版目錄');
-            } else {
-                mobileTocContent.classList.add('active');
-                console.log('開啟手機版目錄');
-            }
-        });
-        
-        // 點擊目錄項後關閉下拉選單
-        const mobileLinks = mobileTocContent.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileTocContent.classList.remove('active');
-                console.log('點擊目錄連結，關閉手機版目錄');
-            });
-        });
-        
-        // 點擊外部時關閉目錄
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.mobile-toc')) {
-                if (mobileTocContent.classList.contains('active')) {
+            // 直接使用 onclick
+            mobileMenuBtn.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('手機版目錄按鈕被點擊 - onclick');
+                
+                const isActive = mobileTocContent.classList.contains('active');
+                
+                if (isActive) {
                     mobileTocContent.classList.remove('active');
-                    console.log('點擊外部，關閉手機版目錄');
+                    console.log('關閉手機版目錄');
+                } else {
+                    mobileTocContent.classList.add('active');
+                    console.log('開啟手機版目錄');
                 }
-            }
-        });
-        
-        console.log('Debug: Mobile TOC initialized successfully');
-    }
-    
-    // 初始化手機版目錄（所有頁面都執行）
-    initializeMobileTOC();
+                
+                return false;
+            };
+            
+            // 也試試 addEventListener
+            mobileMenuBtn.addEventListener('click', function(e) {
+                console.log('手機版目錄按鈕被點擊 - addEventListener');
+            });
+            
+            // 點擊目錄項後關閉下拉選單
+            const mobileLinks = mobileTocContent.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileTocContent.classList.remove('active');
+                    console.log('點擊目錄連結，關閉手機版目錄');
+                });
+            });
+            
+            console.log('Debug: Mobile TOC events bound successfully');
+        } else {
+            console.log('Debug: Mobile TOC elements not found');
+        }
+    }, 100);
         
         // 滾動淡入動畫 - 移除複雜的動畫邏輯
         // 暫時移除所有動畫功能，確保內容正常顯示
@@ -297,6 +292,20 @@ document.addEventListener('DOMContentLoaded', function() {
     if (lightbox && lightboxImg) {
         // 初始調用添加燈箱功能
         addLightboxToImages();
+        
+        // 燈箱圖片點擊追蹤 - 在 addLightboxToImages 定義後執行
+        const originalOpenLightbox = window.openLightbox;
+        window.openLightbox = function(src, alt) {
+            if (window.umami) {
+                window.umami.track('image-view', {
+                    project: currentProject,
+                    image: alt || 'unnamed-image'
+                });
+            }
+            if (originalOpenLightbox) {
+                originalOpenLightbox(src, alt);
+            }
+        };
         
         // 打開燈箱
         function openLightbox(src, alt) {
