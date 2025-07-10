@@ -171,62 +171,64 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 移動端目錄功能 - 重寫為更穩定的版本（獨立於tocLinks）
+    // 移動端目錄功能 - 簡化版本
     function initializeMobileTOC() {
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileTocContent = document.getElementById('mobileTocContent');
-            
-            console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
-            console.log('Debug: mobileTocContent found:', !!mobileTocContent);
-            
-            if (!mobileMenuBtn || !mobileTocContent) {
-                console.log('Debug: Mobile TOC elements not found');
-                return;
-            }
-            
-            console.log('Debug: Initializing mobile TOC');
-            
-            // 主要點擊事件
-            mobileMenuBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('手機版目錄按鈕被點擊');
-                
-                const isActive = mobileTocContent.classList.contains('active');
-                
-                if (isActive) {
-                    mobileTocContent.classList.remove('active');
-                    console.log('關閉手機版目錄');
-                } else {
-                    mobileTocContent.classList.add('active');
-                    console.log('開啟手機版目錄');
-                }
-            });
-            
-            // 點擊目錄項後關閉下拉選單
-            const mobileLinks = mobileTocContent.querySelectorAll('a');
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    mobileTocContent.classList.remove('active');
-                    console.log('點擊目錄連結，關閉手機版目錄');
-                });
-            });
-            
-            // 點擊外部時關閉目錄
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.mobile-toc')) {
-                    if (mobileTocContent.classList.contains('active')) {
-                        mobileTocContent.classList.remove('active');
-                        console.log('點擊外部，關閉手機版目錄');
-                    }
-                }
-            });
-            
-            console.log('Debug: Mobile TOC initialized successfully');
+        console.log('Debug: Starting mobile TOC initialization');
+        
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileTocContent = document.getElementById('mobileTocContent');
+        
+        console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
+        console.log('Debug: mobileTocContent found:', !!mobileTocContent);
+        
+        if (!mobileMenuBtn || !mobileTocContent) {
+            console.log('Debug: Mobile TOC elements not found');
+            return;
         }
         
-        // 初始化手機版目錄（所有頁面都執行）
-        initializeMobileTOC();
+        console.log('Debug: Initializing mobile TOC');
+        
+        // 主要點擊事件
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('手機版目錄按鈕被點擊');
+            
+            const isActive = mobileTocContent.classList.contains('active');
+            
+            if (isActive) {
+                mobileTocContent.classList.remove('active');
+                console.log('關閉手機版目錄');
+            } else {
+                mobileTocContent.classList.add('active');
+                console.log('開啟手機版目錄');
+            }
+        });
+        
+        // 點擊目錄項後關閉下拉選單
+        const mobileLinks = mobileTocContent.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileTocContent.classList.remove('active');
+                console.log('點擊目錄連結，關閉手機版目錄');
+            });
+        });
+        
+        // 點擊外部時關閉目錄
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.mobile-toc')) {
+                if (mobileTocContent.classList.contains('active')) {
+                    mobileTocContent.classList.remove('active');
+                    console.log('點擊外部，關閉手機版目錄');
+                }
+            }
+        });
+        
+        console.log('Debug: Mobile TOC initialized successfully');
+    }
+    
+    // 初始化手機版目錄（所有頁面都執行）
+    initializeMobileTOC();
         
         // 滾動淡入動畫 - 移除複雜的動畫邏輯
         // 暫時移除所有動畫功能，確保內容正常顯示
