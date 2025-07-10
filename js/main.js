@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollToTopBtn = document.getElementById('scrollToTop');
         
         if (scrollToTopBtn) {
-            console.log('Debug: Scroll to top button found');
+            console.log('[Isaac Portfolio] Scroll to top button found');
             
             // 滾動顯示/隱藏邏輯
             window.addEventListener('scroll', function() {
@@ -111,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // 點擊事件 - 用 onclick 確保工作
+            // 點擊事件
             scrollToTopBtn.onclick = function() {
-                console.log('Debug: Scroll to top button clicked - onclick');
+                console.log('[Isaac Portfolio] Scroll to top button clicked');
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -121,27 +121,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             };
             
-            // 也加上 addEventListener 作為備用
-            scrollToTopBtn.addEventListener('click', function() {
-                console.log('Debug: Scroll to top button clicked - addEventListener');
-            });
-            
-            console.log('Debug: Scroll to top button initialized');
+            console.log('[Isaac Portfolio] Scroll to top button initialized');
         } else {
-            console.log('Debug: Scroll to top button not found');
+            console.log('[Isaac Portfolio] Scroll to top button not found');
         }
     }, 100);
     
-    // 手機版選單功能
-    const menuToggle = document.querySelector('.md\\:hidden');
-    const mobileNav = document.querySelector('nav');
-    
-    if (menuToggle && mobileNav) {
-        menuToggle.addEventListener('click', function() {
-            mobileNav.classList.toggle('hidden');
-            mobileNav.classList.toggle('flex');
-        });
-    }
     
     // 目錄跟蹤滾動位置
     const sections = document.querySelectorAll('section[id]');
@@ -172,16 +157,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 移動端目錄功能 - 直接綁定版本
     setTimeout(function() {
-        console.log('Debug: Starting mobile TOC initialization');
+        console.log('[Isaac Portfolio] Mobile TOC initialization started');
         
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileTocContent = document.getElementById('mobileTocContent');
         
-        console.log('Debug: mobileMenuBtn found:', !!mobileMenuBtn);
-        console.log('Debug: mobileTocContent found:', !!mobileTocContent);
+        console.log('[Isaac Portfolio] Mobile menu button found:', !!mobileMenuBtn);
+        console.log('[Isaac Portfolio] Mobile TOC content found:', !!mobileTocContent);
         
         if (mobileMenuBtn && mobileTocContent) {
-            console.log('Debug: Binding mobile TOC events');
+            console.log('[Isaac Portfolio] Binding mobile TOC events');
             
             // 移除可能存在的舊事件
             mobileMenuBtn.onclick = null;
@@ -190,43 +175,36 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenuBtn.onclick = function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('手機版目錄按鈕被點擊 - onclick');
+                console.log('[Isaac Portfolio] Mobile TOC button clicked');
                 
                 const isActive = mobileTocContent.classList.contains('active');
                 
                 if (isActive) {
                     mobileTocContent.classList.remove('active');
-                    console.log('關閉手機版目錄');
+                    console.log('[Isaac Portfolio] Mobile TOC closed');
                 } else {
                     mobileTocContent.classList.add('active');
-                    console.log('開啟手機版目錄');
+                    console.log('[Isaac Portfolio] Mobile TOC opened');
                 }
                 
                 return false;
             };
-            
-            // 也試試 addEventListener
-            mobileMenuBtn.addEventListener('click', function(e) {
-                console.log('手機版目錄按鈕被點擊 - addEventListener');
-            });
             
             // 點擊目錄項後關閉下拉選單
             const mobileLinks = mobileTocContent.querySelectorAll('a');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     mobileTocContent.classList.remove('active');
-                    console.log('點擊目錄連結，關閉手機版目錄');
+                    console.log('[Isaac Portfolio] Mobile TOC closed after link click');
                 });
             });
             
-            console.log('Debug: Mobile TOC events bound successfully');
+            console.log('[Isaac Portfolio] Mobile TOC events bound successfully');
         } else {
-            console.log('Debug: Mobile TOC elements not found');
+            console.log('[Isaac Portfolio] Mobile TOC elements not found');
         }
     }, 100);
         
-        // 滾動淡入動畫 - 移除複雜的動畫邏輯
-        // 暫時移除所有動畫功能，確保內容正常顯示
     
     // 如果頁面有目錄，則啟用目錄相關功能
     if (tocLinks.length > 0) {
@@ -293,22 +271,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // 初始調用添加燈箱功能
         addLightboxToImages();
         
-        // 燈箱圖片點擊追蹤 - 在 addLightboxToImages 定義後執行
-        const originalOpenLightbox = window.openLightbox;
-        window.openLightbox = function(src, alt) {
-            if (window.umami) {
+        
+        // 打開燈箱
+        function openLightbox(src, alt) {
+            // Umami 追蹤
+            if (window.umami && currentProject) {
                 window.umami.track('image-view', {
                     project: currentProject,
                     image: alt || 'unnamed-image'
                 });
             }
-            if (originalOpenLightbox) {
-                originalOpenLightbox(src, alt);
-            }
-        };
-        
-        // 打開燈箱
-        function openLightbox(src, alt) {
+            
             lightboxImg.src = src;
             lightboxImg.alt = alt || '圖片預覽';
             lightbox.style.display = 'flex';
@@ -318,6 +291,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // 綁定ESC鍵關閉
             document.addEventListener('keydown', handleEscKey);
         }
+        
+        // 將 openLightbox 函數暴露到全局作用域
+        window.openLightbox = openLightbox;
         
         // 關閉燈箱
         function closeLightbox() {
