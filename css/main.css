@@ -645,8 +645,8 @@ h1 .number, h2 .number, h3 .number, h4 .number, h5 .number, h6 .number {
     position: fixed;
     top: 1rem;
     right: 1rem;
-    z-index: 1000;
-    background: var(--color-white);
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.95);
     border: 1px solid var(--color-border);
     border-radius: 50%;
     width: 3rem;
@@ -656,8 +656,9 @@ h1 .number, h2 .number, h3 .number, h4 .number, h5 .number, h6 .number {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px var(--color-shadow-light);
-    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .theme-toggle:hover {
@@ -673,6 +674,17 @@ h1 .number, h2 .number, h3 .number, h4 .number, h5 .number, h6 .number {
 
 .theme-toggle:hover i {
     transform: rotate(20deg);
+}
+
+/* 深色模式下的按鈕樣式 */
+[data-theme="dark"] .theme-toggle {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: #334155;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .theme-toggle i {
+    color: #F1F5F9;
 }
 
 /* 無障礙支援 */
