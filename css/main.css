@@ -12,6 +12,7 @@ body {
 /* =================================
    藍灰色調色彩系統與全站色彩統一
    ================================= */
+/* 淺色主題（預設） */
 :root {
     /* 藍色調色彩系統 - 從淺到深 */
     --color-primary: #8D6E63; /* 保持原有的暖色調作為強調色 */
@@ -38,6 +39,44 @@ body {
     --font-body: 'Noto Sans TC', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
     --font-numeric-heading: 'Inter', 'SF Pro Display', 'Segoe UI Variable', monospace;
     --font-numeric-body: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', monospace;
+}
+
+/* 深色主題 */
+[data-theme="dark"] {
+    --color-primary: #D2B48C; /* 深色下的暖色調調亮 */
+    --color-secondary: #64748B; /* 深色下的藍灰色 */
+    --color-background-light: #0F172A; /* 深色背景 */
+    --color-text-dark: #F1F5F9;    /* 深色下的主要文字 */
+    --color-text-medium: #CBD5E1;  /* 深色下的中等文字 */
+    --color-text-light: #94A3B8;   /* 深色下的次要文字 */
+    --color-white: #0F172A;
+    --color-shadow-light: rgba(0, 0, 0, 0.3); /* 深色下的陰影 */
+    --button-bg-transparent: rgba(241, 245, 249, 0.85);
+    --button-bg-hover: rgba(241, 245, 249, 0.95);
+    --color-border: #334155; /* 深色下的邊框 */
+    --color-bg-gray-50: #1E293B;   /* 深色下的淺色背景 */
+    --color-bg-gray-100: #334155;  /* 深色下的中深背景 */
+    --color-bg-gray-900: #F1F5F9;  /* 深色下的深色背景（footer） */
+}
+
+/* 系統偏好跟隨 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #D2B48C;
+        --color-secondary: #64748B;
+        --color-background-light: #0F172A;
+        --color-text-dark: #F1F5F9;
+        --color-text-medium: #CBD5E1;
+        --color-text-light: #94A3B8;
+        --color-white: #0F172A;
+        --color-shadow-light: rgba(0, 0, 0, 0.3);
+        --button-bg-transparent: rgba(241, 245, 249, 0.85);
+        --button-bg-hover: rgba(241, 245, 249, 0.95);
+        --color-border: #334155;
+        --color-bg-gray-50: #1E293B;
+        --color-bg-gray-100: #334155;
+        --color-bg-gray-900: #F1F5F9;
+    }
 }
 
 /* Header Styles */
@@ -597,6 +636,97 @@ h1 .number, h2 .number, h3 .number, h4 .number, h5 .number, h6 .number {
     font-family: var(--font-numeric-body);
     font-weight: 500;
     font-variant-numeric: proportional-nums;
+}
+
+/* =================================
+   深色模式切換按鈕
+   ================================= */
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--color-shadow-light);
+    backdrop-filter: blur(8px);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px var(--color-shadow-light);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover i {
+    transform: rotate(20deg);
+}
+
+/* 無障礙支援 */
+.theme-toggle:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* 主題切換動畫 */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 圖片在深色模式下的處理 */
+[data-theme="dark"] img {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+[data-theme="dark"] img:hover {
+    opacity: 1;
+}
+
+/* 表格在深色模式下的優化 */
+[data-theme="dark"] table {
+    background-color: var(--color-bg-gray-100);
+}
+
+[data-theme="dark"] th {
+    background-color: var(--color-bg-gray-50) !important;
+    color: var(--color-text-dark) !important;
+}
+
+[data-theme="dark"] td {
+    border-color: var(--color-border) !important;
+}
+
+/* 載入動畫避免閃爍 */
+.theme-transition {
+    transition: none !important;
+}
+
+/* Reduced motion 支援 */
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .theme-toggle i,
+    body,
+    * {
+        transition: none !important;
+    }
 }
 
 /* 表格標題顏色（移除 !important，提升選擇器權重） */
