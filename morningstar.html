@@ -84,23 +84,19 @@
   <div id="navbar"></div>
   <!-- 目錄 TOC -->
   <nav class="toc">
-    <a class="toc-link" href="#result">專案成果對比</a>
-    <a class="toc-link" href="#background">專案背景</a>
-    <a class="toc-link" href="#challenge">設計挑戰與解決策略</a>
-    <a class="toc-link" href="#system">設計系統與解決方案</a>
-    <a class="toc-link" href="#process">設計過程</a>
-    <a class="toc-link" href="#value">專案價值與成果</a>
-    <a class="toc-link" href="#reflection">反思與學習</a>
+    <a class="toc-link" href="#result">專案概述</a>
+    <a class="toc-link" href="#challenge">核心設計挑戰</a>
+    <a class="toc-link" href="#system">設計解決方案</a>
+    <a class="toc-link" href="#value">專案成果</a>
+    <a class="toc-link" href="#reflection">專案反思與學習</a>
   </nav>
   <div class="mobile-toc">
     <button id="mobileMenuBtn" class="mobile-toc-btn">目錄 <i class="fas fa-list"></i></button>
     <div id="mobileTocContent" class="mobile-toc-content">
-      <a class="toc-link" href="#result">專案成果對比</a>
-      <a class="toc-link" href="#background">專案背景</a>
-      <a class="toc-link" href="#challenge">設計挑戰與解決策略</a>
-      <a class="toc-link" href="#system">設計系統與解決方案</a>
-      <a class="toc-link" href="#process">設計過程</a>
-      <a class="toc-link" href="#value">專案價值與成果</a>
+      <a class="toc-link" href="#result">專案概述</a>
+      <a class="toc-link" href="#challenge">核心設計挑戰</a>
+      <a class="toc-link" href="#system">設計解決方案</a>
+      <a class="toc-link" href="#value">專案成果</a>
       <a class="toc-link" href="#reflection">專案反思與學習</a>
     </div>
   </div>
@@ -108,7 +104,7 @@
   <!-- Hero Section -->
   <section class="hero-section pt-32 pb-24 md:pt-40 md:pb-32">
     <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-4xl">
+      <div class="container mx-auto">
         <h1 class="text-4xl md:text-5xl font-bold mb-6"><span class="nowrap">Morningstar</span> 金融客戶 <span class="nowrap">UI/UX</span> 重建專案</h1>
         <p class="text-xl md:text-2xl mb-8">在限定時間內完成多套金融服務界面重建，服務香港主要金融機構</p>
       </div>
@@ -118,8 +114,8 @@
   <section id="result" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold mb-10">專案概述</h2>
-      <div class="max-w-4xl">
-        <div class="glass-card p-8 mb-8">
+      <div class="container mx-auto">
+        <div class="bg-white p-8 mb-8 rounded-lg border border-gray-200">
           <h3 class="text-2xl font-semibold mb-4 text-gray-800">重建金融服務界面，統一設計系統</h3>
           <p class="text-lg text-gray-700 mb-4">
             負責 <span class="nowrap">Morningstar</span> 企業元件客戶遷移專案的 UI/UX 設計工作，需要重建多套金融服務界面，
@@ -141,7 +137,7 @@
           </div>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="glass-card p-6">
+          <div class="bg-white p-6 rounded-lg border border-gray-200">
             <h4 class="text-lg font-semibold mb-2 text-gray-800">我的角色</h4>
             <p class="text-gray-700 mb-2">
               <strong>Product Designer</strong>
@@ -150,7 +146,7 @@
               負責整體界面設計與團隊協作
             </p>
           </div>
-          <div class="glass-card p-6">
+          <div class="bg-white p-6 rounded-lg border border-gray-200">
             <h4 class="text-lg font-semibold mb-2 text-gray-800">專案時間</h4>
             <p class="text-gray-700 mb-2">
               <strong>2024年5月開始</strong>
@@ -164,71 +160,17 @@
     </div>
   </section>
 
-  <section id="background" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-10">專案背景</h2>
-      <div class="max-w-4xl">
-        <div class="mb-8">
-          <h3 class="text-2xl font-semibold mb-4 text-gray-800">為什麼需要重建界面？</h3>
-          <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg">
-              <h4 class="font-semibold mb-2 text-gray-800">平台整合需求</h4>
-              <p class="text-gray-700 text-sm">
-                Morningstar 需要將多個客戶的服務整合到統一平台，要求界面的一致性和標準化。
-              </p>
-            </div>
-            <div class="bg-white p-6 rounded-lg">
-              <h4 class="font-semibold mb-2 text-gray-800">用戶體驗統一</h4>
-              <p class="text-gray-700 text-sm">
-                現有的多套界面系統設計語言不一致，需要建立統一的用戶體驗標準。
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="bg-blue-50 p-6 rounded-lg">
-          <h3 class="text-lg font-semibold mb-3 text-gray-800">設計挑戰</h3>
-          <p class="text-gray-700 mb-3">
-            需要在<strong>緊迫的時間壓力</strong>下，重建多套不同的金融服務界面，
-            並確保每個客戶的<strong>品牌識別和使用習慣</strong>在新界面中得到保留。
-          </p>
-          <ul class="text-sm text-gray-700 space-y-1">
-            <li>• 4 種不同的界面系統需要統一設計語言</li>
-            <li>• 金融功能的複雜性要求專業的 UX 設計</li>
-            <li>• 多語言界面（繁中、簡中、英文）的一致性</li>
-            <li>• 各客戶品牌客製化需求的平衡</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="challenge" class="py-16 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold mb-10">核心設計挑戰</h2>
-      <div class="grid md:grid-cols-2 gap-10">
-        <div>
-          <h3 class="text-2xl font-semibold mb-4 text-gray-800">技術架構複雜性</h3>
-          <div class="bg-gray-50 p-6 rounded-lg mb-4">
-            <h4 class="font-semibold mb-2">4 種不同技術架構：</h4>
-            <ul class="text-sm text-gray-700 space-y-1">
-              <li><strong>Type A</strong> - .NET + SQL Server（客製化解決方案）</li>
-              <li><strong>Type B</strong> - Vue.js 元件（客戶自託管）</li>
-              <li><strong>Type C</strong> - IWT 模組（Morningstar 託管）</li>
-              <li><strong>Type D</strong> - Vue.js 元件（Morningstar 託管）</li>
-            </ul>
-          </div>
-          <p class="text-gray-700">
-            每種架構都有不同的<strong>安全認證機制</strong>、<strong>數據來源</strong>和<strong>託管需求</strong>，需要個別設計遷移策略。
-          </p>
-        </div>
+      <div class="grid md:grid-cols-1 gap-10">
         <div>
           <h3 class="text-2xl font-semibold mb-4 text-gray-800">客戶體驗一致性</h3>
           <ul class="list-disc pl-6 text-gray-700 mb-6">
             <li><strong>零學習成本</strong> - 用戶操作習慣不能改變</li>
             <li><strong>多語言支援</strong> - 繁中/簡中/英文界面</li>
             <li><strong>品牌客製化</strong> - 每家銀行都有自己的 CI/VI 需求</li>
-            <li><strong>合規要求</strong> - 金融業的嚴格安全標準</li>
           </ul>
           <div class="bg-blue-50 p-4 rounded-lg">
             <p class="text-sm text-gray-700">
@@ -243,29 +185,7 @@
   <section id="system" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold mb-10">設計解決方案</h2>
-      <div class="max-w-4xl">
-        <h3 class="text-2xl font-semibold mb-6 text-gray-800">分類遷移策略</h3>
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-          <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-500">
-            <h4 class="font-semibold mb-2 text-green-700">低風險遷移 (Type A)</h4>
-            <p class="text-sm text-gray-700 mb-2">
-              <strong>策略：</strong>直接移植原始碼到新平台
-            </p>
-            <p class="text-sm text-gray-700">
-              <strong>適用：</strong>中銀香港、南洋商業銀行等 8 家客戶
-            </p>
-          </div>
-          <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-yellow-500">
-            <h4 class="font-semibold mb-2 text-yellow-700">中風險重建 (Type B/C/D)</h4>
-            <p class="text-sm text-gray-700 mb-2">
-              <strong>策略：</strong>重新開發，保持功能一致性
-            </p>
-            <p class="text-sm text-gray-700">
-              <strong>適用：</strong>工銀亞洲、星展銀行等 11 家客戶
-            </p>
-          </div>
-        </div>
-        
+      <div class="container mx-auto">
         <h3 class="text-2xl font-semibold mb-6 text-gray-800">統一設計系統</h3>
         <div class="bg-white p-6 rounded-lg mb-6">
           <div class="grid md:grid-cols-3 gap-6">
@@ -281,8 +201,6 @@
             <div>
               <h4 class="font-semibold mb-2">認證機制</h4>
               <ul class="text-sm text-gray-700 space-y-1">
-                <li>• 無縫登入 (Seamless Login)</li>
-                <li>• Token 驗證</li>
                 <li>• 客製化管理後台</li>
               </ul>
             </div>
@@ -300,65 +218,25 @@
     </div>
   </section>
 
-  <section id="process" class="py-16 bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-10">執行流程</h2>
-      <div class="max-w-4xl">
-        <div class="grid md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span class="text-2xl font-bold text-blue-600">1</span>
-            </div>
-            <h4 class="font-semibold mb-2">現況分析</h4>
-            <p class="text-sm text-gray-700">盤點 19 家客戶的技術架構與功能需求</p>
-          </div>
-          <div class="text-center">
-            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span class="text-2xl font-bold text-blue-600">2</span>
-            </div>
-            <h4 class="font-semibold mb-2">風險評估</h4>
-            <p class="text-sm text-gray-700">依據客戶信心度排定遷移優先序</p>
-          </div>
-          <div class="text-center">
-            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span class="text-2xl font-bold text-blue-600">3</span>
-            </div>
-            <h4 class="font-semibold mb-2">分階段遷移</h4>
-            <p class="text-sm text-gray-700">從高信心客戶開始，逐步完成遷移</p>
-          </div>
-          <div class="text-center">
-            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-              <span class="text-2xl font-bold text-blue-600">4</span>
-            </div>
-            <h4 class="font-semibold mb-2">測試驗證</h4>
-            <p class="text-sm text-gray-700">多環境測試確保功能完整性</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="value" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold mb-10">專案成果</h2>
-      <div class="max-w-4xl">
+      <div class="container mx-auto">
         <div class="grid md:grid-cols-2 gap-8 mb-8">
-          <div class="bg-white p-6 rounded-lg shadow-sm">
+          <div class="bg-white p-6 rounded-lg border border-gray-200">
             <h3 class="text-xl font-semibold mb-4 text-gray-800">設計交付物</h3>
             <ul class="space-y-2 text-gray-700">
               <li>✅ 統一的金融界面視覺語言</li>
               <li>✅ 可重用的 UI 組件庫</li>
               <li>✅ 支援多品牌客製化的設計框架</li>
-              <li>✅ 完整的遷移技術規格文檔</li>
             </ul>
           </div>
-          <div class="bg-white p-6 rounded-lg shadow-sm">
+          <div class="bg-white p-6 rounded-lg border border-gray-200">
             <h3 class="text-xl font-semibold mb-4 text-gray-800">專案影響</h3>
             <ul class="space-y-2 text-gray-700">
-              <li>🎯 19 家金融機構順利遷移</li>
-              <li>🎯 建立 Morningstar 與 Systemweb 合作模式</li>
+              <li>🎯 主要金融機構順利遷移</li>
               <li>🎯 降低後續維護與更新成本</li>
-              <li>🎯 提升系統穩定性與安全性</li>
             </ul>
           </div>
         </div>
@@ -368,7 +246,7 @@
           <p class="text-gray-700">
             這個專案讓我深度理解了<strong>大規模系統遷移</strong>的複雜性，特別是在金融業的嚴格要求下。
             學會如何在技術限制與用戶需求之間找到平衡點，以及如何設計<strong>向下相容</strong>的解決方案。
-            最重要的是，體會到在B2B專案中<strong>風險管控</strong>比創新更為重要。
+            最重要的是，體會到在 B2B 專案中<strong>風險管控</strong>比創新更為重要。
           </p>
         </div>
       </div>
