@@ -344,4 +344,190 @@ document.addEventListener('DOMContentLoaded', function() {
             subtree: true
         });
     }
+    
+    // =================================
+    // 圖片對比滑桿功能
+    // =================================
+    class WebsiteCompare {
+        constructor(container) {
+            this.container = container;
+            this.slider = container.querySelector('.before-after-slider');
+            this.handle = container.querySelector('.slider-handle');
+            this.beforeImage = container.querySelector('.before-image');
+            this.afterImage = container.querySelector('.after-image');
+            this.isDragging = false;
+            this.isImageDragging = false;
+            this.imageStartX = 0;
+            this.imageStartY = 0;
+            this.imageCurrentX = 0;
+            this.imageCurrentY = 0;
+            
+            if (this.slider && this.handle && this.afterImage) {
+                this.init();
+            }
+        }
+        
+        init() {
+            // 滑桿拖曳事件
+            this.handle.addEventListener('mousedown', this.startDrag.bind(this));
+            document.addEventListener('mousemove', this.drag.bind(this));
+            document.addEventListener('mouseup', this.stopDrag.bind(this));
+            
+            // 滑桿觸控事件
+            this.handle.addEventListener('touchstart', this.startDrag.bind(this), { passive: false });
+            document.addEventListener('touchmove', this.drag.bind(this), { passive: false });
+            document.addEventListener('touchend', this.stopDrag.bind(this));
+            
+            // 圖片滾動事件
+            this.setupImageScrolling();
+            
+            // 點擊跳轉（避免與圖片拖曳衝突）
+            this.slider.addEventListener('click', this.jumpTo.bind(this));
+            
+            // Umami 追蹤
+            this.trackInteraction();
+        }
+        
+        setupImageScrolling() {
+            // 滑鼠滾輪事件
+            this.slider.addEventListener('wheel', this.scrollImage.bind(this), { passive: false });
+            
+            // 初始化滾動位置
+            this.scrollY = 0;
+        }
+        
+        scrollImage(e) {
+            // 防止頁面滾動
+            e.preventDefault();
+            
+            // 滾動靈敏度
+            const scrollSpeed = 30;
+            
+            // 計算滾動方向和距離
+            const deltaY = e.deltaY;
+            this.scrollY += deltaY > 0 ? scrollSpeed : -scrollSpeed;
+            
+            // 獲取容器尺寸
+            const sliderRect = this.slider.getBoundingClientRect();
+            
+            // 獲取圖片的自然尺寸來計算滾動範圍
+            const img = new Image();
+            img.src = this.beforeImage.src;
+            
+            // 等待圖片載入完成再計算
+            if (img.complete || img.naturalWidth > 0) {
+                this.calculateScrollLimits(img, sliderRect);
+            } else {
+                img.onload = () => {
+                    this.calculateScrollLimits(img, sliderRect);
+                };
+            }
+        }
+        
+        calculateScrollLimits(img, sliderRect) {
+            const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+            const containerAspectRatio = sliderRect.width / sliderRect.height;
+            
+            let maxScrollY = 0;
+            
+            if (imgAspectRatio > containerAspectRatio) {
+                // 圖片較寬，會被上下裁切，可以滾動
+                const actualImageHeight = sliderRect.width / imgAspectRatio;
+                maxScrollY = Math.max(0, actualImageHeight - sliderRect.height);
+            }
+            
+            // 限制滾動範圍
+            this.scrollY = Math.max(0, Math.min(maxScrollY, this.scrollY));
+            
+            // 應用滾動變換
+            const transform = `translateY(-${this.scrollY}px)`;
+            this.beforeImage.style.transform = transform;
+            this.afterImage.style.transform = transform;
+            
+            // 追蹤滾動行為
+            if (window.umami && currentProject) {
+                window.umami.track('image-scroll', {
+                    project: currentProject,
+                    action: 'scroll-view',
+                    scrollPosition: Math.round((this.scrollY / maxScrollY) * 100)
+                });
+            }
+        }
+        
+        
+        startDrag(e) {
+            this.isDragging = true;
+            e.preventDefault();
+            
+            // 追蹤開始拖曳
+            if (window.umami && currentProject) {
+                window.umami.track('compare-slider-start', {
+                    project: currentProject,
+                    action: 'drag-start'
+                });
+            }
+        }
+        
+        drag(e) {
+            if (!this.isDragging) return;
+            
+            const rect = this.slider.getBoundingClientRect();
+            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+            const percent = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+            
+            this.updateSlider(percent);
+            e.preventDefault();
+        }
+        
+        stopDrag() {
+            if (this.isDragging) {
+                // 追蹤結束拖曳
+                if (window.umami && currentProject) {
+                    window.umami.track('compare-slider-end', {
+                        project: currentProject,
+                        action: 'drag-end'
+                    });
+                }
+            }
+            this.isDragging = false;
+        }
+        
+        jumpTo(e) {
+            if (this.isDragging || this.isImageDragging || e.target === this.handle || this.handle.contains(e.target)) return;
+            
+            const rect = this.slider.getBoundingClientRect();
+            const percent = ((e.clientX - rect.left) / rect.width) * 100;
+            this.updateSlider(percent);
+            
+            // 追蹤點擊跳轉
+            if (window.umami && currentProject) {
+                window.umami.track('compare-slider-jump', {
+                    project: currentProject,
+                    action: 'click-jump',
+                    position: percent.toFixed(0)
+                });
+            }
+        }
+        
+        updateSlider(percent) {
+            this.handle.style.left = `${percent}%`;
+            this.afterImage.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        }
+        
+        trackInteraction() {
+            // 追蹤滑桿載入
+            if (window.umami && currentProject) {
+                window.umami.track('compare-slider-load', {
+                    project: currentProject,
+                    component: 'before-after-slider'
+                });
+            }
+        }
+    }
+    
+    // 初始化所有對比組件
+    const compareContainers = document.querySelectorAll('.website-compare-container');
+    compareContainers.forEach(container => {
+        new WebsiteCompare(container);
+    });
 });

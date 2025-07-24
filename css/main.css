@@ -40,6 +40,209 @@ body {
     --font-numeric-body: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', monospace;
 }
 
+/* =================================
+   圖片對比滑桿功能樣式
+   ================================= */
+.website-compare-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    box-shadow: 0 10px 30px rgba(45, 55, 72, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--color-white);
+}
+
+.before-after-slider {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    cursor: ew-resize;
+    background: var(--color-bg-gray-50);
+}
+
+/* 桌機版對比容器 */
+.before-after-slider.desktop {
+    height: 800px;
+    max-height: 70vh;
+}
+
+/* 手機版對比容器 */  
+.before-after-slider.mobile {
+    height: 800px;
+    max-height: 70vh;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.before-image, .after-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: transform 0.1s ease;
+}
+
+/* 桌機版圖片 - 左右撐滿，上下可截掉 */
+.before-after-slider.desktop .before-image,
+.before-after-slider.desktop .after-image {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* 手機版圖片 - 左右撐滿，上下可截掉 */
+.before-after-slider.mobile .before-image,
+.before-after-slider.mobile .after-image {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+
+.after-image {
+    clip-path: inset(0 50% 0 0);
+    transition: clip-path 0.1s ease;
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: var(--color-white);
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: ew-resize;
+    box-shadow: 0 0 0 1px rgba(45, 55, 72, 0.1);
+}
+
+.handle-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    background: var(--color-white);
+    border: 3px solid var(--color-primary);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.15);
+    transition: all 0.2s ease;
+}
+
+.handle-circle:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(45, 55, 72, 0.2);
+}
+
+.arrow-left, .arrow-right {
+    font-size: 16px;
+    color: var(--color-primary);
+    font-weight: bold;
+    margin: 0;
+}
+
+.compare-labels {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.before-label, .after-label {
+    background: var(--button-bg-transparent);
+    color: var(--color-white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.compare-title {
+    padding: 1.5rem 2rem;
+    background: var(--color-bg-gray-50);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.compare-title h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
+
+.compare-description {
+    margin: 0.5rem 0 0 0;
+    color: var(--color-text-medium);
+    font-size: 0.95rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .website-compare-container {
+        margin: 1rem;
+        border-radius: 8px;
+    }
+    
+    .before-after-slider {
+        height: 400px;
+    }
+    
+    .compare-labels {
+        padding: 0 15px;
+    }
+    
+    .before-label, .after-label {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .compare-title {
+        padding: 1rem 1.5rem;
+    }
+    
+    .handle-circle {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .before-after-slider {
+        height: 300px;
+    }
+    
+    .compare-labels {
+        top: 15px;
+        padding: 0 10px;
+    }
+    
+    .handle-circle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .arrow-left, .arrow-right {
+        font-size: 14px;
+    }
+}
+
 /* Header Styles */
 header {
     background: rgba(255, 255, 255, 0.9); /* More opaque white */
