@@ -389,69 +389,107 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         setupImageScrolling() {
-            // 滑鼠滾輪事件
-            this.slider.addEventListener('wheel', this.scrollImage.bind(this), { passive: false });
+            // 暫時關閉滾動功能
+            // this.slider.addEventListener('wheel', this.scrollImage.bind(this), { passive: false });
             
-            // 初始化滾動位置
+            // 初始化滾動位置和範圍
             this.scrollY = 0;
+            this.maxScrollY = 0;
+        }
+        
+        initScrollLimits() {
+            const img = new Image();
+            img.src = this.beforeImage.src;
+            
+            if (img.complete || img.naturalWidth > 0) {
+                this.calculateScrollLimits(img);
+            } else {
+                img.onload = () => {
+                    this.calculateScrollLimits(img);
+                };
+            }
         }
         
         scrollImage(e) {
-            // 防止頁面滾動
-            e.preventDefault();
+            console.log('[Isaac Portfolio] Scroll triggered, maxScrollY:', this.maxScrollY);
+            
+            // 如果沒有滾動空間，直接允許頁面滾動
+            if (this.maxScrollY <= 0) {
+                console.log('[Isaac Portfolio] No scroll space, allowing page scroll');
+                return;
+            }
             
             // 滾動靈敏度
             const scrollSpeed = 30;
             
             // 計算滾動方向和距離
             const deltaY = e.deltaY;
-            this.scrollY += deltaY > 0 ? scrollSpeed : -scrollSpeed;
+            const newScrollY = this.scrollY + (deltaY > 0 ? scrollSpeed : -scrollSpeed);
             
-            // 獲取容器尺寸
-            const sliderRect = this.slider.getBoundingClientRect();
+            // 調試用
+            console.log('[Isaac Portfolio] Current scrollY:', this.scrollY, 'Max:', this.maxScrollY, 'Delta:', deltaY);
             
-            // 獲取圖片的自然尺寸來計算滾動範圍
-            const img = new Image();
-            img.src = this.beforeImage.src;
+            // 檢查是否已到達邊界
+            const isAtTop = this.scrollY <= 0 && deltaY < 0;
+            const isAtBottom = this.scrollY >= this.maxScrollY && deltaY > 0;
             
-            // 等待圖片載入完成再計算
-            if (img.complete || img.naturalWidth > 0) {
-                this.calculateScrollLimits(img, sliderRect);
-            } else {
-                img.onload = () => {
-                    this.calculateScrollLimits(img, sliderRect);
-                };
-            }
-        }
-        
-        calculateScrollLimits(img, sliderRect) {
-            const imgAspectRatio = img.naturalWidth / img.naturalHeight;
-            const containerAspectRatio = sliderRect.width / sliderRect.height;
+            console.log('[Isaac Portfolio] At top:', isAtTop, 'At bottom:', isAtBottom);
             
-            let maxScrollY = 0;
-            
-            if (imgAspectRatio > containerAspectRatio) {
-                // 圖片較寬，會被上下裁切，可以滾動
-                const actualImageHeight = sliderRect.width / imgAspectRatio;
-                maxScrollY = Math.max(0, actualImageHeight - sliderRect.height);
+            // 如果已到達邊界，允許頁面滾動
+            if (isAtTop || isAtBottom) {
+                console.log('[Isaac Portfolio] Allowing page scroll');
+                return; // 不阻止預設行為，讓瀏覽器自然滾動
             }
             
-            // 限制滾動範圍
-            this.scrollY = Math.max(0, Math.min(maxScrollY, this.scrollY));
+            // 防止頁面滾動
+            e.preventDefault();
+            
+            // 更新滾動位置
+            this.scrollY = Math.max(0, Math.min(this.maxScrollY, newScrollY));
             
             // 應用滾動變換
             const transform = `translateY(-${this.scrollY}px)`;
             this.beforeImage.style.transform = transform;
             this.afterImage.style.transform = transform;
             
-            // 追蹤滾動行為
-            if (window.umami && currentProject) {
+            // Umami 追蹤
+            if (window.umami && currentProject && this.maxScrollY > 0) {
                 window.umami.track('image-scroll', {
                     project: currentProject,
                     action: 'scroll-view',
-                    scrollPosition: Math.round((this.scrollY / maxScrollY) * 100)
+                    scrollPosition: Math.round((this.scrollY / this.maxScrollY) * 100)
                 });
             }
+        }
+        
+        calculateScrollLimits(img) {
+            const sliderRect = this.slider.getBoundingClientRect();
+            const imgAspectRatio = img.naturalWidth / img.naturalHeight;
+            const containerAspectRatio = sliderRect.width / sliderRect.height;
+            
+            console.log('[Isaac Portfolio] Image:', img.naturalWidth, 'x', img.naturalHeight, 'ratio:', imgAspectRatio);
+            console.log('[Isaac Portfolio] Container:', sliderRect.width, 'x', sliderRect.height, 'ratio:', containerAspectRatio);
+            
+            let maxScrollY = 0;
+            
+            // 計算圖片實際顯示尺寸 (使用 object-fit: cover)
+            let actualImageHeight, actualImageWidth;
+            
+            if (imgAspectRatio > containerAspectRatio) {
+                // 圖片較寬，以容器高度為準，寬度會超出
+                actualImageHeight = sliderRect.height;
+                actualImageWidth = sliderRect.height * imgAspectRatio;
+                console.log('[Isaac Portfolio] Image is wider, using container height');
+            } else {
+                // 圖片較高，以容器寬度為準，高度會超出
+                actualImageWidth = sliderRect.width;
+                actualImageHeight = sliderRect.width / imgAspectRatio;
+                console.log('[Isaac Portfolio] Image is taller, calculated height:', actualImageHeight);
+            }
+            
+            // 如果圖片高度超出容器，可以滾動
+            this.maxScrollY = Math.max(0, actualImageHeight - sliderRect.height);
+            console.log('[Isaac Portfolio] Max scroll Y:', this.maxScrollY);
         }
         
         
@@ -471,16 +509,28 @@ document.addEventListener('DOMContentLoaded', function() {
         drag(e) {
             if (!this.isDragging) return;
             
-            const rect = this.slider.getBoundingClientRect();
-            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-            const percent = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
-            
-            this.updateSlider(percent);
             e.preventDefault();
+            
+            // 使用 requestAnimationFrame 優化性能
+            if (this.dragRAF) return; // 避免重複調用
+            
+            this.dragRAF = requestAnimationFrame(() => {
+                const rect = this.slider.getBoundingClientRect();
+                const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+                const percent = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
+                
+                this.updateSlider(percent);
+                this.dragRAF = null;
+            });
         }
         
         stopDrag() {
             if (this.isDragging) {
+                // 清理 requestAnimationFrame
+                if (this.dragRAF) {
+                    cancelAnimationFrame(this.dragRAF);
+                    this.dragRAF = null;
+                }
                 // 追蹤結束拖曳
                 if (window.umami && currentProject) {
                     window.umami.track('compare-slider-end', {

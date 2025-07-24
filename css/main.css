@@ -14,7 +14,7 @@ body {
    ================================= */
 :root {
     /* 藍色調色彩系統 - 從淺到深 */
-    --color-primary: #8D6E63; /* 保持原有的暖色調作為強調色 */
+    --color-primary: #4A5568; /* 改為中藍灰色，與整體色調一致 */
     --color-secondary: #B8C5D1; /* 原本的灰色改為藍灰色 */
     --color-background-light: #FDFDFD; /* 背景保持純白 */
     /* 文字顏色 - 全部改為藍色調 */
@@ -61,18 +61,27 @@ body {
     background: var(--color-bg-gray-50);
 }
 
-/* 桌機版對比容器 */
+/* 桌機版對比容器 - 按原始圖片比例 */
 .before-after-slider.desktop {
-    height: 800px;
-    max-height: 70vh;
+    aspect-ratio: 1440 / 1024; /* 原始圖片比例 1.41:1 */
+    width: 100%;
+    height: auto;
+    max-height: 85vh; /* 增加最大高度 */
 }
 
-/* 手機版對比容器 */  
+/* 手機版對比容器 - 按原始圖片比例 */  
 .before-after-slider.mobile {
-    height: 800px;
-    max-height: 70vh;
-    max-width: 600px;
+    aspect-ratio: 430 / 932; /* 原始圖片比例 0.46:1 */
+    width: 100%;
+    height: auto;
+    max-height: 85vh; /* 增加最大高度 */
+    max-width: 400px; /* 適合手機尺寸 */
     margin: 0 auto;
+}
+
+/* 手機版對比的外部容器也限制寬度 */
+.website-compare-container:has(.before-after-slider.mobile) {
+    max-width: 400px;
 }
 
 .before-image, .after-image {
@@ -138,6 +147,8 @@ body {
     justify-content: center;
     box-shadow: 0 4px 12px rgba(45, 55, 72, 0.15);
     transition: all 0.2s ease;
+    /* 微調字符視覺居中 */
+    padding-bottom: 2px;
 }
 
 .handle-circle:hover {
@@ -150,6 +161,10 @@ body {
     color: var(--color-primary);
     font-weight: bold;
     margin: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .compare-labels {
