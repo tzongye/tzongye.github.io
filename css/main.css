@@ -103,6 +103,15 @@ body {
     object-position: center top;
 }
 
+/* 手機版查看桌機圖片時完整顯示 */
+@media (max-width: 768px) {
+    .before-after-slider.desktop .before-image,
+    .before-after-slider.desktop .after-image {
+        object-fit: contain;
+        object-position: center;
+    }
+}
+
 /* 手機版圖片 - 左右撐滿，上下可截掉 */
 .before-after-slider.mobile .before-image,
 .before-after-slider.mobile .after-image {
