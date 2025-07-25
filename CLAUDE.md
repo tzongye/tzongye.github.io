@@ -90,6 +90,92 @@ grep -r "mobileMenuBtn" *.html
 4. **修改代碼** → 逐步小幅修改
 5. **測試驗證** → 確認功能正常
 
+## 🎨 視覺設計與空間呼吸感指南
+
+### 📏 Section 間距層次化
+根據內容重要性設定不同間距，創造視覺節奏：
+
+```html
+<!-- 重要/展示性內容 -->
+<section class="py-20">  <!-- 80px 上下間距 -->
+
+<!-- 一般內容區塊 -->  
+<section class="py-16">  <!-- 64px 上下間距 -->
+
+<!-- Hero 區塊 -->
+<section class="pt-32 pb-20 md:pt-40 md:pb-24">  <!-- 響應式間距 -->
+```
+
+### 🎴 內容與卡片間距
+保持一致的間距節奏，避免視覺擁擠：
+
+```html
+<!-- 卡片/欄位間距 -->
+<div class="grid md:grid-cols-2 gap-10">  <!-- 40px 間距，適度呼吸感 -->
+
+<!-- 卡片內部 padding -->
+<div class="bg-white p-8 rounded-lg">  <!-- 32px 內距，舒適閱讀 -->
+
+<!-- 主要內容區塊間 -->
+<div class="mb-16">  <!-- 64px 底部間距 -->
+
+<!-- 流程步驟間 -->
+<div class="space-y-12">  <!-- 48px 垂直間距 -->
+```
+
+### ⚠️ 背景色使用注意事項
+**Tailwind 版本限制：**
+- 目前使用 **Tailwind 2.2.19**
+- 僅支援 `gray-50`, `gray-100`, `gray-200` 等基礎色系
+- **不支援** `slate`, `stone`, `zinc` 等新色系（需 Tailwind 3.x+）
+
+**背景色建議：**
+```html
+<!-- 建議保持全白背景，避免視覺干擾 -->
+<section class="bg-white">
+
+<!-- 如需層次，僅使用微妙灰階 -->
+<section class="bg-gray-50">  <!-- 最淡灰色 -->
+```
+
+### 🖼️ 響應式圖片對齊
+解決雙裝置對比時的對齊問題：
+
+```html
+<!-- 使用 flexbox 確保圖片頂部對齊 -->
+<div class="lg:col-span-2 flex flex-col">
+  <div class="mb-4">
+    <!-- 文字內容，可彈性伸縮 -->
+  </div>
+  <div class="flex-1 flex items-start">
+    <img class="w-full">  <!-- 圖片始終頂部對齊 -->
+  </div>
+</div>
+```
+
+### 🎯 設計效果移除指南
+移除過度的視覺效果，保持專業感：
+
+```css
+/* 移除 hover 動畫效果 */
+.glass-card {
+    /* 保留基礎樣式 */
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    /* 移除 transition 和 hover transform */
+}
+```
+
+### ✅ 空間設計檢查清單
+應用到新專案時的確認事項：
+
+- [ ] Section 間距是否有層次感（py-16 vs py-20）
+- [ ] 卡片間距是否適中（gap-10）
+- [ ] 內容 padding 是否舒適（p-8）
+- [ ] 背景色是否符合 Tailwind 版本限制
+- [ ] 響應式圖片是否正確對齊
+- [ ] 是否移除過度的視覺效果
+
 ---
 
 **記住：控制台是最好的朋友！任何 UI 問題都先檢查 JavaScript 錯誤。**
