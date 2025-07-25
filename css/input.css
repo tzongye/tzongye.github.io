@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定義組件 */
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm border border-slate-200 shadow-sm;
+  }
+  
+  .step-card {
+    @apply bg-white p-6 rounded-lg border border-slate-200 shadow-sm snap-start;
+    @apply lg:p-8;
+  }
+}
+
+/* 保留原有的自定義樣式 */
+:root {
+  --color-primary: #3b82f6;
+  --color-text-dark: #1e293b;
+  --color-text-medium: #475569;
+  --color-text-light: #64748b;
+}
+
+body {
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.7;
+  scroll-behavior: smooth;
+}
