@@ -304,13 +304,9 @@ header {
     backdrop-filter: blur(8px); /* Slightly less blur */
     border: 1px solid var(--color-border);
     box-shadow: 0 4px 15px var(--color-shadow-light); /* Softer shadow */
-    transition: all 0.3s ease;
 }
 
-.glass-card:hover {
-    transform: translateY(-3px); /* Less dramatic lift */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Slightly more prominent on hover */
-}
+/* Removed hover effect for design showcase cards */
 
 .glass-card h3 {
     color: var(--color-text-dark) !important;
