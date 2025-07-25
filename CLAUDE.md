@@ -166,15 +166,46 @@ grep -r "mobileMenuBtn" *.html
 }
 ```
 
-### ✅ 空間設計檢查清單
-應用到新專案時的確認事項：
+### 🔧 常用批量更新指令
+開發過程中常用的批量修改指令：
 
-- [ ] Section 間距是否有層次感（py-16 vs py-20）
-- [ ] 卡片間距是否適中（gap-10）
-- [ ] 內容 padding 是否舒適（p-8）
-- [ ] 背景色是否符合 Tailwind 版本限制
-- [ ] 響應式圖片是否正確對齊
-- [ ] 是否移除過度的視覺效果
+**字體大小標準化：**
+```bash
+# 將過小的字體統一改為合適大小
+sed -i '' 's/text-xs font-semibold/text-sm font-semibold/g; s/text-sm text-slate-600/text-base text-slate-600/g; s/text-sm text-slate-700/text-base text-slate-700/g; s/text-sm font-semibold/text-base font-semibold/g; s/text-sm font-bold/text-base font-bold/g' *.html
+```
+
+**卡片樣式統一化：**
+```bash
+# 統一所有卡片樣式為邊框+微陰影
+sed -i '' 's/rounded-lg border border-slate-200">/rounded-lg border border-slate-200 shadow-sm">/g; s/rounded-lg shadow-md/rounded-lg border border-slate-200 shadow-sm/g' *.html
+```
+
+**色彩系統現代化：**
+```bash
+# 批量替換 gray 為 slate 色系
+sed -i '' 's/text-gray-\([0-9]\+\)/text-slate-\1/g; s/bg-gray-\([0-9]\+\)/bg-slate-\1/g; s/border-gray-\([0-9]\+\)/border-slate-\1/g' *.html
+```
+
+### ✅ 技術檢查清單
+新功能開發或維護時的確認事項：
+
+**JavaScript 相關：**
+- [ ] 函數定義順序正確（避免 "before initialization" 錯誤）
+- [ ] 事件監聽器正確綁定
+- [ ] DOM 元素存在性檢查
+- [ ] 控制台無錯誤信息
+
+**CSS 樣式相關：**
+- [ ] Tailwind 版本相容性
+- [ ] 響應式設計正確
+- [ ] z-index 層級關係合理
+
+**設計規範相關：**
+- [ ] 參考 [DESIGN.md](./DESIGN.md) 確保符合設計規範
+- [ ] 卡片樣式統一
+- [ ] 字體大小符合標準
+- [ ] 色彩系統一致
 
 ## 🚀 進階 Tailwind 3.x 特性指南
 
