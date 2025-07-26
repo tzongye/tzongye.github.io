@@ -354,13 +354,9 @@ header {
     display: none;
 }
 
-/* Image Hover Effect (unchanged) */
+/* Image Container - No hover effects */
 .image-container img {
-    transition: transform 0.3s ease;
-}
-
-.image-container:hover img {
-    transform: scale(1.02);
+    /* Removed hover transition effects */
 }
 
 /* Section Title (Removed gradient bar) */

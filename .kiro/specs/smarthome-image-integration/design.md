@@ -169,10 +169,10 @@ const imageAssets = {
 
 ## Implementation Notes
 
-### Tailwind 2.2.19 相容性
-- 避免使用 Tailwind 3.x 的新語法（如透明度 `/` 語法）
-- 使用 `text-slate-*` 等色彩類別時確認版本支援
-- 保持與現有頁面的樣式一致性
+### Tailwind 3.4.17 相容性
+- 可以使用 Tailwind 3.x 的新語法（如透明度 `/` 語法）
+- 完全支援 `text-slate-*` 等現代色彩類別
+- 使用 `@container` 等新特性提升響應式設計
 
 ### 現有樣式整合
 - 使用現有的 `image-container` class 啟用 Lightbox

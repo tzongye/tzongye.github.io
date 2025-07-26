@@ -45,7 +45,7 @@
 1. WHEN 圖片被添加到頁面 THEN 系統 SHALL 使用統一的 image-container 樣式包裹
 2. WHEN 卡片元素被使用 THEN 系統 SHALL 遵循現有的 glass-card 樣式規範
 3. WHEN 文字內容被顯示 THEN 系統 SHALL 使用適當的字體大小和顏色
-4. WHEN 使用 Tailwind 類別 THEN 系統 SHALL 相容於 2.2.19 版本（避免 3.x 語法）
+4. WHEN 使用 Tailwind 類別 THEN 系統 SHALL 使用 3.4.17 版本的現代語法
 
 ### Requirement 5
 
