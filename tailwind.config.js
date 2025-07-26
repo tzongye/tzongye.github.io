@@ -15,6 +15,10 @@ module.exports = {
           700: '#1d4ed8',
         }
       },
+      fontSize: {
+        // 覆蓋 text-base 為 18px，保持全站字體一致性
+        'base': ['18px', '1.75rem'],
+      },
       container: {
         center: true,
         padding: '1rem',
