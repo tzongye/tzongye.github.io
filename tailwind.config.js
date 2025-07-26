@@ -38,8 +38,6 @@ module.exports = {
     'bg-blue-500',
     'bg-emerald-500', 
     'bg-amber-500',
-    'bg-purple-500',
-    'text-blue-600',
-    'hover:text-blue-600'
+    'bg-purple-500'
   ]
 }

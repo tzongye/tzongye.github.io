@@ -698,7 +698,7 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
 
 /* 增加section間距，提升呼吸感 */
 .section-spacing {
-    padding: 6rem 0; /* 從 py-16 (4rem) 升級到 6rem */
+    padding: 5rem 0; /* 從 py-16 (4rem) 升級到 5rem，與 py-20 一致 */
 }
 
 /* 容器最大寬度限制，避免內容過寬 */
@@ -709,6 +709,7 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
 /* 專案卡片間距優化 */
 .project-grid {
     gap: 3rem; /* 增加卡片間距 */
+    padding: 2rem; /* 增加內距以容納陰影 */
 }
 
 /* 標題下方間距增加 */
@@ -784,14 +785,6 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
     left: 100%;
 }
 
-/* 文字懸停效果 - 移除下劃線 */
-.text-hover {
-    transition: color 0.3s ease;
-}
-
-.text-hover:hover {
-    color: var(--color-primary);
-}
 
 .section-title, h2, h3 {
     text-align: left;
