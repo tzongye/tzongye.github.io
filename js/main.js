@@ -580,4 +580,24 @@ document.addEventListener('DOMContentLoaded', function() {
     compareContainers.forEach(container => {
         new WebsiteCompare(container);
     });
+    
+    // 圖片載入狀態處理
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(img => {
+        // 如果圖片已經載入完成
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            // 監聽載入完成事件
+            img.addEventListener('load', function() {
+                this.classList.add('loaded');
+            });
+            
+            // 監聽載入錯誤事件
+            img.addEventListener('error', function() {
+                this.classList.add('loaded'); // 即使錯誤也移除佔位符
+                console.warn('圖片載入失敗:', this.src);
+            });
+        }
+    });
 });
