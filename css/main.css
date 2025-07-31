@@ -705,7 +705,7 @@ body p, body .glass-card p, body .text-gray-700, body .text-gray-600, body .text
 /* 專案卡片間距優化 */
 .project-grid {
     gap: 3rem; /* 增加卡片間距 */
-    padding: 2.5rem; /* 40px 內距以容納陰影 */
+    padding: 0; /* 移除額外 padding，讓 container px-4 控制間距 */
 }
 
 /* 標題下方間距增加 */
