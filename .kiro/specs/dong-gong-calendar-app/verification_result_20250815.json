@@ -1,0 +1,44 @@
+{
+  "test_date": "2025-08-15",
+  "real_data": {
+    "date": "2025-08-15",
+    "raw_text": "乙巳年水陸法會誦經統計：\r\n    目前總數10,665,668部       目標8,000,000部 \r\n\t目前達成率100%誦經功德榜誦經統計",
+    "lunar_date": "",
+    "twelve_builds": "",
+    "gan_zhi": "",
+    "yijing_hexagram": "",
+    "season": "",
+    "solar_term": "",
+    "zodiac": "",
+    "clash_direction": "",
+    "clash_animal": "",
+    "description": "",
+    "auspicious_stars": [],
+    "inauspicious_stars": []
+  },
+  "calculated_data": {
+    "date": "2025-08-15",
+    "ganzhi": "壬午日",
+    "twelve_builds": "閉",
+    "auspicious_stars": [],
+    "inauspicious_stars": [],
+    "overall_score": 40,
+    "overall_level": "poor",
+    "summary": "凶",
+    "reasons": [
+      "今日為閉，宜閉藏休息，不宜大事"
+    ]
+  },
+  "comparison": {
+    "accuracy": 0.0,
+    "ganzhi_match": false,
+    "builds_match": false,
+    "auspicious_match": false,
+    "inauspicious_match": false,
+    "common_auspicious": [],
+    "common_inauspicious": [],
+    "missing_auspicious": [],
+    "missing_inauspicious": []
+  },
+  "verification_time": "2025-08-05T17:14:08.179079"
+}

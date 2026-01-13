@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "figma": {
+      "command": "uvx",
+      "args": ["figma-mcp@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": true,
+      "autoApprove": [],
+      "note": "Disabled to avoid conflict with Cursor's Figma MCP server"
+    }
+  }
+}

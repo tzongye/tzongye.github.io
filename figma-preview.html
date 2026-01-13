@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figma Design Preview - Zurich Fund Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'arial-narrow': ['Arial Narrow', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0077cf',
+                        'surface-bg': '#f6f8f9',
+                        'surface-primary': '#ffffff',
+                        'text-primary': 'rgba(14,23,31,0.9)',
+                        'text-secondary': 'rgba(14,23,31,0.6)',
+                        'text-tertiary': 'rgba(14,23,31,0.4)',
+                        'border-light': 'rgba(14,23,31,0.1)',
+                        'border-medium': 'rgba(14,23,31,0.2)',
+                        'success': '#00c853',
+                        'warning': '#ff9800',
+                        'error': '#f44336',
+                        'info': '#2196f3'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .sort-dropdown, .filter-dropdown {
+            display: none;
+        }
+        .sort-dropdown.active, .filter-dropdown.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-surface-bg font-arial-narrow">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-sm border-b border-border-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-primary rounded"></div>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-lg font-bold text-text-primary">Zurich Fund Management</h1>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-text-secondary hover:text-text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5z"/>
+                        </svg>
+                    </button>
+                    <button class="p-2 text-text-secondary hover:text-text-primary">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <!-- Search and Filter Section -->
+        <div class="bg-white rounded-lg shadow-sm border border-border-light p-4 mb-6">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <!-- Search Bar -->
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" 
+                               placeholder="Search by name, ISIN or Ticker" 
+                               class="w-full pl-10 pr-4 py-2 border border-border-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                               id="searchInput">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-5 w-5 text-text-tertiary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sort Dropdown -->
+                <div class="relative">
+                    <button class="px-4 py-2 border border-border-medium rounded-lg bg-white text-text-primary hover:bg-gray-50 flex items-center space-x-2"
+                            onclick="toggleSortDropdown()">
+                        <span>Sort by</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="sort-dropdown absolute right-0 mt-2 w-48 bg-white border border-border-light rounded-lg shadow-lg z-10">
+                        <div class="py-1">
+                            <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-100" onclick="sortBy('fundCode')">Fund Code A-Z</button>
+                            <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-100" onclick="sortBy('name')">Name A-Z</button>
+                            <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-100" onclick="sortBy('rating')">Rating</button>
+                            <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-100" onclick="sortBy('risk')">Risk Level</button>
+                            <button class="block w-full text-left px-4 py-2 text-sm text-text-primary hover:bg-gray-100" onclick="sortBy('performance')">Performance</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filter Button -->
+                <div class="relative">
+                    <button class="px-4 py-2 border border-border-medium rounded-lg bg-white text-text-primary hover:bg-gray-50 flex items-center space-x-2"
+                            onclick="toggleFilterDropdown()">
+                        <span>Filter</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/>
+                        </svg>
+                    </button>
+                    <div class="filter-dropdown absolute right-0 mt-2 w-80 bg-white border border-border-light rounded-lg shadow-lg z-10">
+                        <div class="p-4">
+                            <h3 class="font-bold text-text-primary mb-3">Filter Options</h3>
+                            
+                            <!-- Fund Company -->
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-text-primary mb-1">Fund Company</label>
+                                <select class="w-full px-3 py-2 border border-border-medium rounded-lg text-sm">
+                                    <option>All Companies</option>
+                                    <option>Zurich Insurance Group</option>
+                                    <option>Zurich Investment Management</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Fund Category -->
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-text-primary mb-1">Fund Category</label>
+                                <select class="w-full px-3 py-2 border border-border-medium rounded-lg text-sm">
+                                    <option>All Categories</option>
+                                    <option>Equity</option>
+                                    <option>Fixed Income</option>
+                                    <option>Mixed</option>
+                                    <option>Money Market</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Currency -->
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-text-primary mb-1">Currency</label>
+                                <select class="w-full px-3 py-2 border border-border-medium rounded-lg text-sm">
+                                    <option>All Currencies</option>
+                                    <option>USD</option>
+                                    <option>EUR</option>
+                                    <option>CHF</option>
+                                    <option>GBP</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Rating -->
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-text-primary mb-1">Rating</label>
+                                <select class="w-full px-3 py-2 border border-border-medium rounded-lg text-sm">
+                                    <option>All Ratings</option>
+                                    <option>5 Stars</option>
+                                    <option>4 Stars</option>
+                                    <option>3 Stars</option>
+                                    <option>2 Stars</option>
+                                    <option>1 Star</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Style Box -->
+                            <div class="mb-3">
+                                <label class="block text-sm font-medium text-text-primary mb-1">Style Box</label>
+                                <div class="grid grid-cols-3 gap-2">
+                                    <button class="px-2 py-1 text-xs border border-border-medium rounded hover:bg-gray-100">Large Cap</button>
+                                    <button class="px-2 py-1 text-xs border border-border-medium rounded hover:bg-gray-100">Mid Cap</button>
+                                    <button class="px-2 py-1 text-xs border border-border-medium rounded hover:bg-gray-100">Small Cap</button>
+                                    <button class="px-2 py-1 text-xs border border-border-medium rounded hover:bg-gray-100">Value</button>
+                                    <button class="px-2 py-1 text-xs border border-border-medium rounded hover:bg-gray-100">Blend</button>
+                                    <button class="px-2 py-1 text-xs border border-border-medium rounded hover:bg-gray-100">Growth</button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between pt-3 border-t border-border-light">
+                                <button class="px-4 py-2 text-sm text-text-secondary hover:text-text-primary" onclick="resetFilters()">Reset Filters</button>
+                                <button class="px-4 py-2 bg-primary text-white rounded-lg text-sm hover:bg-blue-600" onclick="applyFilters()">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="bg-white rounded-lg shadow-sm border border-border-light mb-6">
+            <div class="border-b border-border-light">
+                <nav class="flex custom-scrollbar overflow-x-auto">
+                    <button class="tab-button active px-6 py-4 text-sm font-bold text-primary border-b-2 border-primary whitespace-nowrap" 
+                            onclick="switchTab('overview')">
+                        Overview
+                    </button>
+                    <button class="tab-button px-6 py-4 text-sm font-medium text-text-secondary hover:text-text-primary border-b-2 border-transparent hover:border-border-light whitespace-nowrap" 
+                            onclick="switchTab('cumulative')">
+                        Cumulative Performance
+                    </button>
+                    <button class="tab-button px-6 py-4 text-sm font-medium text-text-secondary hover:text-text-primary border-b-2 border-transparent hover:border-border-light whitespace-nowrap" 
+                            onclick="switchTab('calendar')">
+                        Calendar Year Performance
+                    </button>
+                    <button class="tab-button px-6 py-4 text-sm font-medium text-text-secondary hover:text-text-primary border-b-2 border-transparent hover:border-border-light whitespace-nowrap" 
+                            onclick="switchTab('risk')">
+                        Risk
+                    </button>
+                    <button class="tab-button px-6 py-4 text-sm font-medium text-text-secondary hover:text-text-primary border-b-2 border-transparent hover:border-border-light whitespace-nowrap" 
+                            onclick="switchTab('document')">
+                        Document
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" id="overview">
+            <!-- Overview Content -->
+            <div class="bg-white rounded-lg shadow-sm border border-border-light">
+                <div class="p-4 border-b border-border-light">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-bold text-text-primary">Fund List</h2>
+                        <span class="text-sm text-text-secondary">Showing 319 funds</span>
+                    </div>
+                </div>
+                
+                <!-- Fund Cards -->
+                <div class="p-4 space-y-4">
+                    <!-- Fund Card 1 -->
+                    <div class="border border-border-light rounded-lg p-4 hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold text-text-primary">Zurich Equity Fund</h3>
+                                <p class="text-sm text-text-secondary">Fund Code: ZEF001</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-1 mb-1">
+                                    <span class="text-yellow-500">★★★★★</span>
+                                    <span class="text-xs text-text-secondary">(5.0)</span>
+                                </div>
+                                <span class="inline-block px-2 py-1 text-xs bg-green-100 text-green-800 rounded">Low Risk</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-text-secondary">Category:</span>
+                                <span class="text-text-primary ml-2">Equity</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">Currency:</span>
+                                <span class="text-text-primary ml-2">USD</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">1Y Return:</span>
+                                <span class="text-success ml-2">+12.5%</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">Risk Level:</span>
+                                <span class="text-text-primary ml-2">3/7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fund Card 2 -->
+                    <div class="border border-border-light rounded-lg p-4 hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold text-text-primary">Zurich Fixed Income Fund</h3>
+                                <p class="text-sm text-text-secondary">Fund Code: ZFIF002</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-1 mb-1">
+                                    <span class="text-yellow-500">★★★★☆</span>
+                                    <span class="text-xs text-text-secondary">(4.2)</span>
+                                </div>
+                                <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">Very Low Risk</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-text-secondary">Category:</span>
+                                <span class="text-text-primary ml-2">Fixed Income</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">Currency:</span>
+                                <span class="text-text-primary ml-2">EUR</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">1Y Return:</span>
+                                <span class="text-success ml-2">+5.8%</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">Risk Level:</span>
+                                <span class="text-text-primary ml-2">2/7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fund Card 3 -->
+                    <div class="border border-border-light rounded-lg p-4 hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="font-bold text-text-primary">Zurich Mixed Fund</h3>
+                                <p class="text-sm text-text-secondary">Fund Code: ZMF003</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="flex items-center space-x-1 mb-1">
+                                    <span class="text-yellow-500">★★★★☆</span>
+                                    <span class="text-xs text-text-secondary">(4.5)</span>
+                                </div>
+                                <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">Medium Risk</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-text-secondary">Category:</span>
+                                <span class="text-text-primary ml-2">Mixed</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">Currency:</span>
+                                <span class="text-text-primary ml-2">CHF</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">1Y Return:</span>
+                                <span class="text-success ml-2">+8.2%</span>
+                            </div>
+                            <div>
+                                <span class="text-text-secondary">Risk Level:</span>
+                                <span class="text-text-primary ml-2">4/7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="p-4 border-t border-border-light">
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-text-secondary">
+                            Showing 1-10 of 319 results
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button class="px-3 py-1 text-sm border border-border-medium rounded hover:bg-gray-50">Previous</button>
+                            <button class="px-3 py-1 text-sm bg-primary text-white rounded">1</button>
+                            <button class="px-3 py-1 text-sm border border-border-medium rounded hover:bg-gray-50">2</button>
+                            <button class="px-3 py-1 text-sm border border-border-medium rounded hover:bg-gray-50">3</button>
+                            <span class="px-2 text-sm text-text-secondary">...</span>
+                            <button class="px-3 py-1 text-sm border border-border-medium rounded hover:bg-gray-50">32</button>
+                            <button class="px-3 py-1 text-sm border border-border-medium rounded hover:bg-gray-50">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cumulative Performance Tab -->
+        <div class="tab-content" id="cumulative">
+            <div class="bg-white rounded-lg shadow-sm border border-border-light">
+                <div class="p-4 border-b border-border-light">
+                    <h2 class="text-lg font-bold text-text-primary">Cumulative Performance</h2>
+                    <p class="text-sm text-text-secondary">Historical performance data for all funds</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-center py-12 text-text-secondary">
+                        <svg class="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        <p>Cumulative Performance data will be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Year Performance Tab -->
+        <div class="tab-content" id="calendar">
+            <div class="bg-white rounded-lg shadow-sm border border-border-light">
+                <div class="p-4 border-b border-border-light">
+                    <h2 class="text-lg font-bold text-text-primary">Calendar Year Performance</h2>
+                    <p class="text-sm text-text-secondary">Year-over-year performance comparison</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-center py-12 text-text-secondary">
+                        <svg class="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <p>Calendar Year Performance data will be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Tab -->
+        <div class="tab-content" id="risk">
+            <div class="bg-white rounded-lg shadow-sm border border-border-light">
+                <div class="p-4 border-b border-border-light">
+                    <h2 class="text-lg font-bold text-text-primary">Risk Analysis</h2>
+                    <p class="text-sm text-text-secondary">Risk metrics and volatility analysis</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-center py-12 text-text-secondary">
+                        <svg class="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p>Risk analysis data will be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Tab -->
+        <div class="tab-content" id="document">
+            <div class="bg-white rounded-lg shadow-sm border border-border-light">
+                <div class="p-4 border-b border-border-light">
+                    <h2 class="text-lg font-bold text-text-primary">Fund Documents</h2>
+                    <p class="text-sm text-text-secondary">Access to fund prospectuses, reports, and legal documents</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-center py-12 text-text-secondary">
+                        <svg class="mx-auto h-12 w-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <p>Fund documents will be displayed here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-border-light mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-sm text-text-secondary">
+                <p class="mb-2">© 2024 Zurich Insurance Group. All rights reserved.</p>
+                <p class="text-xs">This information is for professional investors only and should not be distributed to retail investors.</p>
+                <p class="text-xs mt-2">Past performance does not guarantee future results. Investment involves risk.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab button
+            event.target.classList.add('active');
+        }
+
+        // Sort dropdown functionality
+        function toggleSortDropdown() {
+            const dropdown = document.querySelector('.sort-dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Filter dropdown functionality
+        function toggleFilterDropdown() {
+            const dropdown = document.querySelector('.filter-dropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Sort functionality
+        function sortBy(criteria) {
+            console.log(`Sorting by: ${criteria}`);
+            // Add your sorting logic here
+            document.querySelector('.sort-dropdown').classList.remove('active');
+        }
+
+        // Filter functionality
+        function applyFilters() {
+            console.log('Applying filters...');
+            // Add your filter logic here
+            document.querySelector('.filter-dropdown').classList.remove('active');
+        }
+
+        function resetFilters() {
+            console.log('Resetting filters...');
+            // Add your reset logic here
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const sortDropdown = document.querySelector('.sort-dropdown');
+            const filterDropdown = document.querySelector('.filter-dropdown');
+            
+            if (!event.target.closest('.relative')) {
+                sortDropdown.classList.remove('active');
+                filterDropdown.classList.remove('active');
+            }
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            console.log(`Searching for: ${searchTerm}`);
+            // Add your search logic here
+        });
+
+        // Initialize page
+        console.log('Zurich Fund Management page loaded successfully!');
+        console.log('Features available:');
+        console.log('- 5 tab pages (Overview, Cumulative Performance, Calendar Year Performance, Risk, Document)');
+        console.log('- Advanced sorting options');
+        console.log('- Multi-dimensional filtering');
+        console.log('- Search functionality');
+        console.log('- Responsive design');
+    </script>
+</body>
+</html>
